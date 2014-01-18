@@ -14,7 +14,7 @@
 			});
 		</script>
 		
-<script src="/model.js"></script>
+
 </head>
 <body>
 <h1>Growsery</h1>
@@ -22,12 +22,13 @@
 	<div>
 		<h2>Dishes</h2>
 		<div data-bind="foreach: dishes">
+			<input type="text" data-bind="text: name" placeholder="unnamed dish"></input>
+			<h3>ingredients</h3>
 			<div>
-				<input type="text" data-bind="text: name" placeholder="unnamed dish"></input>
 				<div data-bind="foreach: ingredients">
 					<span data-bind="text: name"></span>
 				</div>
-				<button data-bind="click: addIngredient"></button>
+				<button data-bind="click: $data.addIngredient">add ingredient</button>
 			</div>
 		</div>
 		<button data-bind="click: addDish">add</button>

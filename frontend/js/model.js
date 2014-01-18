@@ -11,12 +11,12 @@ define(["knockout", "proxy"],
 	
 	var makeDish = function(){
 		
-		var ret = ko.observable({
+		var ret = {
 			name: ko.observable("unnamed dish"),
 			ingredients: ko.observableArray()
-		});
+		};
 		
-		ret.addIngedient = function(){
+		ret.addIngredient = function(){
 			ret.ingredients.push(makeIngredient());
 		};
 		
