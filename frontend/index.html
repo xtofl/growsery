@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Growsery</title>
+
+		<script src="/js/vendor/require/2.1.9/require.js"></script>
+		<script>
+			require.config({
+				baseUrl : "/js",
+				paths : {
+					"jquery" : "vendor/jquery/2.0.3/jquery",
+					"touchswipe" : "vendor/touchswipe/1.6.4/jquery.touchSwipe",
+					"knockout" : "vendor/knockout/3.0.0/knockout-3.0.0.debug"
+				}
+			});
+		</script>
+		
+<script src="/model.js"></script>
+</head>
+<body>
+<h1>Growsery</h1>
+
+	<div>
+		<h2>Dishes</h2>
+		<div data-bind="foreach: dishes">
+			<div>
+				<input type="text" data-bind="text: name" placeholder="unnamed dish"></input>
+				<div data-bind="foreach: ingredients">
+					<span data-bind="text: name"></span>
+				</div>
+				<button data-bind="click: addIngredient"></button>
+			</div>
+		</div>
+		<button data-bind="click: addDish">add</button>
+	</div>
+
+</body>
+<script>
+require(["model", "knockout"], function(model, ko){
+	var model = model.create();
+	ko.applyBindings(model);
+});
+</script>
+</html>
