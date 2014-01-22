@@ -1,47 +1,14 @@
-<html>
+<html ng-app="growceryApp">
 <head>
 <title>Growsery</title>
 
-		<script src="/js/vendor/require/2.1.9/require.js"></script>
-		<script>
-			require.config({
-				baseUrl : "/js",
-				paths : {
-					"jquery" : "vendor/jquery/2.0.3/jquery",
-					"touchswipe" : "vendor/touchswipe/1.6.4/jquery.touchSwipe",
-					"knockout" : "vendor/knockout/3.0.0/knockout-3.0.0.debug",
-					"knockout-mapping" : "vendor/knockout_mapping/2.4.1/knockout.mapping-latest.debug"
-				}
-			});
-		</script>
-		
-
+		<script src="/js/vendor/angular/1.2.9/angular.js"></script>
+		<script src="/js/controller.js"></script>
 </head>
-<body>
+<body ng-controller="GrowceryController">
 <h1>Growsery</h1>
-
-	<div>
-		<h2>Dishes</h2>
-		<div data-bind="foreach: dishes">
-			<input type="text" data-bind="text: name" placeholder="unnamed dish"></input>
-			<h3>ingredients</h3>
-			<div>
-				<div data-bind="foreach: ingredients">
-					<input type="text" placeholder="name" data-bind="text: name"></input>
-				</div>
-				<button data-bind="click: $data.addIngredient">add ingredient</button>
-			</div>
-		</div>
-		<button data-bind="click: addDish">add</button>
-		<button data-bind="click: save">save</button>
-		<button data-bind="click: load">load</button>
-	</div>
-
-</body>
-<script>
-require(["model", "knockout"], function(model, ko){
-	var model = model.create();
-	ko.applyBindings(model);
-});
-</script>
+<ul>
+<li ng-repeat="grocery in groceries"><input type="text" value="{{grocery.name}}">
+<input type="number" value="{{grocery.quantity}}"></li>
+</ul>
 </html>

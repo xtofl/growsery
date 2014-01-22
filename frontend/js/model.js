@@ -2,19 +2,19 @@ define(["knockout", "knockout-mapping", "proxy"],
 		function(ko, mapping, proxy){
 	
 	var makeIngredient = function() {
-		var ret = mapping.fromJS({
+		var ret = {
 				name: "ingr",
 				quantity: ""
-		});
+		};
 		return ret;
 	};
 	
 	var makeDish = function(){
 		
-		var ret = mapping.fromJS({
+		var ret = {
 			name: "unnamed dish",
 			ingredients: []
-		});
+		};
 		
 		ret.addIngredient = function(){
 			ret.ingredients.push(makeIngredient());
@@ -27,11 +27,11 @@ define(["knockout", "knockout-mapping", "proxy"],
 		create: function(){
 			
 			
-			var ret = mapping.fromJS({
+			var ret = {
 				dishes: [],
 				plan: null,
 				grocerylist: []
-			});
+			};
 
 			ret.addDish = function(){
 				ret.dishes.push(makeDish());
@@ -39,13 +39,13 @@ define(["knockout", "knockout-mapping", "proxy"],
 
 			ret.save = function(){
 				localStorage.dishes = {};
-				var dishes = mapping.toJS(ret.dishes());
-				localStorage.dishes = ko.toJSON(dishes);
+				var dishes = mapping.toJS(ret);
+				localStorage.model = ko.toJSON(ret);
 			};
 			
 			ret.load = function(){
-				var dishes = JSON.parse(localStorage.dishes);
-				mapping.fromJS(dishes, {}, ret.dishes);
+				var model = JSON.parse(localStorage.model);
+				mapping.fromJS(model, ret);
 			};
 			
 			return ret;
