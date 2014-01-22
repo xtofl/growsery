@@ -7,13 +7,13 @@
 </head>
 <body ng-controller="GrowceryController">
 	<h1>Growsery</h1>
-	<button id="addIngredient" ng-click="addIngredient()">Add
-		Ingredient</button>
+	<button id="addGrocery" ng-click="addGrocery()">Add
+		Grocery</button>
 
-	<ul id="ingredients">
-		<li class="ingredient" ng-repeat="grocery in groceries">
+	<ul id="groceries">
+		<li class="grocery" ng-repeat="grocery in groceries">
 		
-			<input placeholder="type ingredient name" type="text"
+			<input placeholder="type grocery name" type="text"
 				value="{{grocery.name}}"> 
 		
 			<input type="number"
