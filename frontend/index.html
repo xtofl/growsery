@@ -2,16 +2,23 @@
 <head>
 <title>Growsery</title>
 
-		<script src="/js/vendor/angular/1.2.9/angular.js"></script>
-		<script src="/js/controller.js"></script>
+<script src="/js/vendor/angular/1.2.9/angular.js"></script>
+<script src="/js/controller.js"></script>
 </head>
 <body ng-controller="GrowceryController">
-<h1>Growsery</h1>
-<button id="addIngredient" ng-click="addIngredient()">Add Ingredient</button>
+	<h1>Growsery</h1>
+	<button id="addIngredient" ng-click="addIngredient()">Add
+		Ingredient</button>
 
-<ul id="ingredients">
-<li class="ingredient" ng-repeat="grocery in groceries"><input type="text" value="{{grocery.name}}">
-<input type="number" value="{{grocery.quantity}}"></li>
-</ul>
-
+	<ul id="ingredients">
+		<li class="ingredient" ng-repeat="grocery in groceries">
+		
+			<input placeholder="type ingredient name" type="text"
+				value="{{grocery.name}}"> 
+		
+			<input type="number"
+				value="{{grocery.quantity}}">
+		
+		</li>
+	</ul>
 </html>
