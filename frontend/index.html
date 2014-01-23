@@ -23,6 +23,9 @@
 				<input name="targetQuantity" ng-model="dish.quantity"
 					type="number">
 				people
+				
+				<button name="addToMenu" ng-click="addDishToMenu(dish)">Add To Menu</button>
+				
 				<div name="ingredients">
 					<button name="addIngredient" ng-click="dish.addIngredient()">Add Ingredient</button>
 					<ul name="ingredients">
@@ -42,6 +45,25 @@
 		</ul>
 
 	</div>
+
+
+	<div id="menu" ng-model="menu">
+		<h2>Menu</h2>
+
+		<ul name="dishes">
+			<li class="dish" ng-repeat="dish in menu">
+			
+				<input name="name" ng-model="dish.name" 
+					placeholder="type dish name" type="text"> 
+				for
+				<input name="targetQuantity" ng-model="dish.quantity"
+					type="number">
+				people
+			</li>
+		</ul>
+
+	</div>
+
 	
 	<div id="menu" ng-model="menu">
 		<h2>Menu</h2>

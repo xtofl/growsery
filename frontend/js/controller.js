@@ -14,12 +14,15 @@ growseryApp.controller('GrowceryController', function($scope){
 	};
 	
 	$scope.load = function() {
+		$scope.dishes = angular.fromJson(localStorage.dishes);
+		$scope.menu = angular.fromJson(localStorage.menu);
 		$scope.groceries = angular.fromJson(localStorage.groceries);
 	};
 	
 	$scope.save = function() {
-		var json = angular.toJson($scope.groceries);
-		localStorage.groceries = json;
+		localStorage.dishes = angular.toJson($scope.dishes);
+		localStorage.menu = angular.toJson($scope.menu);
+		localStorage.groceries = angular.toJson($scope.groceries);
 	};
 
 
@@ -32,9 +35,15 @@ growseryApp.controller('GrowceryController', function($scope){
 					name: "",
 					ingredients: dishIngredients,
 					addIngredient: function(){
-						dishIngredients.push(makeIngredient())
+						dishIngredients.push(makeIngredient());
 					},
 					quantity: 5
 				});
+	};
+	
+	$scope.menu = [];
+	
+	$scope.addDishToMenu = function(dish) {
+		$scope.menu.push(dish);
 	};
 });
