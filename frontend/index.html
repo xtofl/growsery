@@ -7,19 +7,58 @@
 </head>
 <body ng-controller="GrowceryController">
 	<h1>Growsery</h1>
-	<button id="addGrocery" ng-click="addGrocery()">Add	Grocery</button>
-	<button id="save" ng-click="save()">Save</button>
-	<button id="load" ng-click="load()">Load</button>
+	<button name="save" ng-click="save()">Save</button>
+	<button name="load" ng-click="load()">Load</button>
 
-	<ul id="groceries">
-		<li class="grocery" ng-repeat="grocery in groceries">
-		
-			<input name="name" ng-model="grocery.name" 
-				placeholder="type grocery name" type="text"> 
-		
-			<input name="quantity" ng-model="grocery.quantity"
-				type="number">
-		
-		</li>
-	</ul>
+	<div id="dishes" ng-model="dishes">
+		<h2>Dishes</h2>
+
+		<button name="addDish" ng-click="addDish()">Add	Dish</button>
+		<ul name="dishes">
+			<li class="dish" ng-repeat="dish in dishes">
+			
+				<input name="name" ng-model="dish.name" 
+					placeholder="type dish name" type="text"> 
+				for
+				<input name="targetQuantity" ng-model="dish.quantity"
+					type="number">
+				people
+				<div name="ingredients">
+					<button name="addIngredient" ng-click="dish.addIngredient()">Add Ingredient</button>
+					<ul name="ingredients">
+						<li class="ingredient" ng-repeat="grocery in dish.ingredients">
+						
+							<input name="name" ng-model="grocery.name" 
+								placeholder="type grocery name" type="text"> 
+						
+							<input name="quantity" ng-model="grocery.quantity"
+								type="number">
+						
+						</li>
+					</ul>
+				
+				</div>
+			</li>
+		</ul>
+
+	</div>
+	
+	<div id="menu" ng-model="menu">
+		<h2>Menu</h2>
+	</div>
+	
+	<div id="groceries">
+		<button name="addGrocery" ng-click="addGrocery()">Add	Grocery</button>
+		<ul name="groceries">
+			<li class="grocery" ng-repeat="grocery in groceries">
+			
+				<input name="name" ng-model="grocery.name" 
+					placeholder="type grocery name" type="text"> 
+			
+				<input name="quantity" ng-model="grocery.quantity"
+					type="number">
+			
+			</li>
+		</ul>
+	</div>
 </html>
