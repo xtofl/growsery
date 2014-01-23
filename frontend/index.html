@@ -7,10 +7,9 @@
 </head>
 <body ng-controller="GrowceryController">
 	<h1>Growsery</h1>
+	<button id="addGrocery" ng-click="addGrocery()">Add	Grocery</button>
 	<button id="save" ng-click="save()">Save</button>
 	<button id="load" ng-click="load()">Load</button>
-	<button id="addGrocery" ng-click="addGrocery()">Add
-		Grocery</button>
 
 	<ul id="groceries">
 		<li class="grocery" ng-repeat="grocery in groceries">
