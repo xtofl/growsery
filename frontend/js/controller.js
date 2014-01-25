@@ -5,6 +5,15 @@ growseryApp.controller('GrowceryController', function($scope){
 	$scope.groceries = [
 	                    ];
 	
+	$scope.allGroceries = function() {
+		var groceries = $scope.groceries.slice(0);
+		$scope.menu.forEach(function(dish){
+			dish.recipe.ingredients.forEach(function(ingredient){
+				groceries.push(ingredient);
+			});
+		});
+		return groceries;
+	};
 	var makeIngredient = function(){
 		return {name: "", quantity: 1};
 	};

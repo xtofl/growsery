@@ -67,7 +67,7 @@
 	<div id="groceries">
 		<button name="addGrocery" ng-click="addGrocery()">Add	Grocery</button>
 		<ul name="groceries">
-			<li class="grocery" ng-repeat="grocery in groceries">
+			<li class="grocery" ng-repeat="grocery in allGroceries()">
 			
 				<input name="name" ng-model="grocery.name" 
 					placeholder="type grocery name" type="text"> 
