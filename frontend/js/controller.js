@@ -37,13 +37,13 @@ growseryApp.controller('GrowceryController', function($scope){
 					addIngredient: function(){
 						dishIngredients.push(makeIngredient());
 					},
-					quantity: 5
+					targetQuantity: 5
 				});
 	};
 	
 	$scope.menu = [];
 	
-	$scope.addDishToMenu = function(dish) {
-		$scope.menu.push(dish);
+	$scope.copyDishToMenu = function(dish) {
+		$scope.menu.push({name: dish.name, quantity: dish.targetQuantity, recipe: dish});
 	};
 });

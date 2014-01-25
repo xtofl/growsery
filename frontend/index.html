@@ -20,11 +20,11 @@
 				<input name="name" ng-model="dish.name" 
 					placeholder="type dish name" type="text"> 
 				for
-				<input name="targetQuantity" ng-model="dish.quantity"
+				<input name="targetQuantity" ng-model="dish.targetQuantity"
 					type="number">
 				people
 				
-				<button name="addToMenu" ng-click="addDishToMenu(dish)">Add To Menu</button>
+				<button name="addToMenu" ng-click="copyDishToMenu(dish)">Add To Menu</button>
 				
 				<div name="ingredients">
 					<button name="addIngredient" ng-click="dish.addIngredient()">Add Ingredient</button>
@@ -56,7 +56,7 @@
 				<input name="name" ng-model="dish.name" 
 					placeholder="type dish name" type="text"> 
 				for
-				<input name="targetQuantity" ng-model="dish.quantity"
+				<input name="quantity" ng-model="dish.quantity"
 					type="number">
 				people
 			</li>
