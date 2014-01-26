@@ -80,8 +80,24 @@
 
 	</div>
 
-	<div id="groceries">
+	<div id="additional_groceries">
+	<h2>Additional Groceries</h2>
 		<button name="addGrocery" ng-click="addGrocery()">Add	Grocery</button>
+		<ul name="additional_groceries">
+			<li class="grocery" ng-repeat="grocery in groceries">
+			
+				<input name="name" ng-model="grocery.name" 
+					placeholder="type grocery name" type="text"> 
+			
+				<input name="quantity" ng-model="grocery.quantity"
+					type="number">
+			
+			</li>
+		</ul>
+	</div>
+
+	<div id="groceries">
+	<h2>All Groceries</h2>
 		<ul name="groceries">
 			<li class="grocery" ng-repeat="grocery in allGroceries()">
 			
@@ -94,4 +110,5 @@
 			</li>
 		</ul>
 	</div>
+
 </html>
