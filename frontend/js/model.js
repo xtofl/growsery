@@ -2,6 +2,14 @@ define([],
 		function(){
 	
 	var ret = {
+		joinIngredients: function(ingredients) {
+			var ret = {};
+			ingredients.forEach(function(ingredient){
+				if (!ret[ingredient.name]) ret[ingredient.name] = 0;
+				ret[ingredient.name] += ingredient.quantity;
+			});
+			return ret;
+		},
 		create: function($scope){
 			
 			$scope.groceries = [
@@ -30,8 +38,9 @@ define([],
 				return {name: "", quantity: 1};
 			};
 			
-			$scope.addGrocery = function(){
-				$scope.groceries.push(makeIngredient());
+			$scope.addGrocery = function(grocery){
+				grocery || (grocery = makeIngredient());
+				$scope.groceries.push(grocery);
 			};
 			
 			$scope.load = function() {
