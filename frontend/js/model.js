@@ -1,7 +1,7 @@
 define([], 
 		function(){
 
-	var joinedIngredients = function(ingredients){
+	var _joinedIngredients = function(ingredients){
 		var ret = {};
 		ingredients.forEach(function(ingredient){
 			if (!ret[ingredient.name]) ret[ingredient.name] = 0;
@@ -11,8 +11,8 @@ define([],
 
 	};
 	var ret = {
-		joinIngredients: function(ingredients) {
-			return joinedIngredients(ingredients);
+		joinedIngredients: function(ingredients) {
+			return _joinedIngredients(ingredients);
 		},
 		create: function($scope){
 			
@@ -26,7 +26,7 @@ define([],
 						groceries.push(ingredient);
 					});
 				});
-				var sum = joinedIngredients(groceries);
+				var sum = _joinedIngredients(groceries);
 				
 				var ret = [];
 				for (var grocery in sum) {
