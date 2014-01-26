@@ -8,8 +8,15 @@ require([ "model" ], function(model) {
 
 	test("Adding groceries", function() {
 		var groceries = [{name:"x", quantity: 10}, {name: "y", quantity: 5}];
-		groceries.forEach(function(g){scope.addGrocery(g)});
+		groceries.forEach(function(g){scope.addGrocery(g);});
 		deepEqual(scope.allGroceries(), groceries, "adding groceries is reflected in allGroceries");
+
+		var groceries = [{name:"x", quantity: 10}];
+		groceries.forEach(function(g){scope.addGrocery(g);});
+		deepEqual(scope.allGroceries(), 
+				[{name:"x", quantity: 20}, {name: "y", quantity: 5}], 
+				"adding equal groceries is reflected by increasing total in allGroceries");
+	
 	});
 	
 	test("Summing up groceries", function(){
@@ -18,6 +25,8 @@ require([ "model" ], function(model) {
 		                   {name: "a", quantity: 5}];
 		var sum = model.joinIngredients(ingredients);
 		equal(10, sum["a"], "all equal ingredients are summed");
+		
+		
 	});
 
 });

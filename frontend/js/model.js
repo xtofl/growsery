@@ -1,14 +1,18 @@
 define([], 
 		function(){
-	
+
+	var joinedIngredients = function(ingredients){
+		var ret = {};
+		ingredients.forEach(function(ingredient){
+			if (!ret[ingredient.name]) ret[ingredient.name] = 0;
+			ret[ingredient.name] += ingredient.quantity;
+		});
+		return ret;
+
+	};
 	var ret = {
 		joinIngredients: function(ingredients) {
-			var ret = {};
-			ingredients.forEach(function(ingredient){
-				if (!ret[ingredient.name]) ret[ingredient.name] = 0;
-				ret[ingredient.name] += ingredient.quantity;
-			});
-			return ret;
+			return joinedIngredients(ingredients);
 		},
 		create: function($scope){
 			
@@ -16,23 +20,19 @@ define([],
 			                    ];
 			
 			$scope.allGroceries = function() {
-				return $scope.groceries;
 				var groceries = $scope.groceries.slice(0);
 				$scope.menu.forEach(function(dish){
 					dish.recipe.ingredients.forEach(function(ingredient){
 						groceries.push(ingredient);
 					});
 				});
-				var sum = {};
-				groceries.forEach(function(grocery){
-					if (! (grocery.name in sum)) { sum[grocery.name]=grocery.quantity; }
-					else { sum[grocery.name] = grocery.quantity; }
-				});
-				groceries = [];
-				for (grocery in sum) {
-					groceries.push({name: grocery, quantity: sum[grocery]});
-				}
-				return groceries;
+				var sum = joinedIngredients(groceries);
+				
+				var ret = [];
+				for (var grocery in sum) {
+					ret.push({name: grocery, quantity: sum[grocery]});
+				};
+				return ret;
 			};
 			var makeIngredient = function(){
 				return {name: "", quantity: 1};
