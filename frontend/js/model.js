@@ -77,6 +77,10 @@ define([],
 				$scope.menu.push({name: dish.name, quantity: dish.targetQuantity, recipe: dish});
 			};
 
+			$scope.showDishes = false;
+			$scope.showDishesIngredients = false;
+			$scope.showMenu = true;
+			$scope.showAdditionalGroceries = false;
 		}
 	};	
 	return ret;

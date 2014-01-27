@@ -26,7 +26,12 @@
 	<button name="save" ng-click="save()">Save</button>
 	<button name="load" ng-click="load()">Load</button>
 
-	<div id="dishes" ng-model="dishes">
+	<input type="checkbox" ng-model="showDishes">dishes</input>
+	<input type="checkbox" ng-model="showDishesIngredients">ingredients</input>
+	<input type="checkbox" ng-model="showMenu">menu</input>
+	<input type="checkbox" ng-model="showAdditionalGroceries">additional groceries</input>
+	
+	<div id="dishes" ng-model="dishes" ng-show="showDishes">
 		<h2>Dishes</h2>
 
 		<button name="addDish" ng-click="addDish()">Add	Dish</button>
@@ -42,7 +47,7 @@
 				
 				<button name="addToMenu" ng-click="copyDishToMenu(dish)">Add To Menu</button>
 				
-				<div name="ingredients">
+				<div name="ingredients" ng-show="showDishesIngredients">
 					<button name="addIngredient" ng-click="dish.addIngredient()">Add Ingredient</button>
 					<ul name="ingredients">
 						<li class="ingredient" ng-repeat="grocery in dish.ingredients">
@@ -63,7 +68,7 @@
 	</div>
 
 
-	<div id="menu" ng-model="menu">
+	<div id="menu" ng-model="menu" ng-show="showMenu">
 		<h2>Menu</h2>
 
 		<ul name="dishes">
@@ -80,7 +85,7 @@
 
 	</div>
 
-	<div id="additional_groceries">
+	<div id="additional_groceries" ng-show="showAdditionalGroceries">
 	<h2>Additional Groceries</h2>
 		<button name="addGrocery" ng-click="addGrocery()">Add	Grocery</button>
 		<ul name="additional_groceries">
