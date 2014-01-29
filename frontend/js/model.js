@@ -70,7 +70,10 @@ define([],
 							targetQuantity: 5
 						});
 			};
-			
+			$scope.removeDish = function(dish){
+				var index = $scope.dishes.indexOf(dish);
+				$scope.dishes.splice(index, 1);
+			};
 			$scope.menu = [];
 			
 			$scope.copyDishToMenu = function(dish) {

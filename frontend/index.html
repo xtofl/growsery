@@ -44,7 +44,7 @@
 				<input name="targetQuantity" ng-model="dish.targetQuantity"
 					type="number">
 				people
-				
+				<button name="remove" ng-click="removeDish(dish)">Remove</button>
 				<button name="addToMenu" ng-click="copyDishToMenu(dish)">Add To Menu</button>
 				
 				<div name="ingredients" ng-show="showDishesIngredients">
