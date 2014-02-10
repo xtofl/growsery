@@ -38,6 +38,23 @@ define([],
 				return {name: "", quantity: 1};
 			};
 			
+			var makeDish = function(){
+				var dishIngredients = [];
+				var dish = {
+					name: "",
+					ingredients: dishIngredients,
+					addIngredient: function(){
+						dishIngredients.push(makeIngredient());
+					},
+					removeIngredient: function(ingredient){
+						var index = dishIngredients.indexOf(ingredient);
+						dishIngredients.splice(index, 1);
+					},
+					targetQuantity: 5
+				};
+				return dish;
+			};
+	
 			$scope.addGrocery = function(grocery){
 				grocery || (grocery = makeIngredient());
 				$scope.groceries.push(grocery);
@@ -58,17 +75,8 @@ define([],
 
 			$scope.dishes = [];
 
-			$scope.addDish = function() {
-				var dishIngredients = [];
-				$scope.dishes.push(
-						{
-							name: "",
-							ingredients: dishIngredients,
-							addIngredient: function(){
-								dishIngredients.push(makeIngredient());
-							},
-							targetQuantity: 5
-						});
+			$scope.addDish = function() {				
+				$scope.dishes.push(makeDish());
 			};
 			$scope.removeDish = function(dish){
 				var index = $scope.dishes.indexOf(dish);
@@ -79,10 +87,10 @@ define([],
 			$scope.copyDishToMenu = function(dish) {
 				$scope.menu.push({name: dish.name, quantity: dish.targetQuantity, recipe: dish});
 			};
-
-			$scope.showDishes = false;
-			$scope.showDishesIngredients = false;
-			$scope.showMenu = true;
+			
+			$scope.showDishes = true;
+			$scope.showDishesIngredients = true;
+			$scope.showMenu = false;
 			$scope.showAdditionalGroceries = false;
 		}
 	};	
