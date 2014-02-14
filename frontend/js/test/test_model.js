@@ -31,9 +31,8 @@ require([ "model" ], function(model) {
 		equal(10, sum["a"], "all equal ingredients are summed");
 	});
 
-	test("Adding dishes to menu + additional groceries", function(){
-		var scope = {};
-		model.create(scope);
+	function knownSetup(scope){
+		
 		var additional = [
 		                   {name: "a", quantity: 5},
 		                   {name: "a", quantity: 5}];
@@ -47,10 +46,21 @@ require([ "model" ], function(model) {
 				ingredients: [{name: "dish2.a", quantity: 1}, {name: "common.a", quantity: 1}],
 				targetQuantity: 5
 		};
-		
 		scope.copyDishToMenu(dish1);
 		scope.copyDishToMenu(dish2);
 		additional.forEach(function(i){scope.addGrocery(i);});
+		
+		return {
+			dish1: dish1,
+			dish2: dish2,
+			additional: additional
+		};
+	};
+
+	test("Adding dishes to menu + additional groceries", function(){
+		var scope = {};
+		model.create(scope);
+		knownSetup(scope);
 		
 		var expectedGroceries = {
 			"a" : 10,
@@ -59,5 +69,21 @@ require([ "model" ], function(model) {
 			"common.a" : 2
 		};
 		deepEqual(model.joinedIngredients(scope.allGroceries()), expectedGroceries, "ingredients from menu and additional groceries are summed up");
+	});
+	
+	test("removing dish from menu", function(){
+		var scope={};
+		model.create(scope);
+		var setup = knownSetup(scope);
+		
+		scope.removeDishFromMenu(setup.dish1);
+
+		var expectedGroceries = {
+				"a" : 10,
+				"dish2.a" : 1,
+				"common.a" : 1
+			};
+		deepEqual(model.joinedIngredients(scope.allGroceries()), expectedGroceries, "ingredients from menu and additional groceries are summed up");
+	
 	});
 });
