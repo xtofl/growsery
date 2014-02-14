@@ -71,7 +71,7 @@
 	</div>
 
 
-	<div id="menu" ng-model="menu" ng-show="showMenu">
+	<div id="menu" ng-show="showMenu">
 		<h2>Menu</h2>
 
 		<ul name="dishes">
@@ -83,6 +83,8 @@
 				<input name="quantity" ng-model="dish.quantity"
 					type="number">
 				people
+				
+				<button name="remove" ng-click="removeDishFromMenu(dish)">Remove</button>
 			</li>
 		</ul>
 

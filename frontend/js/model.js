@@ -88,6 +88,16 @@ define([],
 				$scope.menu.push({name: dish.name, quantity: dish.targetQuantity, recipe: dish});
 			};
 			
+			Array.prototype.findFirstIndex = function(predicate){
+				for(var i=0; i!=this.length; ++i){
+					if(predicate(this[i])) return i;
+				}
+			};
+			$scope.removeDishFromMenu = function(dishToRemove) {
+				var index = $scope.menu.findFirstIndex(function(dish){return dishToRemove.name==dish.name;});
+				$scope.menu.splice(index, 1);
+			};
+			
 			$scope.showDishes = true;
 			$scope.showDishesIngredients = true;
 			$scope.showMenu = false;
