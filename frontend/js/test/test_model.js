@@ -86,4 +86,22 @@ require([ "model" ], function(model) {
 		deepEqual(model.joinedIngredients(scope.allGroceries()), expectedGroceries, "ingredients from menu and additional groceries are summed up");
 	
 	});
+	
+
+	test("removing additionall grocery", function(){
+		var scope={};
+		model.create(scope);
+		var setup = knownSetup(scope);
+		
+		scope.removeAdditionalGrocery(setup.additional[0]);
+
+		var expectedGroceries = {
+				"a" : 5,
+				"dish1.a" : 1,
+				"dish2.a" : 1,
+				"common.a" : 2
+		};
+		deepEqual(model.joinedIngredients(scope.allGroceries()), expectedGroceries, "ingredients from menu and additional groceries are summed up");
+	
+	});
 });

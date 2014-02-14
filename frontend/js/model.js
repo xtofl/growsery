@@ -98,6 +98,11 @@ define([],
 				$scope.menu.splice(index, 1);
 			};
 			
+			$scope.removeAdditionalGrocery = function(toRemove) {
+				var index = $scope.groceries.findFirstIndex(function(grocery){return toRemove.name==grocery.name;});
+				$scope.groceries.splice(index, 1);
+			};
+			
 			$scope.showDishes = true;
 			$scope.showDishesIngredients = true;
 			$scope.showMenu = false;
