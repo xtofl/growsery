@@ -48,6 +48,8 @@ require([ "model" ], function(model) {
 	};
 	
 	function applyKnownSetup(scope){
+		scope.addDish(setup.dish1);
+		scope.addDish(setup.dish2);
 		scope.copyDishToMenu(setup.dish1);
 		scope.copyDishToMenu(setup.dish2);
 		setup.additional.forEach(function(i){scope.addGrocery(i);});
@@ -64,6 +66,15 @@ require([ "model" ], function(model) {
 		applyKnownSetup(scope);
 		return scope;
 	}
+	
+	test("Adding dishes to cookbook", function(){
+		var scope = createEmptyScope();
+		var dish = {name: "dish1", ingredients: [1,2,3]};
+		scope.addDish(dish);
+		
+		deepEqual(scope.dishes[0].name, dish.name);
+		deepEqual(scope.dishes[0].ingredients, dish.ingredients);
+	});
 
 	test("Adding dishes to menu + additional groceries", function(){
 		var scope = createScope();
@@ -105,5 +116,20 @@ require([ "model" ], function(model) {
 		};
 		deepEqual(model.joinedIngredients(scope.allGroceries()), expectedGroceries, "ingredients from menu and additional groceries are summed up");
 	
+	});
+	
+	test("loading/saving a cookbook", function(){
+		var scope = createScope();
+		scope.addDish({name:"dish1"});
+		equal(0, scope.dishes.findFirstIndex(function(d){
+			return d.name=="dish1";
+		}));
+		scope.saveCookbook("book1");
+		
+		var emptyScope = createEmptyScope();
+		ok(emptyScope.dishes.length==0);
+		emptyScope.loadCookbook("book1");
+		
+		deepEqual(emptyScope.dishes, scope.dishes, "loading saved cookbook => dishes are the same");		
 	});
 });

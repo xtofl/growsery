@@ -38,11 +38,11 @@ define([],
 				return {name: "", quantity: 1};
 			};
 			
-			var makeDish = function(){
+			var makeDish = function(prototype){
 				var dishIngredients = [];
 				var dish = {
-					name: "",
-					ingredients: dishIngredients,
+					name: prototype && prototype.name || "",
+					ingredients: prototype && prototype.ingredients && prototype.ingredients.slice() || dishIngredients,
 					addIngredient: function(){
 						dishIngredients.push(makeIngredient());
 					},
@@ -75,8 +75,8 @@ define([],
 
 			$scope.dishes = [];
 
-			$scope.addDish = function() {				
-				$scope.dishes.push(makeDish());
+			$scope.addDish = function(dish) {
+				$scope.dishes.push(makeDish(dish));
 			};
 			$scope.removeDish = function(dish){
 				var index = $scope.dishes.indexOf(dish);
@@ -86,6 +86,13 @@ define([],
 			
 			$scope.copyDishToMenu = function(dish) {
 				$scope.menu.push({name: dish.name, quantity: dish.targetQuantity, recipe: dish});
+			};
+			
+			$scope.saveCookbook = function(name) {
+				
+			};
+			$scope.loadCookbook = function(name) {
+				
 			};
 			
 			Array.prototype.findFirstIndex = function(predicate){
