@@ -58,10 +58,15 @@ require([ "model" ], function(model) {
 		model.create(scope);
 		return scope;		
 	};
-
-	test("Adding dishes to menu + additional groceries", function(){
+	
+	function createScope(setup){
 		var scope = createEmptyScope();
 		applyKnownSetup(scope);
+		return scope;
+	}
+
+	test("Adding dishes to menu + additional groceries", function(){
+		var scope = createScope();
 		
 		var expectedGroceries = {
 			"a" : 10,
@@ -73,8 +78,7 @@ require([ "model" ], function(model) {
 	});
 	
 	test("removing dish from menu", function(){
-		var scope=createEmptyScope();
-		applyKnownSetup(scope);
+		var scope=createScope();
 		
 		scope.removeDishFromMenu(setup.dish1);
 
@@ -89,8 +93,7 @@ require([ "model" ], function(model) {
 	
 
 	test("removing additionall grocery", function(){
-		var scope=createEmptyScope();
-		applyKnownSetup(scope);
+		var scope=createScope();
 		
 		scope.removeAdditionalGrocery(setup.additional[0]);
 
