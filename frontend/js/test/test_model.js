@@ -52,10 +52,15 @@ require([ "model" ], function(model) {
 		scope.copyDishToMenu(setup.dish2);
 		setup.additional.forEach(function(i){scope.addGrocery(i);});
 	};
-
-	test("Adding dishes to menu + additional groceries", function(){
+	
+	function createEmptyScope(){
 		var scope = {};
 		model.create(scope);
+		return scope;		
+	};
+
+	test("Adding dishes to menu + additional groceries", function(){
+		var scope = createEmptyScope();
 		applyKnownSetup(scope);
 		
 		var expectedGroceries = {
@@ -68,8 +73,7 @@ require([ "model" ], function(model) {
 	});
 	
 	test("removing dish from menu", function(){
-		var scope={};
-		model.create(scope);
+		var scope=createEmptyScope();
 		applyKnownSetup(scope);
 		
 		scope.removeDishFromMenu(setup.dish1);
@@ -85,8 +89,7 @@ require([ "model" ], function(model) {
 	
 
 	test("removing additionall grocery", function(){
-		var scope={};
-		model.create(scope);
+		var scope=createEmptyScope();
 		applyKnownSetup(scope);
 		
 		scope.removeAdditionalGrocery(setup.additional[0]);
