@@ -103,7 +103,7 @@ require([ "model" ], function(model) {
 	});
 	
 
-	test("removing additionall grocery", function(){
+	test("removing additional grocery", function(){
 		var scope=createScope();
 		
 		scope.removeAdditionalGrocery(setup.additional[0]);
