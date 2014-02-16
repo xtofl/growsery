@@ -31,7 +31,7 @@ require([ "model" ], function(model) {
 		equal(10, sum["a"], "all equal ingredients are summed");
 	});
 
-	function knownSetup(scope){
+	function applyKnownSetup(scope){
 		
 		var additional = [
 		                   {name: "a", quantity: 5},
@@ -60,7 +60,7 @@ require([ "model" ], function(model) {
 	test("Adding dishes to menu + additional groceries", function(){
 		var scope = {};
 		model.create(scope);
-		knownSetup(scope);
+		applyKnownSetup(scope);
 		
 		var expectedGroceries = {
 			"a" : 10,
@@ -74,7 +74,7 @@ require([ "model" ], function(model) {
 	test("removing dish from menu", function(){
 		var scope={};
 		model.create(scope);
-		var setup = knownSetup(scope);
+		var setup = applyKnownSetup(scope);
 		
 		scope.removeDishFromMenu(setup.dish1);
 
@@ -91,7 +91,7 @@ require([ "model" ], function(model) {
 	test("removing additionall grocery", function(){
 		var scope={};
 		model.create(scope);
-		var setup = knownSetup(scope);
+		var setup = applyKnownSetup(scope);
 		
 		scope.removeAdditionalGrocery(setup.additional[0]);
 
