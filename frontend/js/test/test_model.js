@@ -138,6 +138,7 @@ require([ "model" ], function(model) {
 			return d.name=="dish1";
 		}));
 		scope.saveCookbook("book1");
+		deepEqual(scope.cookbookNames(), ["book1"], "a saved cookbook is listed");
 		
 		var emptyScope = createEmptyScope();
 		ok(emptyScope.dishes.length==0);

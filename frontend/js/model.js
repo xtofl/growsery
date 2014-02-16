@@ -83,21 +83,33 @@ define([],
 				$scope.dishes.splice(index, 1);
 			};
 			$scope.menu = [];
-			
+
 			$scope.copyDishToMenu = function(dish) {
 				$scope.menu.push({name: dish.name, quantity: dish.targetQuantity, recipe: dish});
 			};
 			
-			$scope.saveCookbook = function(name) {
+			var readCookbooks = function() {
 				var cookbooks = angular.fromJson(localStorage.cookbooks); 
-				if(!cookbooks) cookbooks = {};
+				if(!cookbooks) return {};
+				else return cookbooks;
+			};
+			$scope.saveCookbook = function(name) {
+				var cookbooks = readCookbooks();
 				cookbooks[name] = $scope.dishes;
 				localStorage.cookbooks = angular.toJson(cookbooks);
 			};
 			$scope.loadCookbook = function(name) {
-				var cookbooks = angular.fromJson(localStorage.cookbooks);
+				var cookbooks = readCookbooks();
 				var dishes = cookbooks[name];
 				$scope.dishes = angular.fromJson(dishes);
+			};
+			$scope.cookbookNames = function() {
+				var ret = [];
+				var book = readCookbooks();
+				for(var key in book){
+					ret.push(key);
+				}
+				return ret;
 			};
 			
 			Array.prototype.findFirstIndex = function(predicate){
