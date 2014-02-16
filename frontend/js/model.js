@@ -89,10 +89,15 @@ define([],
 			};
 			
 			$scope.saveCookbook = function(name) {
-				
+				var cookbooks = angular.fromJson(localStorage.cookbooks); 
+				if(!cookbooks) cookbooks = {};
+				cookbooks[name] = $scope.dishes;
+				localStorage.cookbooks = angular.toJson(cookbooks);
 			};
 			$scope.loadCookbook = function(name) {
-				
+				var cookbooks = angular.fromJson(localStorage.cookbooks);
+				var dishes = cookbooks[name];
+				$scope.dishes = angular.fromJson(dishes);
 			};
 			
 			Array.prototype.findFirstIndex = function(predicate){

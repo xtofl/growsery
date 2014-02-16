@@ -118,6 +118,19 @@ require([ "model" ], function(model) {
 	
 	});
 	
+	function equalDish(actual, expected) {
+		equal(actual.name, expected.name);
+		equal(actual.targetQuantity, expected.targetQuantity);
+		deepEqual(actual.ingredients, expected.ingredients);
+	};
+	
+	function equalDishes(actual, expected, message){
+		for(var key in actual){
+			ok(key in expected);
+			equalDish(actual[key], expected[key]);
+		}	
+	};
+	
 	test("loading/saving a cookbook", function(){
 		var scope = createScope();
 		scope.addDish({name:"dish1"});
@@ -130,6 +143,6 @@ require([ "model" ], function(model) {
 		ok(emptyScope.dishes.length==0);
 		emptyScope.loadCookbook("book1");
 		
-		deepEqual(emptyScope.dishes, scope.dishes, "loading saved cookbook => dishes are the same");		
+		equalDishes(emptyScope.dishes, scope.dishes, "loading saved cookbook => dishes are the same");		
 	});
 });
