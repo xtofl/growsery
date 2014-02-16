@@ -31,7 +31,7 @@ require([ "model" ], function(model) {
 		equal(10, sum["a"], "all equal ingredients are summed");
 	});
 
-	var setup = {
+    var setup = {
 		additional:[
 		                   {name: "a", quantity: 5},
 		                   {name: "a", quantity: 5}],
