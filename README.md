@@ -1,7 +1,7 @@
 growsery
 ========
 
-A growing grocery-list tool
+A growing grocery-list tool (hence the alternative spelling)
 
 
 This tool is intended to help in my house hold: plan next week's menu, find out what ingredients I need for that, build a grocery list for it.
@@ -17,8 +17,15 @@ v1. basic grocery list composition
   b. compose a menu from dishes
   c. compose a week menu from menus
   d. compose a grocery list from a week menu
-  c. add 'other' items to grocery list
+  e. add 'other' items to grocery list
+  f. save/load cookbook
+  g. save/load growserylist
+  h. embellishment
 
 All the entered data should be persistent and editable.
 
-The idea is to run as an in-browser app, using local storage.
+The idea is to run as an in-browser app, using local storage.  Later, migration towards cloud storage will be added.
+
+v1.1 embellishment
+
+v2.0 cloud storage
