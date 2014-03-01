@@ -14,7 +14,7 @@ define([],
 		joinedIngredients: function(ingredients) {
 			return _joinedIngredients(ingredients);
 		},
-		create: function($scope){
+		create: function($scope, $http){
 			
 			$scope.groceries = [
 			                    ];
@@ -129,8 +129,18 @@ define([],
 			
 			$scope.showDishes = true;
 			$scope.showDishesIngredients = true;
-			$scope.showMenu = false;
-			$scope.showAdditionalGroceries = false;
+			$scope.showMenu = true;
+			$scope.showAdditionalGroceries = true;
+			
+			$scope.saveRecipes = function(){
+				$http({method: 'post', url: 'backend/recipes.php', data: {recipes: $scope.dishes}})
+				.success(function(data, status, header, config){
+					$scope.status="saved allright! "+data;
+				})
+				.error(function(data, status, headers, config){
+					$scope.status="saving failed..."+status;
+				});
+			};
 		}
 	};	
 	return ret;

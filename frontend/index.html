@@ -24,8 +24,12 @@
 <body ng-controller="GrowceryController">
 	<h1>Growsery</h1>
 	<div id="controls">	
+		<span>status: {{status}}</span><br>
 		<button name="save" ng-click="save()">Save</button>
 		<button name="load" ng-click="load()">Load</button>
+
+		<button name="saveRecipes" ng-click="saveRecipes()">Save Recipes to Server</button>
+		<button name="loadRecipes" ng-click="loadRecipes()">Load Recipes from Server</button>
 	
 		<input type="checkbox" ng-model="showDishes">dishes
 		<input type="checkbox" ng-model="showDishesIngredients">ingredients

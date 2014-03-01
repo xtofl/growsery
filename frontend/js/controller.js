@@ -1,8 +1,8 @@
 
 
-var growceryController = function($scope){
+var growceryController = function($scope, $http){
 	require(["model"], function(model){
-		model.create($scope);
+		model.create($scope, $http);
 	});
 	
 };
