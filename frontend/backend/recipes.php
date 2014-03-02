@@ -14,7 +14,6 @@ function get(){
 
 function post(){
 	$user = "xtofl";
-	var_dump($_POST);
 	$data = file_get_contents("php://input");
 	file_put_contents(path($user), $data);
 };
