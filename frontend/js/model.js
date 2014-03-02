@@ -133,13 +133,24 @@ define([],
 			$scope.showAdditionalGroceries = true;
 			
 			$scope.saveRecipes = function(){
-				$http({method: 'post', url: 'backend/recipes.php', data: {recipes: $scope.dishes}})
+				$http({method: 'post', url: 'backend/recipes.php', data: {recipes: angular.toJson($scope.dishes)}})
 				.success(function(data, status, header, config){
 					$scope.status="saved allright! "+data;
 				})
 				.error(function(data, status, headers, config){
 					$scope.status="saving failed..."+status;
 				});
+			};
+			$scope.loadRecipes = function(){
+				$http({method: 'get', url: 'backend/recipes.php'})
+				.success(function(data, status, header, config){
+					$scope.status="loaded allright! ";
+					$scope.dishes = angular.fromJson(data.recipes);
+				})
+				.error(function(data, status, headers, config){
+					$scope.status="loaded failed..."+status;
+				});
+				
 			};
 		}
 	};	
