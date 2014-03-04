@@ -39,10 +39,10 @@ define([],
 			};
 			
 			var makeDish = function(prototype){
-				var dishIngredients = [];
+				var dishIngredients = prototype && prototype.ingredients && prototype.ingredients.slice() || [];
 				var dish = {
 					name: prototype && prototype.name || "",
-					ingredients: prototype && prototype.ingredients && prototype.ingredients.slice() || dishIngredients,
+					ingredients: dishIngredients,
 					addIngredient: function(){
 						dishIngredients.push(makeIngredient());
 					},
@@ -132,7 +132,7 @@ define([],
 			$scope.showMenu = true;
 			$scope.showAdditionalGroceries = true;
 			
-			var makePersistent = function(name, property, url) {
+			var makePersistent = function(name, property, url, factory) {
 				$scope["save"+name] = function(){
 					$http({method: 'post', url: url, data: angular.toJson({what: property, content: $scope[property]})})
 						.success(function(data, status, header, config){
@@ -147,14 +147,16 @@ define([],
 					.success(function(data, status, header, config){
 						$scope.status="loaded allright! ";
 						var object = angular.fromJson(data);
-						$scope[property] = object;
+						$scope[property] = factory ? factory(object) : object;
 					})
 					.error(function(data, status, headers, config){
 						$scope.status="loaded failed..."+status;
 					});
 				};
 			};
-			makePersistent("Recipes", "dishes", "backend/recipes.php");
+			makePersistent("Recipes", "dishes", "backend/recipes.php", function(dishes){
+				return dishes.map(function(dish){ return makeDish(dish); });
+			});
 			makePersistent("Groceries", "groceries", "backend/recipes.php");
 		}
 	};	
