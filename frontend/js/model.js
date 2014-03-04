@@ -134,7 +134,7 @@ define([],
 			
 			var makePersistent = function(name, property, url) {
 				$scope["save"+name] = function(){
-					$http({method: 'post', url: url, data: angular.toJson($scope[property])})
+					$http({method: 'post', url: url, data: angular.toJson({what: property, content: $scope[property]})})
 						.success(function(data, status, header, config){
 							$scope.status="saved "+name+" allright! "+data;
 						})
@@ -143,7 +143,7 @@ define([],
 						});
 				};
 				$scope["load"+name] = function(){
-					$http({method: 'get', url: url})
+					$http({method: 'get', url: url+"?what="+property})
 					.success(function(data, status, header, config){
 						$scope.status="loaded allright! ";
 						var object = angular.fromJson(data);
@@ -155,6 +155,7 @@ define([],
 				};
 			};
 			makePersistent("Recipes", "dishes", "backend/recipes.php");
+			makePersistent("Groceries", "groceries", "backend/recipes.php");
 		}
 	};	
 	return ret;

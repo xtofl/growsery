@@ -2,20 +2,23 @@
 
 require_once('recipes.inc');
 
-function path($user) {
-	return "data/recipes.json";	
+function path($user, $what) {
+	return "data/$what.json";	
 }
 
 function get(){
 	$user = "xtofl";
-	$content = file_get_contents(path($user));
+	$what = $_GET["what"];
+	$content = file_get_contents(path($user, $what));
 	print($content);
 };
 
 function post(){
 	$user = "xtofl";
-	$data = file_get_contents("php://input");
-	file_put_contents(path($user), $data);
+	$data = json_decode(file_get_contents("php://input"));
+	$key = $data->what;
+	$content = json_encode($data->content);
+	file_put_contents(path($user, $key), $content);
 };
 
 switch($_SERVER['REQUEST_METHOD']){
