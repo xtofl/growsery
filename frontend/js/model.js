@@ -132,26 +132,29 @@ define([],
 			$scope.showMenu = true;
 			$scope.showAdditionalGroceries = true;
 			
-			$scope.saveRecipes = function(){
-				$http({method: 'post', url: 'backend/recipes.php', data: {recipes: angular.toJson($scope.dishes)}})
-				.success(function(data, status, header, config){
-					$scope.status="saved allright! "+data;
-				})
-				.error(function(data, status, headers, config){
-					$scope.status="saving failed..."+status;
-				});
+			var makePersistent = function(name, property, url) {
+				$scope["save"+name] = function(){
+					$http({method: 'post', url: url, data: angular.toJson($scope[property])})
+						.success(function(data, status, header, config){
+							$scope.status="saved "+name+" allright! "+data;
+						})
+						.error(function(data, status, headers, config){
+							$scope.status="saving failed..."+status;
+						});
+				};
+				$scope["load"+name] = function(){
+					$http({method: 'get', url: url})
+					.success(function(data, status, header, config){
+						$scope.status="loaded allright! ";
+						var object = angular.fromJson(data);
+						$scope[property] = object;
+					})
+					.error(function(data, status, headers, config){
+						$scope.status="loaded failed..."+status;
+					});
+				};
 			};
-			$scope.loadRecipes = function(){
-				$http({method: 'get', url: 'backend/recipes.php'})
-				.success(function(data, status, header, config){
-					$scope.status="loaded allright! ";
-					$scope.dishes = angular.fromJson(data.recipes);
-				})
-				.error(function(data, status, headers, config){
-					$scope.status="loaded failed..."+status;
-				});
-				
-			};
+			makePersistent("Recipes", "dishes", "backend/recipes.php");
 		}
 	};	
 	return ret;
