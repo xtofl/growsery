@@ -16,11 +16,10 @@ define([],
 		},
 		create: function($scope, $http){
 			
-			$scope.groceries = [
-			                    ];
+			$scope.groceries = [];
 			
-			var previousRet;
-			$scope.allGroceries = function() {
+			$scope.allGroceries = [];
+			var updateAllGroceries = function() {
 				var groceries = $scope.groceries.slice(0);
 				$scope.menu.forEach(function(dish){
 					dish.recipe.ingredients.forEach(function(ingredient){
@@ -29,20 +28,16 @@ define([],
 				});
 				var sum = _joinedIngredients(groceries);
 				
-				var stringifyThis = function(){
-					return JSON.stringify(this);
-				};
-				
 				var ret = [];
 				for (var grocery in sum) {
 					ret.push({name: grocery, quantity: sum[grocery]});
 				};
-				if (JSON.stringify(ret) == JSON.stringify(previousRet)) {
-					ret = previousRet;
-				}
-				previousRet = ret;
-				return ret;
+
+				$scope.allGroceries = ret;
 			};
+
+			$scope.$watch("groceries", updateAllGroceries);
+			$scope.$watch("dishes", updateAllGroceries);
 			var makeIngredient = function(){
 				return {name: "", quantity: 1};
 			};
