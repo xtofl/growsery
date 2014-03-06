@@ -24,8 +24,9 @@
 <body ng-controller="GrowceryController">
 	<h1>Growsery</h1>
 	<div id="controls">	
-		<button name="save" ng-click="save()">Save</button>
-		<button name="load" ng-click="load()">Load</button>
+		<span ng-show="status">status: {{status}}</span><br>
+		<button name="load" ng-click="loadRecipes()">Load Dishes</button>
+		<button name="save" ng-click="saveRecipes()">Save Dishes</button>
 	
 		<input type="checkbox" ng-model="showDishes">dishes
 		<input type="checkbox" ng-model="showDishesIngredients">ingredients
@@ -93,6 +94,8 @@
 	<div class="container" id="additional_groceries" ng-show="showAdditionalGroceries">
 	<h2>Additional Groceries</h2>
 		<button name="addGrocery" ng-click="addGrocery()">Add	Grocery</button>
+		<button name="saveGroceries" ng-click="saveGroceries()">Save Groceries</button>
+		<button name="loadGroceries" ng-click="loadGroceries()">Load Groceries</button>
 		<ul name="additional_groceries">
 			<li class="grocery" ng-repeat="grocery in groceries">
 			
@@ -109,7 +112,7 @@
 	<div class="container" id="groceries">
 	<h2>All Groceries</h2>
 		<ul name="groceries">
-			<li class="grocery" ng-repeat="grocery in allGroceries()">
+			<li class="grocery" ng-repeat="grocery in allGroceries">
 			
 				<input name="name" ng-model="grocery.name" 
 					placeholder="type grocery name" type="text"> 
