@@ -96,7 +96,9 @@ pantry = [
     Ingredient("gehakt", Amount(500, "gram")),
     Ingredient("ei", Amount(8, "stuks")),
     Ingredient("bouillon", Amount(8, "blojke")),
-    Ingredient("patat", Amount(20, "stuks"))
+    Ingredient("patat", Amount(20, "stuks")),
+
+    Ingredient("gehakt", Amount(500, "gram")),
 ]
 
 def subtract_amount(lhs, rhs):
