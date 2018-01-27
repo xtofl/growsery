@@ -28,7 +28,7 @@ recipes = {
             Ingredient("krulletjes", Amount(500, "gram")),
             Ingredient("tomatenconcentraat", Amount(2, "blikjes")),
         ] + basis_recipes["witte saus"]),
-    "balletjes tomantensaus met boontjes":
+    "balletjes tomatensaus met boontjes":
         Recipe(for_people=5, ingredients=[
             Ingredient("gehakt", Amount(500, "gram")),
             Ingredient("boontjes", Amount(2, "pakjes")),
@@ -43,7 +43,7 @@ recipes = {
 menu = {
     "zaterdag": "papaschotel",
     "zondag": "salade met eitjes en ovenschotel met pasta en tomatensaus",
-    "maandag": "balletjes tomantensaus met boontjes",
+    "maandag": "balletjes tomatensaus met boontjes",
     "dinsdag": "pasta bolognese",
     "woensdag": "kip met currysaus, perziken en patatten"
 }
@@ -84,12 +84,13 @@ def resulting_list(menu, recipes, pantry):
 
 def print_ingredients(ingredients):
     for ingredient in ingredients:
-        print(ingredient)
+        print("{0:<20}: {1:<4} {2}".format(
+            ingredient.name,
+            ingredient.amount.number,
+            ingredient.amount.unit))
 
 def main():
     shopping_list = resulting_list(menu, recipes, pantry)
-    print("all ingredients:")
-    print_ingredients(needed_ingredients(menu.values(), recipes))
     print("shopping list")
     print_ingredients(shopping_list)
 
