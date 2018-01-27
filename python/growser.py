@@ -26,6 +26,12 @@ recipes = {
 
     "fruit": Recipe(for_people=5, ingredients=[Ingredient("fruit", Amount(10, "stuk"))]),
 
+    "beleg": Recipe(for_people=1, ingredients=[
+        Ingredient("kaas", Amount(1, "plakje")),
+        Ingredient("choco", Amount(0.05, "pot")),
+        Ingredient("papaboter", Amount(0.05, "bakje"))
+    ]),
+
     "groentensoep":
         Recipe(for_people=2, ingredients=[
             Ingredient("selder", Amount(.5, "stuk")),
@@ -93,7 +99,8 @@ menu = [
 
 ] + [
     Serving(recipe_name="koekjes", for_people=5),
-    Serving(recipe_name="fruit", for_people=5)] * 5
+    Serving(recipe_name="fruit", for_people=5),
+    Serving(recipe_name="beleg", for_people=5)] * 7
 
 
 pantry = [
