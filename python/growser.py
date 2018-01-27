@@ -33,7 +33,14 @@ recipes = {
             ] + basis_recipes["witte saus"] + [
             Ingredient("tomatenconcentraat", Amount(2, "blikjes")),
         ]),
-    "pasta bolognese": Recipe(for_people=5, ingredients=[]),
+    "pasta bolognese": Recipe(for_people=5, ingredients=[
+        Ingredient("pasta", Amount(1.5, "pak")),
+        Ingredient("gehakt", Amount(500, "gram")),
+        Ingredient("paprika", Amount(2, "stuks")),
+        Ingredient("tomatenconcentraat", Amount(2, "blikjes")),
+        Ingredient("ui", Amount(1, "stuk")),
+        Ingredient("look", Amount(1, "teentje"))
+    ] + basis_recipes["witte saus"]),
     "kip met currysaus, perziken en patatten": Recipe(for_people=5, ingredients=[]),
 }
 
@@ -99,7 +106,7 @@ def test_amount_is_scaled():
 
 def print_ingredients(ingredients):
     for ingredient in ingredients:
-        print("{0:<20}: {1:<4} {2}".format(
+        print("{0:<20}: {1:>6} {2}".format(
             ingredient.name,
             ingredient.amount.number,
             ingredient.amount.unit))
@@ -108,7 +115,7 @@ def main():
     print("needed ingredients")
     print_ingredients(needed_ingredients(menu.values(), recipes))
     shopping_list = resulting_list(menu, recipes, pantry)
-    print("shopping list")
+    print("\nshopping list")
     print_ingredients(shopping_list)
 
 if __name__ == "__main__":
