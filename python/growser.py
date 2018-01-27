@@ -56,8 +56,8 @@ menu = {
     "zaterdag": Serving(recipe_name="papaschotel", for_people=5),
     "zondag": Serving(recipe_name="salade met eitjes en ovenschotel met pasta en tomatensaus", for_people=7),
     "maandag": Serving(recipe_name="balletjes tomatensaus met boontjes", for_people=7),
-    "dinsdag": Serving(recipe_name="pasta bolognese", for_people=7),
-    "woensdag": Serving(recipe_name="kip met currysaus, perziken en patatten", for_people=7)
+    "dinsdag": Serving(recipe_name="pasta bolognese", for_people=5),
+    "woensdag": Serving(recipe_name="kip met currysaus, perziken en patatten", for_people=5)
 }
 
 pantry = [
