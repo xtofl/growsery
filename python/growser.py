@@ -5,33 +5,31 @@ a system to extract a shopping list from a week menu
 
 import sys
 from entities import *
-from data import recipes, menu, pantry
+from data import recipes, menu, pantry, conversions
 
 
 def ingredient(name, amount, unit="stuk"):
     return Ingredient(name, Amount(amount, unit))
 
 
-def subtract_amount(lhs, rhs):
-    assert lhs.unit == rhs.unit
+def subtract_amount(lhs, rhs, conversions):
+    def tryconvert(a, b):
+        c = (a.unit, b.unit)
+        if c in conversions:
+            return conversions[c](a)
+        else:
+            return None
+    rhs = tryconvert(rhs, lhs) or rhs
+    lhs = tryconvert(lhs, rhs) or lhs
+    assert lhs.unit == rhs.unit, "{} != {}".format(lhs.unit, rhs.unit)
     return Amount(lhs.number - rhs.number, lhs.unit)
 
 
-def subtract_pantry(ingredient, pantry):
-    try:
-        p = next(i for i in pantry if i.name == ingredient.name)
-        return Ingredient(
-            ingredient.name,
-            subtract_amount(ingredient.amount, p.amount))
-    except:
-        return Ingredient(ingredient.name + "?", ingredient.amount)
-
-
-def subtract_ingredients(list1, list2):
+def subtract_ingredients(list1, list2, conversions):
     def subtract_amount_in_list2(amount, name):
         try:
             amount2 = next(i for i in list2 if i.name == name).amount
-            return subtract_amount(amount, amount2)
+            return subtract_amount(amount, amount2, conversions)
         except StopIteration:
             return amount
     return list(i for i in
@@ -65,9 +63,7 @@ def needed_ingredients(servings, recipes):
 def resulting_list(menu, recipes, pantry):
     dishes = menu
     ingredients_needed = needed_ingredients(menu, recipes)
-    results = [\
-        subtract_pantry(i, pantry)\
-        for i in ingredients_needed]
+    results = subtract_ingredients(ingredients_needed, pantry, conversions)
     return filter(lambda r: r.amount.number > 0, results)
 
 def serve_for(for_people, recipe):
