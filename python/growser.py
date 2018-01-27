@@ -41,7 +41,13 @@ recipes = {
         Ingredient("ui", Amount(1, "stuk")),
         Ingredient("look", Amount(1, "teentje"))
     ] + basis_recipes["witte saus"]),
-    "kip met currysaus, perziken en patatten": Recipe(for_people=5, ingredients=[]),
+    "kip met currysaus, perziken en patatten": Recipe(for_people=5, ingredients=[
+        Ingredient("kipfilet", Amount(500, "gram")),
+        Ingredient("perziken in blik", Amount(1, "blikje")),
+        Ingredient("currysaus", Amount(2, "zakjes")),
+        Ingredient("patatten", Amount(5*2, "stuks")),
+        Ingredient("melk", Amount(1, "liter"))
+    ]),
 }
 
 Serving = namedtuple("Serving", ["recipe_name", "for_people"])
