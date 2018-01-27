@@ -9,16 +9,32 @@ basis_recipes = {
         Ingredient("bloem", Amount(50, "gram")),
         Ingredient("bakboter", Amount(1, "beetje")),
         Ingredient("melk", Amount(.8, "liter")),        
+    ],
+    "puree": [
+        Ingredient("patat", Amount(5*3, "stuks")),
+        Ingredient("bakboter", Amount(1, "beetje")),
+        Ingredient("nootmuskaat", Amount(1, "beetje")),
+        Ingredient("ei", Amount(1, "stuks")),
     ]
 }
 
 Recipe = namedtuple("Recipe", ["for_people", "ingredients"])
 
 recipes = {
+    "groentensoep":
+        Recipe(for_people=2, ingredients=[
+            Ingredient("selder", Amount(.5, "stuk")),
+            Ingredient("wortel", Amount(4, "stuks")),
+            Ingredient("prei", Amount(2, "stelen")),
+            Ingredient("ui", Amount(1, "stuk")),
+            Ingredient("bouillon", Amount(1, "blokje"))
+        ]),
     "papaschotel":
         Recipe(for_people=5, ingredients=[
             Ingredient("witte kool", Amount(.5, "stuks")),
-            Ingredient("gehakt", Amount(500, "gram"))]),
+            Ingredient("gehakt", Amount(500, "gram")),
+            Ingredient("geraspte kaas", Amount(500, "gram")),
+            ] + basis_recipes["puree"]),
     "salade met eitjes en ovenschotel met pasta en tomatensaus":
         Recipe(for_people=5, ingredients=[
             Ingredient("ijsbergsla", Amount(0.3, "krop")),
@@ -28,6 +44,7 @@ recipes = {
         ] + basis_recipes["witte saus"]),
     "balletjes tomatensaus met boontjes":
         Recipe(for_people=5, ingredients=[
+            Ingredient("patatten", Amount(5*3, "stuks")),
             Ingredient("gehakt", Amount(500, "gram")),
             Ingredient("boontjes", Amount(2, "pakjes")),
             ] + basis_recipes["witte saus"] + [
@@ -35,9 +52,11 @@ recipes = {
         ]),
     "pasta bolognese": Recipe(for_people=5, ingredients=[
         Ingredient("pasta", Amount(1.5, "pak")),
+        Ingredient("wortel", Amount(4, "stuks")),
         Ingredient("gehakt", Amount(500, "gram")),
         Ingredient("paprika", Amount(2, "stuks")),
         Ingredient("tomatenconcentraat", Amount(2, "blikjes")),
+        Ingredient("emmental", Amount(300, "gram")),
         Ingredient("ui", Amount(1, "stuk")),
         Ingredient("look", Amount(1, "teentje"))
     ] + basis_recipes["witte saus"]),
@@ -52,17 +71,32 @@ recipes = {
 
 Serving = namedtuple("Serving", ["recipe_name", "for_people"])
 
-menu = {
-    "zaterdag": Serving(recipe_name="papaschotel", for_people=5),
-    "zondag": Serving(recipe_name="salade met eitjes en ovenschotel met pasta en tomatensaus", for_people=7),
-    "maandag": Serving(recipe_name="balletjes tomatensaus met boontjes", for_people=7),
-    "dinsdag": Serving(recipe_name="pasta bolognese", for_people=5),
-    "woensdag": Serving(recipe_name="kip met currysaus, perziken en patatten", for_people=5)
-}
+menu = [
+    Serving(recipe_name="groentensoep", for_people=5),
+    Serving(recipe_name="papaschotel", for_people=5),
+    
+    Serving(
+        for_people=7,
+        recipe_name="salade met eitjes en ovenschotel met pasta en tomatensaus",
+        ),
+    
+    Serving(recipe_name="balletjes tomatensaus met boontjes", for_people=7),
+    
+    Serving(recipe_name="pasta bolognese", for_people=5),
+    
+    Serving(recipe_name="kip met currysaus, perziken en patatten", for_people=5)
+]
 
 pantry = [
+    Ingredient("witte kool", Amount(1, "stuks")),
+    Ingredient("bakboter", Amount(2, "fles")),
     Ingredient("pasta", Amount(1, "pak")),
+    Ingredient("krulletjes", Amount(500, "gram")),
+    Ingredient("nootmuskaat", Amount(100, "beetje")),
     Ingredient("gehakt", Amount(500, "gram")),
+    Ingredient("ei", Amount(8, "stuks")),
+    Ingredient("bouillon", Amount(8, "blojke")),
+    Ingredient("patat", Amount(20, "stuks"))
 ]
 
 def subtract_amount(lhs, rhs):
@@ -101,15 +135,13 @@ def needed_ingredients(servings, recipes):
     return d.values()
 
 
-
-
 def resulting_list(menu, recipes, pantry):
-    dishes = menu.values()
-    ingredients_needed = needed_ingredients(menu.values(), recipes)
+    dishes = menu
+    ingredients_needed = needed_ingredients(menu, recipes)
     results = [\
         subtract_pantry(i, pantry)\
         for i in ingredients_needed]
-    return results
+    return filter(lambda r: r.amount.number > 0, results)
 
 def serve_for(for_people, recipe):
     scale = for_people / float(recipe.for_people)
@@ -125,7 +157,7 @@ def test_amount_is_scaled():
     assert scaled.ingredients[0].amount.number == 2
 
 def print_ingredients(ingredients):
-    for ingredient in ingredients:
+    for ingredient in sorted(ingredients, lambda i, j: i.name < j.name):
         print("{0:<20}: {1:>6} {2}".format(
             ingredient.name,
             ingredient.amount.number,
@@ -133,7 +165,7 @@ def print_ingredients(ingredients):
 
 def main():
     print("needed ingredients")
-    print_ingredients(needed_ingredients(menu.values(), recipes))
+    print_ingredients(needed_ingredients(menu, recipes))
     shopping_list = resulting_list(menu, recipes, pantry)
     print("\nshopping list")
     print_ingredients(shopping_list)
