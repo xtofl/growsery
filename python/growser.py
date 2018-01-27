@@ -22,6 +22,10 @@ basis_recipes = {
 Recipe = namedtuple("Recipe", ["for_people", "ingredients"])
 
 recipes = {
+    "koekjes": Recipe(for_people=5, ingredients=[Ingredient("koekjes", Amount(10, "stuks"))]),
+
+    "fruit": Recipe(for_people=5, ingredients=[Ingredient("fruit", Amount(10, "stuks"))]),
+
     "groentensoep":
         Recipe(for_people=2, ingredients=[
             Ingredient("selder", Amount(.5, "stuk")),
@@ -85,8 +89,12 @@ menu = [
     
     Serving(recipe_name="pasta bolognese", for_people=5),
     
-    Serving(recipe_name="kip met currysaus, perziken en patatten", for_people=5)
-]
+    Serving(recipe_name="kip met currysaus, perziken en patatten", for_people=5),
+
+] + [
+    Serving(recipe_name="koekjes", for_people=5),
+    Serving(recipe_name="fruit", for_people=5)]
+
 
 pantry = [
     Ingredient("bouillon", Amount(8, "blokje")),
@@ -99,7 +107,7 @@ pantry = [
     Ingredient("gehakt", Amount(500, "gram")),
     Ingredient("ei", Amount(11, "stuk")),
     Ingredient("bouillon", Amount(8, "blojke")),
-    Ingredient("patat", Amount(20, "stuk")),
+    Ingredient("patat", Amount(20+30, "stuk")),
     Ingredient("perziken in blik", Amount(3, "blikje")),
     Ingredient("tomatenconcentraat", Amount(2, "blikje")),
 
