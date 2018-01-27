@@ -22,9 +22,9 @@ basis_recipes = {
 Recipe = namedtuple("Recipe", ["for_people", "ingredients"])
 
 recipes = {
-    "koekjes": Recipe(for_people=5, ingredients=[Ingredient("koekjes", Amount(10, "stuks"))]),
+    "koekjes": Recipe(for_people=5, ingredients=[Ingredient("koekjes", Amount(10, "stuk"))]),
 
-    "fruit": Recipe(for_people=5, ingredients=[Ingredient("fruit", Amount(10, "stuks"))]),
+    "fruit": Recipe(for_people=5, ingredients=[Ingredient("fruit", Amount(10, "stuk"))]),
 
     "groentensoep":
         Recipe(for_people=2, ingredients=[
@@ -93,7 +93,7 @@ menu = [
 
 ] + [
     Serving(recipe_name="koekjes", for_people=5),
-    Serving(recipe_name="fruit", for_people=5)]
+    Serving(recipe_name="fruit", for_people=5)] * 5
 
 
 pantry = [
@@ -122,6 +122,9 @@ pantry = [
     Ingredient("chipolata", Amount(10, "stuk")),
 
     Ingredient("kroketten", Amount(1, "zak")),
+
+    Ingredient("fruit", Amount(10, "stuk")),
+    Ingredient("koekjes", Amount(20, "stuk")),
 ]
 
 def subtract_amount(lhs, rhs):
