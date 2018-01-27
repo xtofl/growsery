@@ -37,13 +37,14 @@ recipes = {
     "kip met currysaus, perziken en patatten": Recipe(for_people=5, ingredients=[]),
 }
 
+Serving = namedtuple("Serving", ["recipe_name", "for_people"])
 
 menu = {
-    "zaterdag": "papaschotel",
-    "zondag": "salade met eitjes en ovenschotel met pasta en tomatensaus",
-    "maandag": "balletjes tomatensaus met boontjes",
-    "dinsdag": "pasta bolognese",
-    "woensdag": "kip met currysaus, perziken en patatten"
+    "zaterdag": Serving(recipe_name="papaschotel", for_people=5),
+    "zondag": Serving(recipe_name="salade met eitjes en ovenschotel met pasta en tomatensaus", for_people=7),
+    "maandag": Serving(recipe_name="balletjes tomatensaus met boontjes", for_people=7),
+    "dinsdag": Serving(recipe_name="pasta bolognese", for_people=7),
+    "woensdag": Serving(recipe_name="kip met currysaus, perziken en patatten", for_people=7)
 }
 
 pantry = [
@@ -66,10 +67,13 @@ def subtract_pantry(ingredient, pantry):
         return Ingredient(ingredient.name + "?", ingredient.amount)
 
 
-def needed_ingredients(dishes, recipes):
+def needed_ingredients(servings, recipes):
+    def serve(s):
+        return serve_for(s.for_people, recipes[s.recipe_name])
+    dishes = [serve(s) for s in servings]
     return [ingredient
         for dish in dishes
-        for ingredient in recipes[dish].ingredients]
+        for ingredient in dish.ingredients]
 
 
 def resulting_list(menu, recipes, pantry):
@@ -80,6 +84,19 @@ def resulting_list(menu, recipes, pantry):
         for i in ingredients_needed]
     return results
 
+def serve_for(for_people, recipe):
+    scale = for_people / float(recipe.for_people)
+    def scale_ingredient(i):
+        return Ingredient(i.name, Amount(i.amount.number * scale, i.amount.unit))
+    return Recipe(for_people=for_people,
+        ingredients=map(scale_ingredient, recipe.ingredients)
+    )
+
+def test_amount_is_scaled():
+    recipe = Recipe(for_people=1, ingredients=[Ingredient("x", Amount(1, "."))])
+    scaled = serve_for(2, recipe)
+    assert scaled.ingredients[0].amount.number == 2
+
 def print_ingredients(ingredients):
     for ingredient in ingredients:
         print("{0:<20}: {1:<4} {2}".format(
@@ -88,6 +105,8 @@ def print_ingredients(ingredients):
             ingredient.amount.unit))
 
 def main():
+    print("needed ingredients")
+    print_ingredients(needed_ingredients(menu.values(), recipes))
     shopping_list = resulting_list(menu, recipes, pantry)
     print("shopping list")
     print_ingredients(shopping_list)
