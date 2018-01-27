@@ -64,11 +64,6 @@ def serve_for(for_people, recipe):
         ingredients=map(scale_ingredient, recipe.ingredients)
     )
 
-def test_amount_is_scaled():
-    recipe = Recipe(for_people=1, ingredients=[Ingredient("x", Amount(1, "."))])
-    scaled = serve_for(2, recipe)
-    assert scaled.ingredients[0].amount.number == 2
-
 def print_ingredients(ingredients):
     for ingredient in sorted(ingredients, lambda i, j: i.name < j.name):
         print("{0:<20}: {1:>6} {2}".format(
