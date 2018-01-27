@@ -1,5 +1,6 @@
 #!/usr/bin/python
 from collections import namedtuple
+import sys
 
 Amount = namedtuple("Amount", ["number", "unit"])
 Ingredient = namedtuple("Ingredient", ["name", "amount"])
@@ -40,7 +41,7 @@ recipes = {
             Ingredient("ijsbergsla", Amount(0.3, "krop")),
             Ingredient("ei", Amount(6, "stuks")),
             Ingredient("krulletjes", Amount(500, "gram")),
-            Ingredient("tomatenconcentraat", Amount(2, "blikjes")),
+            Ingredient("tomatenconcentraat", Amount(2, "blikje")),
         ] + basis_recipes["witte saus"]),
     "balletjes tomatensaus met boontjes":
         Recipe(for_people=5, ingredients=[
@@ -48,14 +49,14 @@ recipes = {
             Ingredient("gehakt", Amount(500, "gram")),
             Ingredient("boontjes", Amount(2, "pakjes")),
             ] + basis_recipes["witte saus"] + [
-            Ingredient("tomatenconcentraat", Amount(2, "blikjes")),
+            Ingredient("tomatenconcentraat", Amount(2, "blikje")),
         ]),
     "pasta bolognese": Recipe(for_people=5, ingredients=[
         Ingredient("pasta", Amount(1.5, "pak")),
         Ingredient("wortel", Amount(4, "stuks")),
         Ingredient("gehakt", Amount(500, "gram")),
         Ingredient("paprika", Amount(2, "stuks")),
-        Ingredient("tomatenconcentraat", Amount(2, "blikjes")),
+        Ingredient("tomatenconcentraat", Amount(2, "blikje")),
         Ingredient("emmental", Amount(300, "gram")),
         Ingredient("ui", Amount(1, "stuk")),
         Ingredient("look", Amount(1, "teentje"))
@@ -88,17 +89,29 @@ menu = [
 ]
 
 pantry = [
+    Ingredient("bouillon", Amount(8, "blokje")),
+
     Ingredient("witte kool", Amount(1, "stuks")),
     Ingredient("bakboter", Amount(2, "fles")),
     Ingredient("pasta", Amount(1, "pak")),
     Ingredient("krulletjes", Amount(500, "gram")),
     Ingredient("nootmuskaat", Amount(100, "beetje")),
     Ingredient("gehakt", Amount(500, "gram")),
-    Ingredient("ei", Amount(8, "stuks")),
+    Ingredient("ei", Amount(11, "stuks")),
     Ingredient("bouillon", Amount(8, "blojke")),
     Ingredient("patat", Amount(20, "stuks")),
+    Ingredient("perziken in blik", Amount(3, "blikje")),
+    Ingredient("tomatenconcentraat", Amount(2, "blikje")),
 
-    Ingredient("gehakt", Amount(500, "gram")),
+    Ingredient("currysaus", Amount(3, "zakjes")),
+
+    Ingredient("ijsbergsla", Amount(1, "krop")),
+
+    Ingredient("gehakt", Amount(300, "gram")),
+    Ingredient("kipfilet", Amount(400, "gram")),
+    Ingredient("chipolata", Amount(10, "stuks")),
+
+    Ingredient("kroketten", Amount(1, "zak")),
 ]
 
 def subtract_amount(lhs, rhs):
@@ -166,8 +179,9 @@ def print_ingredients(ingredients):
             ingredient.amount.unit))
 
 def main():
-    print("needed ingredients")
-    print_ingredients(needed_ingredients(menu, recipes))
+    if "-v" in sys.argv:
+        print("needed ingredients")
+        print_ingredients(needed_ingredients(menu, recipes))
     shopping_list = resulting_list(menu, recipes, pantry)
     print("\nshopping list")
     print_ingredients(shopping_list)
