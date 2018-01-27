@@ -27,6 +27,20 @@ def subtract_pantry(ingredient, pantry):
         return Ingredient(ingredient.name + "?", ingredient.amount)
 
 
+def subtract_ingredients(list1, list2):
+    def subtract_amount_in_list2(amount, name):
+        try:
+            amount2 = next(i for i in list2 if i.name == name).amount
+            return subtract_amount(amount, amount2)
+        except StopIteration:
+            return amount
+    return list(i for i in
+            (Ingredient(
+                ingredient.name,
+                subtract_amount_in_list2(ingredient.amount, ingredient.name))
+            for ingredient in list1) if i.amount.number > 0)
+
+
 def needed_ingredients(servings, recipes):
     def serve(s):
         return serve_for(s.for_people, recipes[s.recipe_name])
