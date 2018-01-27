@@ -1,6 +1,4 @@
 #!/usr/bin/python
-
-from flask import Flask
 from collections import namedtuple
 
 Amount = namedtuple("Amount", ["number", "unit"])
