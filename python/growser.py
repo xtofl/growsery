@@ -107,6 +107,8 @@ pantry = [
 
     Ingredient("ijsbergsla", Amount(1, "krop")),
 
+    Ingredient("ui", Amount(1, "stuk")),
+
     Ingredient("gehakt", Amount(300, "gram")),
     Ingredient("kipfilet", Amount(400, "gram")),
     Ingredient("chipolata", Amount(10, "stuk")),
