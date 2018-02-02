@@ -70,8 +70,9 @@ def serve_for(for_people, recipe):
     scale = for_people / float(recipe.for_people)
     def scale_ingredient(i):
         return Ingredient(i.name, Amount(i.amount.number * scale, i.amount.unit))
-    return Recipe(for_people=for_people,
-        ingredients=map(scale_ingredient, recipe.ingredients)
+    return Recipe(
+        for_people=for_people,
+        ingredients=list(map(scale_ingredient, recipe.ingredients))
     )
 
 def print_ingredients(ingredients):
