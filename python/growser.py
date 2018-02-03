@@ -31,7 +31,7 @@ def subtract_amount(lhs, rhs, conversions):
     rhs = tryconvert(rhs, lhs) or rhs
     lhs = tryconvert(lhs, rhs) or lhs
     assert lhs.unit == rhs.unit, "{} != {}".format(lhs.unit, rhs.unit)
-    return Amount(lhs.number - rhs.number, lhs.unit)
+    return lhs + (-1 * rhs)
 
 
 def add_amount(lhs, rhs, conversions):
@@ -39,12 +39,11 @@ def add_amount(lhs, rhs, conversions):
     rhs = tryconvert(rhs, lhs) or rhs
     lhs = tryconvert(lhs, rhs) or lhs
     assert lhs.unit == rhs.unit, "{} != {}".format(lhs.unit, rhs.unit)
-    return Amount(lhs.number + rhs.number, lhs.unit)
+    return lhs + rhs
 
 
 def sum_amounts(conversions, amounts):
-    zero = Amount(0, next(iter(amounts)).unit)
-    return reduce(lambda r, amount: add_amount(r, amount, conversions), amounts, zero)
+    return sum(amounts, Amount.zero)
 
 
 def join_ingredients(list1, list2, conversions):
@@ -86,10 +85,7 @@ def needed_ingredients(servings, recipes):
     d = {}
     for i in all:
         if i.name in d:
-            d[i.name] = Ingredient(i.name, Amount(
-                d[i.name].amount.number + i.amount.number,
-                d[i.name].amount.unit
-            ))
+            d[i.name] = Ingredient(i.name, d[i.name].amount + i.amount)
         else:
             d[i.name] = i
     return d.values()
@@ -101,10 +97,11 @@ def resulting_list(menu, recipes, pantry, conversions):
     results = subtract_ingredients(ingredients_needed, pantry, conversions)
     return filter(lambda r: r.amount.number > 0, results)
 
+
 def serve_for(for_people, recipe):
     scale = for_people / float(recipe.for_people)
     def scale_ingredient(i):
-        return Ingredient(i.name, Amount(i.amount.number * scale, i.amount.unit))
+        return Ingredient(i.name, scale * i.amount)
     return Recipe(
         for_people=for_people,
         ingredients=list(map(scale_ingredient, recipe.ingredients))

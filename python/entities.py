@@ -23,6 +23,11 @@ class Amount:
         else:
             raise ArithmeticError("unit can't be added ({} + {})".format(self.unit, other.unit))
 
+    def __rmul__(self, other):
+        '''scalar multiplication'''
+        assert isinstance(other, int) or isinstance(other, float)
+        return Amount(self.number*other, self.unit)
+
 Amount.zero = Amount(0, '')
 
 Ingredient = namedtuple("Ingredient", ["name", "amount"])
