@@ -46,17 +46,8 @@ def sum_amounts(conversions, amounts):
     return sum(amounts, Amount.zero)
 
 
-def join_ingredients(list1, list2, conversions):
-    set1 = dict((i.name, i) for i in list1)
-    set2 = dict((i.name, i) for i in list2)
-    all_dicts = [set1, set2]
-    all_keys = tuple(reduce(lambda r, x: r.union(set(x)), map(dict.keys, all_dicts), set()))
-
-    def summed(key):
-        ingredients = filter(lambda x: x, (d.get(key, None) for d in all_dicts))
-        amounts = list(i.amount for i in ingredients)
-        return Ingredient(name=key, amount=sum_amounts(conversions, amounts))
-    return [summed(key) for key in all_keys]
+def join_ingredients(list1, list2):
+    return IngredientList(list1) + IngredientList(list2)
 
 
 def subtract_ingredients(list1, list2, conversions):
@@ -120,7 +111,7 @@ def main():
         print("needed ingredients")
         print_ingredients(needed_ingredients(menu, recipes))
     shopping_list_menu = resulting_list(menu, recipes, pantry, conversions)
-    shopping_list = join_ingredients(shopping_list_menu, extras, conversions)
+    shopping_list = join_ingredients(shopping_list_menu, extras)
     print("\nshopping list")
     print_ingredients(shopping_list)
 

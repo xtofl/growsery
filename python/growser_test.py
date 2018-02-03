@@ -77,10 +77,22 @@ def test_amounts_behave_as_monoid():
     assert reduce(add, (a, b, a, b), Amount.zero) == Amount(30, '=')
 
 
-
-
-def test_ingredient_lists_can_be_added():
+def test_ingredient_lists_behaves_as_a_monoid():
     x = growser.ingredient("x", 1, ".")
     y = growser.ingredient("y", 1, "-")
-    assert x in growser.join_ingredients([x], [y], [])
-    assert y in growser.join_ingredients([x], [y], [])
+    z = growser.ingredient("z", 1, "*")
+
+    a = growser.IngredientList([x, y])
+    b = growser.IngredientList([x, z])
+    c = growser.IngredientList([y, z, Ingredient("q", Amount(1, "#"))])
+
+    assert a == a
+    assert a + a.zero == a
+    assert a.zero + a == a
+    assert (a + b) + c == a + (b + c)
+
+    assert a + b == growser.IngredientList([
+        Ingredient("x", Amount(2, ".")),
+        y, z
+    ])
+
