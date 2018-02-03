@@ -131,6 +131,10 @@ pantry = [
     Ingredient("koekjes", Amount(20, "stuk")),
 ]
 
+extras = [
+    Ingredient("afwasblokjes", Amount(1, "doos"))
+]
+
 conversions = {
     ("beetje", "fles"): lambda x: Amount(x.number / 100., "fles")
 }

@@ -54,3 +54,15 @@ def test_unit_conversion():
         return growser.subtract_amount(Amount(a1, u1), Amount(a2, u2), conversions)
     assert test(1, "kg", 1, "g") == Amount(999, "g")
     assert test(1001, "g", 1, "kg") == Amount(1, "g")
+
+
+def test_amounts_can_be_added():
+    assert growser.add_amount(Amount(5, '='), Amount(10, '='), []) == Amount(15, '=')
+    assert growser.sum_amounts([], [Amount(5, '='), Amount(10, '=')]) == Amount(15, '=')
+
+
+def test_ingredient_lists_can_be_added():
+    x = growser.ingredient("x", 1, ".")
+    y = growser.ingredient("y", 1, "-")
+    assert x in growser.join_ingredients([x], [y], [])
+    assert y in growser.join_ingredients([x], [y], [])

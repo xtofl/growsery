@@ -4,25 +4,60 @@ a system to extract a shopping list from a week menu
 """
 
 import sys
+from collections import Counter
+from functools import reduce
+
 from entities import *
-from data import recipes, menu, pantry, conversions
+from data import recipes, menu, pantry, conversions, extras
 
 
 def ingredient(name, amount, unit="stuk"):
     return Ingredient(name, Amount(amount, unit))
 
 
-def subtract_amount(lhs, rhs, conversions):
+def make_convertor(conversions):
     def tryconvert(a, b):
         c = (a.unit, b.unit)
         if c in conversions:
             return conversions[c](a)
         else:
             return None
+
+    return tryconvert
+
+
+def subtract_amount(lhs, rhs, conversions):
+    tryconvert = make_convertor(conversions)
     rhs = tryconvert(rhs, lhs) or rhs
     lhs = tryconvert(lhs, rhs) or lhs
     assert lhs.unit == rhs.unit, "{} != {}".format(lhs.unit, rhs.unit)
     return Amount(lhs.number - rhs.number, lhs.unit)
+
+
+def add_amount(lhs, rhs, conversions):
+    tryconvert = make_convertor(conversions)
+    rhs = tryconvert(rhs, lhs) or rhs
+    lhs = tryconvert(lhs, rhs) or lhs
+    assert lhs.unit == rhs.unit, "{} != {}".format(lhs.unit, rhs.unit)
+    return Amount(lhs.number + rhs.number, lhs.unit)
+
+
+def sum_amounts(conversions, amounts):
+    zero = Amount(0, next(iter(amounts)).unit)
+    return reduce(lambda r, amount: add_amount(r, amount, conversions), amounts, zero)
+
+
+def join_ingredients(list1, list2, conversions):
+    set1 = dict((i.name, i) for i in list1)
+    set2 = dict((i.name, i) for i in list2)
+    all_dicts = [set1, set2]
+    all_keys = tuple(reduce(lambda r, x: r.union(set(x)), map(dict.keys, all_dicts), set()))
+
+    def summed(key):
+        ingredients = filter(lambda x: x, (d.get(key, None) for d in all_dicts))
+        amounts = list(i.amount for i in ingredients)
+        return Ingredient(name=key, amount=sum_amounts(conversions, amounts))
+    return [summed(key) for key in all_keys]
 
 
 def subtract_ingredients(list1, list2, conversions):
@@ -60,7 +95,7 @@ def needed_ingredients(servings, recipes):
     return d.values()
 
 
-def resulting_list(menu, recipes, pantry):
+def resulting_list(menu, recipes, pantry, conversions):
     dishes = menu
     ingredients_needed = needed_ingredients(menu, recipes)
     results = subtract_ingredients(ingredients_needed, pantry, conversions)
@@ -87,7 +122,8 @@ def main():
     if "-v" in sys.argv:
         print("needed ingredients")
         print_ingredients(needed_ingredients(menu, recipes))
-    shopping_list = resulting_list(menu, recipes, pantry)
+    shopping_list_menu = resulting_list(menu, recipes, pantry, conversions)
+    shopping_list = join_ingredients(shopping_list_menu, extras, conversions)
     print("\nshopping list")
     print_ingredients(shopping_list)
 
