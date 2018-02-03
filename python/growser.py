@@ -111,7 +111,7 @@ def serve_for(for_people, recipe):
     )
 
 def print_ingredients(ingredients):
-    for ingredient in sorted(ingredients, lambda i, j: i.name < j.name):
+    for ingredient in sorted(ingredients, key=lambda i: i.name):
         print("{0:<20}: {1:>6} {2}".format(
             ingredient.name,
             ingredient.amount.number,
