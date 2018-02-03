@@ -114,6 +114,7 @@ recipes = {
         Ingredient("melk", Amount(.25, "liter")),
         Ingredient("diepvries broccoli", Amount(.5, "zak")),
         Ingredient("geraspte kaas", Amount(1, "zakje")),
+        Ingredient("gerookte zalm", Amount(1, "pak")),
     ]),
     "risotto": Recipe(for_people=5, ingredients=[
         Ingredient("ui", Amount(1, "stuk")),
