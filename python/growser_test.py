@@ -1,13 +1,18 @@
 """tests for the growser script"""
+from functools import reduce
+from operator import add
+
+import pytest
 
 from entities import Recipe, Ingredient, Amount, Serving
 import growser
 
 recipe = Recipe(for_people=1, ingredients=[Ingredient("x", Amount(1, "."))])
 
-def test_amount_is_scaled():
+def test_recipe_amount_for_more_people():
     scaled = growser.serve_for(2, recipe)
     assert scaled.ingredients[0].amount.number == 2
+
 
 
 def test_needed_ingredients_from_menu_are_accumulated():
@@ -56,9 +61,22 @@ def test_unit_conversion():
     assert test(1001, "g", 1, "kg") == Amount(1, "g")
 
 
-def test_amounts_can_be_added():
+def test_amounts_behave_as_monoid():
     assert growser.add_amount(Amount(5, '='), Amount(10, '='), []) == Amount(15, '=')
     assert growser.sum_amounts([], [Amount(5, '='), Amount(10, '=')]) == Amount(15, '=')
+    a = Amount(5, '=')
+    b = Amount(10, '=')
+    c = Amount(3, '=')
+    assert a + b == Amount(15, '=')
+    with(pytest.raises(ArithmeticError)):
+        a + Amount(10, '*')
+    assert a + Amount.zero == a
+    assert Amount.zero + a == a
+    assert (a + b) + c == a + (b + c)
+
+    assert reduce(add, (a, b, a, b), Amount.zero) == Amount(30, '=')
+
+
 
 
 def test_ingredient_lists_can_be_added():
