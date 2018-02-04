@@ -15,10 +15,10 @@ class u:
 
 recipe = Recipe(for_people=1, ingredients=[Ingredient("x", Amount(1, u.r))])
 
+
 def test_recipe_amount_for_more_people():
     scaled = growser.serve_for(2, recipe)
     assert scaled.ingredients[0].amount.number == 2
-
 
 
 def test_needed_ingredients_from_menu_are_accumulated():
@@ -36,11 +36,10 @@ def test_needed_ingredients_from_menu_are_accumulated():
     ]
     ingredients = growser.needed_ingredients(servings, recipes)
     assert len(ingredients) == 3
-    def amount_for(name):
-        return next(i for i in ingredients if i.name == name).amount
-    assert amount_for("x") == Amount(2, u.r)
-    assert amount_for("y") == Amount(5, u.s)
-    assert amount_for("z") == Amount(3, u.t)
+    x, y, z = map(lambda n: next(i for i in ingredients if i.name == n).amount, "xyz")
+    assert x == Amount(2, u.r)
+    assert y == Amount(5, u.s)
+    assert z == Amount(3, u.t)
 
 
 def test_pantry_is_subtracted_from_need():
