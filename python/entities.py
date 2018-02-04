@@ -6,8 +6,22 @@ from collections import namedtuple
 from functools import reduce
 
 
+class Unit:
+    def __init__(self, label, conversions=None):
+        self.label = label
+        self.conversions = dict(conversions) if conversions else {}
+        self.conversions[self] = lambda x: x
+
+    def to(self, other):
+        return self.conversions[other]
+
+    def __repr__(self):
+        return "<{}>".format(self.label)
+
+
 class Amount:
     def __init__(self, number, unit):
+        assert isinstance(unit, Unit), "'{}:{}' is not a Unit".format(unit, unit.__class__)
         self.number = number
         self.unit = unit
 
@@ -15,13 +29,17 @@ class Amount:
         return self.number == other.number and self.unit == other.unit
 
     def __add__(self, other):
+        assert isinstance(other, self.__class__), "adding {} + {}".format(self, other)
         if other.number == 0:
             return self
         if self.number == 0:
             return other
-        if(self.unit == other.unit):
-            return Amount(self.number + other.number, self.unit)
-        else:
+        try:
+            try:
+                return Amount(self.number + other.unit.to(self.unit)(other.number), self.unit)
+            except KeyError:
+                return Amount(self.unit.to(other.unit)(self.number) + other.number, other.unit)
+        except KeyError:
             raise ArithmeticError("unit can't be added ({} + {})".format(self.unit, other.unit))
 
     def __rmul__(self, other):
@@ -32,7 +50,7 @@ class Amount:
     def __hash__(self):
         return hash((self.number, self.unit))
 
-Amount.zero = Amount(0, '')
+Amount.zero = Amount(0, Unit("any"))
 Amount.__repr__ = lambda self: "{} {}".format(self.number, self.unit)
 
 Ingredient = namedtuple("Ingredient", ["name", "amount"])
