@@ -8,12 +8,12 @@ from entities import Recipe, Ingredient, Amount, Serving, Unit
 import growser
 
 
-class u:
+class U:
     r = Unit("r")
     s = Unit("s")
     t = Unit("t")
 
-recipe = Recipe(for_people=1, ingredients=[Ingredient("x", Amount(1, u.r))])
+recipe = Recipe(for_people=1, ingredients=[Ingredient("x", Amount(1, U.r))])
 
 
 def test_recipe_amount_for_more_people():
@@ -24,11 +24,11 @@ def test_recipe_amount_for_more_people():
 def test_needed_ingredients_from_menu_are_accumulated():
     recipes = {
         "dish1": Recipe(1, [
-            Ingredient("x", Amount(1, u.r)),
-            Ingredient("y", Amount(1, u.s))]),
+            Ingredient("x", Amount(1, U.r)),
+            Ingredient("y", Amount(1, U.s))]),
         "dish2": Recipe(1, [
-            Ingredient("y", Amount(1, u.s)),
-            Ingredient("z", Amount(1, u.t))])
+            Ingredient("y", Amount(1, U.s)),
+            Ingredient("z", Amount(1, U.t))])
     }
     servings = [
         Serving("dish1", 2),
@@ -37,53 +37,52 @@ def test_needed_ingredients_from_menu_are_accumulated():
     ingredients = growser.needed_ingredients(servings, recipes)
     assert len(ingredients) == 3
     x, y, z = map(lambda n: next(i for i in ingredients if i.name == n).amount, "xyz")
-    assert x == Amount(2, u.r)
-    assert y == Amount(5, u.s)
-    assert z == Amount(3, u.t)
+    assert x == Amount(2, U.r)
+    assert y == Amount(5, U.s)
+    assert z == Amount(3, U.t)
 
 
 def test_pantry_is_subtracted_from_need():
     need = [
-        Ingredient("x", Amount(10, u.r)),
-        Ingredient("y", Amount(10, u.s))
+        Ingredient("x", Amount(10, U.r)),
+        Ingredient("y", Amount(10, U.s))
     ]
     assert len(growser.subtract_ingredients(need, need)) == 0
     assert growser.subtract_ingredients(need, []) == need
-    result = growser.subtract_ingredients(need, [Ingredient("y", Amount(5, u.s))])
-    def amount_for(name):
-        return next(i for i in result if i.name == name).amount
-    assert amount_for("x") == Amount(10, u.r)
-    assert amount_for("y") == Amount(5, u.s)
+    result = growser.subtract_ingredients(need, [Ingredient("y", Amount(5, U.s))])
+    x, y = map(lambda name: next(i for i in result if i.name == name).amount, "xy")
+    assert x == Amount(10, U.r)
+    assert y == Amount(5, U.s)
 
 
 def test_unit_conversion():
     g = Unit("g")
-    kg = Unit("kg", {g: lambda kg: kg * 1000.})
+    kg = Unit("kg", {g: lambda k: k * 1000.})
     assert g.to(g)(100) == 100
     assert kg.to(g)(1) == 1000
     assert Amount(1, kg) + Amount(1000, g) == Amount(2000, g)
 
 
 def test_amounts_behave_as_monoid():
-    assert growser.add_amount(Amount(5, u.r), Amount(10, u.r)) == Amount(15, u.r)
-    assert growser.sum_amounts([Amount(5, u.r), Amount(10, u.r)]) == Amount(15, u.r)
-    a = Amount(5, u.r)
-    b = Amount(10, u.r)
-    c = Amount(3, u.r)
-    assert a + b == Amount(15, u.r)
+    assert growser.add_amount(Amount(5, U.r), Amount(10, U.r)) == Amount(15, U.r)
+    assert growser.sum_amounts([Amount(5, U.r), Amount(10, U.r)]) == Amount(15, U.r)
+    a = Amount(5, U.r)
+    b = Amount(10, U.r)
+    c = Amount(3, U.r)
+    assert a + b == Amount(15, U.r)
     with(pytest.raises(ArithmeticError)):
-        a + Amount(10, u.t)
+        a + Amount(10, U.t)
     assert a + Amount.zero == a
     assert Amount.zero + a == a
     assert (a + b) + c == a + (b + c)
 
-    assert reduce(add, (a, b, a, b), Amount.zero) == Amount(30, u.r)
+    assert reduce(add, (a, b, a, b), Amount.zero) == Amount(30, U.r)
 
 
 def test_ingredient_lists_behaves_as_a_monoid():
-    x = growser.ingredient("x", 1, u.r)
-    y = growser.ingredient("y", 1, u.s)
-    z = growser.ingredient("z", 1, u.t)
+    x = growser.ingredient("x", 1, U.r)
+    y = growser.ingredient("y", 1, U.s)
+    z = growser.ingredient("z", 1, U.t)
 
     a = growser.IngredientList([x, y])
     b = growser.IngredientList([x, z])
@@ -95,7 +94,7 @@ def test_ingredient_lists_behaves_as_a_monoid():
     assert (a + b) + c == a + (b + c)
 
     assert a + b == growser.IngredientList([
-        Ingredient("x", Amount(2, u.r)),
+        Ingredient("x", Amount(2, U.r)),
         y, z
     ])
 
