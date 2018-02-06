@@ -71,7 +71,7 @@ def test_amounts_behave_as_monoid():
     c = Amount(3, U.r)
     assert a + b == Amount(15, U.r)
     with(pytest.raises(ArithmeticError)):
-        a + Amount(10, U.t)
+        _ = a + Amount(10, U.t)
     assert a + Amount.zero == a
     assert Amount.zero + a == a
     assert (a + b) + c == a + (b + c)
