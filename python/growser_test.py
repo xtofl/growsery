@@ -107,7 +107,8 @@ def test_ingredient_lists_can_be_scaled():
     assert x == Amount(2, U.r)
 
 def test_recipe_can_be_compound():
-    compound = CompoundRecipe([recipe, recipe2])
-    ingredients = compound.ingredients(for_people=4)
+    compound = CompoundRecipe(for_people=4, recipes=[recipe, recipe2])
+    ingredients = compound.ingredients
     x, y = map(lambda name: next(i for i in ingredients if i.name == name).amount, "xy")
-    assert x == Amount(2, U.r)
+    assert x == Amount(8, U.r)
+    assert y == Amount(8, U.s)
