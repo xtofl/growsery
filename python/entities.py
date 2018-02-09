@@ -91,3 +91,11 @@ IngredientList.zero = IngredientList([])
 
 Recipe = namedtuple("Recipe", ["for_people", "ingredients"])
 Serving = namedtuple("Serving", ["recipe_name", "for_people"])
+
+class CompoundRecipe:
+    def __init__(self, recipes):
+        self.recipes = list(recipes)
+
+    def ingredients(self, for_people):
+        lists = (IngredientList(x.ingredients) for x in self.recipes)
+        return sum(lists, IngredientList.zero)

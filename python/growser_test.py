@@ -4,7 +4,7 @@ from operator import add
 
 import pytest
 
-from entities import Recipe, Ingredient, Amount, Serving, Unit
+from entities import Recipe, Ingredient, Amount, Serving, Unit, CompoundRecipe
 import growser
 
 
@@ -14,7 +14,10 @@ class U:
     t = Unit("t")
 
 recipe = Recipe(for_people=1, ingredients=[Ingredient("x", Amount(1, U.r))])
-
+recipe2 = Recipe(for_people=1, ingredients=[
+    Ingredient("x", Amount(1, U.r)),
+    Ingredient("y", Amount(2, U.s))
+    ])
 
 def test_recipe_amount_for_more_people():
     scaled = growser.serve_for(2, recipe)
@@ -98,3 +101,8 @@ def test_ingredient_lists_behaves_as_a_monoid():
         y, z
     ])
 
+def test_recipe_can_be_compound():
+    compound = CompoundRecipe([recipe, recipe2])
+    ingredients = compound.ingredients(for_people=4)
+    x, y = map(lambda name: next(i for i in ingredients if i.name == name).amount, "xy")
+    assert x == Amount(2, U.r)
