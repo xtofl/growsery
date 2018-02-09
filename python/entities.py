@@ -87,6 +87,9 @@ class IngredientList:
     def __iter__(self):
         return iter(self.ingredients)
 
+    def __len__(self):
+        return len(self.ingredients)
+
 IngredientList.zero = IngredientList([])
 
 Recipe = namedtuple("Recipe", ["for_people", "ingredients"])

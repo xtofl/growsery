@@ -59,17 +59,8 @@ def needed_ingredients(servings, recipes):
         return serve_for(s.for_people, recipes[s.recipe_name])
     dishes = [serve(s) for s in servings]
     # todo: noe duplicate ingredients!
-    all = [ingredient
-        for dish in dishes
-        for ingredient in dish.ingredients]
-    names = [i.name for i in all]
-    d = {}
-    for i in all:
-        if i.name in d:
-            d[i.name] = Ingredient(i.name, d[i.name].amount + i.amount)
-        else:
-            d[i.name] = i
-    return d.values()
+    all = [IngredientList(dish.ingredients) for dish in dishes]
+    return sum(all, IngredientList.zero)
 
 
 def resulting_list(menu, recipes, pantry):
