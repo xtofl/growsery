@@ -101,6 +101,11 @@ def test_ingredient_lists_behaves_as_a_monoid():
         y, z
     ])
 
+def test_ingredient_lists_can_be_scaled():
+    s = 2.0 * a
+    x, y = map(lambda name: next(i for i in s.ingredients if i.name == name).amount, "xy")
+    assert x == Amount(2, U.r)
+
 def test_recipe_can_be_compound():
     compound = CompoundRecipe([recipe, recipe2])
     ingredients = compound.ingredients(for_people=4)

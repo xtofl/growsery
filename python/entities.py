@@ -55,6 +55,7 @@ Amount.__repr__ = lambda self: "{} {}".format(self.number, self.unit)
 
 Ingredient = namedtuple("Ingredient", ["name", "amount"])
 Ingredient.__repr__ = lambda self: self.name + ": " + repr(self.amount)
+Ingredient.__rmul__ = lambda self, f: Ingredient(self.name, f * self.amount)
 
 
 class IngredientList:
@@ -79,7 +80,7 @@ class IngredientList:
         return IngredientList(summed(key) for key in all_keys)
 
     def __repr__(self):
-        return "[" + ", ".join(map(repr, self.ingredients)) + "]"
+        return "I[" + ", ".join(map(repr, self.ingredients)) + "]"
 
     def __eq__(self, other):
         return self.ingredients == other.ingredients
@@ -90,15 +91,20 @@ class IngredientList:
     def __len__(self):
         return len(self.ingredients)
 
+    def __rmul__(self, f):
+        return IngredientList(f * i for i in self.ingredients)
+
 IngredientList.zero = IngredientList([])
 
 Recipe = namedtuple("Recipe", ["for_people", "ingredients"])
 Serving = namedtuple("Serving", ["recipe_name", "for_people"])
 
 class CompoundRecipe:
-    def __init__(self, recipes):
+    def __init__(self, for_people, recipes):
+        self.for_people = for_people
         self.recipes = list(recipes)
 
-    def ingredients(self, for_people):
-        lists = (IngredientList(x.ingredients) for x in self.recipes)
+    @property
+    def ingredients(self):
+        lists = (((self.for_people/x.for_people) * IngredientList(x.ingredients)) for x in self.recipes)
         return sum(lists, IngredientList.zero)
