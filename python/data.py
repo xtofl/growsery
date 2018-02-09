@@ -29,19 +29,29 @@ koffie_capsule = Unit("capsule")
 doosje = Unit("doosje")
 doos = Unit("doos")
 
-basis_recipes = {
-    "witte saus": [
-        Ingredient("bloem", Amount(50, gram)),
-        Ingredient("bakboter", Amount(1, beetje)),
-        Ingredient("melk", Amount(.8, liter)),
-    ],
-    "puree": [
+class Recipes:
+    puree = Recipe(for_people=5, ingredients=[
         Ingredient("patat", Amount(5*3, stuk)),
         Ingredient("bakboter", Amount(1, beetje)),
         Ingredient("nootmuskaat", Amount(1, beetje)),
         Ingredient("ei", Amount(1, stuk)),
-    ]
-}
+    ])
+    papakool = Recipe(for_people=5, ingredients=[
+        Ingredient("witte kool", Amount(.5, stuk)),
+        Ingredient("gehakt", Amount(500, gram)),
+        Ingredient("geraspte kaas", Amount(500, gram)),
+    ])
+    witte_saus = Recipe(for_people=5, ingredients=[
+        Ingredient("bloem", Amount(50, gram)),
+        Ingredient("bakboter", Amount(1, beetje)),
+        Ingredient("melk", Amount(.8, liter)),
+    ])
+    tomatensaus = Recipe(for_people=5, ingredients=[
+        Ingredient("bloem", Amount(50, gram)),
+        Ingredient("bakboter", Amount(1, beetje)),
+        Ingredient("melk", Amount(.8, liter)),
+        Ingredient("tomatenconcentraat", Amount(2, blik))
+    ])
 
 recipes = {
     "koekjes": Recipe(for_people=5, ingredients=[
@@ -66,36 +76,31 @@ recipes = {
             Ingredient("bouillon", Amount(1, stuk))
         ]),
     "papaschotel":
-        Recipe(for_people=5, ingredients=[
-            Ingredient("witte kool", Amount(.5, stuk)),
-            Ingredient("gehakt", Amount(500, gram)),
-            Ingredient("geraspte kaas", Amount(500, gram)),
-            ] + basis_recipes["puree"]),
+        CompoundRecipe(for_people=5, recipes=[Recipes.papakool, Recipes.puree]),
     "salade met eitjes en ovenschotel met pasta en tomatensaus":
-        Recipe(for_people=5, ingredients=[
+        CompoundRecipe(for_people=5, recipes=[Recipe(for_people=5, ingredients=[
             Ingredient("ijsbergsla", Amount(0.3, stuk)),
             Ingredient("ei", Amount(6, stuk)),
             Ingredient("krulletjes", Amount(500, gram)),
-            Ingredient("tomatenconcentraat", Amount(2, blik)),
-        ] + basis_recipes["witte saus"]),
+        ]), Recipes.tomatensaus]),
     "balletjes tomatensaus met boontjes":
+        CompoundRecipe(5, [
+            Recipe(for_people=5, ingredients=[
+                Ingredient("patatten", Amount(5*3, stuk)),
+                Ingredient("gehakt", Amount(500, gram)),
+                Ingredient("boontjes", Amount(2, zakje)),
+            ]),
+            Recipes.tomatensaus]),
+    "pasta bolognese": CompoundRecipe(5, [
         Recipe(for_people=5, ingredients=[
-            Ingredient("patatten", Amount(5*3, stuk)),
-            Ingredient("gehakt", Amount(500, gram)),
-            Ingredient("boontjes", Amount(2, zakje)),
-            ] + basis_recipes["witte saus"] + [
-            Ingredient("tomatenconcentraat", Amount(2, blik)),
-        ]),
-    "pasta bolognese": Recipe(for_people=5, ingredients=[
-        Ingredient("pasta", Amount(1.5, pak)),
-        Ingredient("wortel", Amount(4, stuk)),
-        Ingredient("gehakt", Amount(300, gram)),
-        Ingredient("paprika", Amount(2, stuk)),
-        Ingredient("tomatenconcentraat", Amount(2, blik)),
-        Ingredient("emmental", Amount(300, gram)),
-        Ingredient("ui", Amount(1, stuk)),
-        Ingredient("look", Amount(1, teentje))
-    ] + basis_recipes["witte saus"]),
+            Ingredient("pasta", Amount(1.5, pak)),
+            Ingredient("wortel", Amount(4, stuk)),
+            Ingredient("gehakt", Amount(300, gram)),
+            Ingredient("paprika", Amount(2, stuk)),
+            Ingredient("emmental", Amount(300, gram)),
+            Ingredient("ui", Amount(1, stuk)),
+            Ingredient("look", Amount(1, teentje))
+    ]), Recipes.tomatensaus]),
     "kip met currysaus, perziken en patatten": Recipe(for_people=5, ingredients=[
         Ingredient("kipfilet", Amount(500, gram)),
         Ingredient("perziken in blik", Amount(1, blik)),
@@ -167,7 +172,6 @@ recipes = {
     "senseo": Recipe(for_people=2, ingredients=[Ingredient("senseo", Amount(2, senseo_pad))]),
     "nespresso": Recipe(for_people=1, ingredients=[Ingredient("nespresso", Amount(1, koffie_capsule))])
 }
-
 
 menu = [
     Serving(recipe_name="groentensoep", for_people=5),
