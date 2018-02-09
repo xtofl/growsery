@@ -23,6 +23,8 @@ def test_recipe_amount_for_more_people():
     scaled = growser.serve_for(2, recipe)
     assert scaled.ingredients[0].amount.number == 2
 
+def extract_amounts(ingredient_list, ingredient_names):
+    return map(lambda name: next(i for i in ingredient_list if i.name == name).amount, ingredient_names)
 
 def test_needed_ingredients_from_menu_are_accumulated():
     recipes = {
@@ -39,7 +41,7 @@ def test_needed_ingredients_from_menu_are_accumulated():
     ]
     ingredients = growser.needed_ingredients(servings, recipes)
     assert len(ingredients) == 3
-    x, y, z = map(lambda n: next(i for i in ingredients if i.name == n).amount, "xyz")
+    x, y, z = extract_amounts(ingredients, "xyz")
     assert x == Amount(2, U.r)
     assert y == Amount(5, U.s)
     assert z == Amount(3, U.t)
@@ -53,7 +55,7 @@ def test_pantry_is_subtracted_from_need():
     assert len(growser.subtract_ingredients(need, need)) == 0
     assert growser.subtract_ingredients(need, []) == need
     result = growser.subtract_ingredients(need, [Ingredient("y", Amount(5, U.s))])
-    x, y = map(lambda name: next(i for i in result if i.name == name).amount, "xy")
+    x, y = extract_amounts(result, "xy")
     assert x == Amount(10, U.r)
     assert y == Amount(5, U.s)
 
@@ -103,12 +105,12 @@ def test_ingredient_lists_behaves_as_a_monoid():
 
 def test_ingredient_lists_can_be_scaled():
     s = 2.0 * a
-    x, y = map(lambda name: next(i for i in s.ingredients if i.name == name).amount, "xy")
+    x, y = extract_amounts(s, "xy")
     assert x == Amount(2, U.r)
 
 def test_recipe_can_be_compound():
     compound = CompoundRecipe(for_people=4, recipes=[recipe, recipe2])
     ingredients = compound.ingredients
-    x, y = map(lambda name: next(i for i in ingredients if i.name == name).amount, "xy")
+    x, y = extract_amounts(ingredients, "xy")
     assert x == Amount(8, U.r)
     assert y == Amount(8, U.s)
