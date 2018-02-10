@@ -55,6 +55,7 @@ Amount.__repr__ = lambda self: "{} {}".format(self.number, self.unit)
 
 Ingredient = namedtuple("Ingredient", ["name", "amount"])
 Ingredient.__repr__ = lambda self: self.name + ": " + repr(self.amount)
+Ingredient.__rmul__ = lambda self, f: Ingredient(self.name, f * self.amount)
 
 
 class IngredientList:
@@ -74,12 +75,18 @@ class IngredientList:
         def summed(key):
             ingredients = filter(lambda x: x, (d.get(key, None) for d in all_dicts))
             amounts = list(i.amount for i in ingredients)
-            return Ingredient(name=key, amount=sum(amounts, Amount.zero))
+            try:
+                return Ingredient(name=key, amount=sum(amounts, Amount.zero))
+            except ArithmeticError as e:
+                raise ArithmeticError("{}: adding up list [{}]".format(e, ingredients))
 
         return IngredientList(summed(key) for key in all_keys)
 
+    def __sub__(self, other):
+        return self + (-1 * other)
+    
     def __repr__(self):
-        return "[" + ", ".join(map(repr, self.ingredients)) + "]"
+        return "I[" + ", ".join(map(repr, self.ingredients)) + "]"
 
     def __eq__(self, other):
         return self.ingredients == other.ingredients
@@ -87,7 +94,23 @@ class IngredientList:
     def __iter__(self):
         return iter(self.ingredients)
 
+    def __len__(self):
+        return len(self.ingredients)
+
+    def __rmul__(self, f):
+        return IngredientList(f * i for i in self.ingredients)
+
 IngredientList.zero = IngredientList([])
 
 Recipe = namedtuple("Recipe", ["for_people", "ingredients"])
-Serving = namedtuple("Serving", ["recipe_name", "for_people"])
+Serving = namedtuple("Serving", ["recipe", "for_people"])
+
+class CompoundRecipe:
+    def __init__(self, for_people, recipes):
+        self.for_people = for_people
+        self.recipes = list(recipes)
+
+    @property
+    def ingredients(self):
+        lists = (((self.for_people/x.for_people) * IngredientList(x.ingredients)) for x in self.recipes)
+        return sum(lists, IngredientList.zero)

@@ -29,128 +29,133 @@ koffie_capsule = Unit("capsule")
 doosje = Unit("doosje")
 doos = Unit("doos")
 
-basis_recipes = {
-    "witte saus": [
-        Ingredient("bloem", Amount(50, gram)),
-        Ingredient("bakboter", Amount(1, beetje)),
-        Ingredient("melk", Amount(.8, liter)),
-    ],
-    "puree": [
+class BasicRecipes:
+    puree = Recipe(for_people=5, ingredients=[
         Ingredient("patat", Amount(5*3, stuk)),
         Ingredient("bakboter", Amount(1, beetje)),
         Ingredient("nootmuskaat", Amount(1, beetje)),
         Ingredient("ei", Amount(1, stuk)),
-    ]
-}
+    ])
+    papakool = Recipe(for_people=5, ingredients=[
+        Ingredient("witte kool", Amount(.5, stuk)),
+        Ingredient("gehakt", Amount(500, gram)),
+        Ingredient("geraspte kaas", Amount(500, gram)),
+    ])
+    witte_saus = Recipe(for_people=5, ingredients=[
+        Ingredient("bloem", Amount(50, gram)),
+        Ingredient("bakboter", Amount(1, beetje)),
+        Ingredient("melk", Amount(.8, liter)),
+    ])
+    tomatensaus = Recipe(for_people=5, ingredients=[
+        Ingredient("bloem", Amount(50, gram)),
+        Ingredient("bakboter", Amount(1, beetje)),
+        Ingredient("melk", Amount(.8, liter)),
+        Ingredient("tomatenconcentraat", Amount(2, blik))
+    ])
 
-recipes = {
-    "koekjes": Recipe(for_people=5, ingredients=[
+    koekjes = Recipe(for_people=5, ingredients=[
         Ingredient("koekjes", Amount(10, stuk)),
         Ingredient("yoghurtjes", Amount(3, potje))
-        ]),
+        ])
 
-    "fruit": Recipe(for_people=5, ingredients=[Ingredient("fruit", Amount(10, stuk))]),
+    fruit = Recipe(for_people=5, ingredients=[Ingredient("fruit", Amount(10, stuk))])
 
-    "beleg": Recipe(for_people=1, ingredients=[
+    beleg = Recipe(for_people=1, ingredients=[
         Ingredient("kaas", Amount(1, plakje)),
         Ingredient("choco", Amount(0.05, pot)),
         Ingredient("papaboter", Amount(0.02, bakje))
-    ]),
+    ])
 
-    "groentensoep":
-        Recipe(for_people=2, ingredients=[
+    groentensoep = Recipe(for_people=2, ingredients=[
             Ingredient("selder", Amount(.5, stuk)),
             Ingredient("wortel", Amount(4, stuk)),
             Ingredient("prei", Amount(2, stuk)),
             Ingredient("ui", Amount(1, stuk)),
             Ingredient("bouillon", Amount(1, stuk))
-        ]),
-    "papaschotel":
-        Recipe(for_people=5, ingredients=[
-            Ingredient("witte kool", Amount(.5, stuk)),
-            Ingredient("gehakt", Amount(500, gram)),
-            Ingredient("geraspte kaas", Amount(500, gram)),
-            ] + basis_recipes["puree"]),
-    "salade met eitjes en ovenschotel met pasta en tomatensaus":
-        Recipe(for_people=5, ingredients=[
+        ])
+
+class Recipes(BasicRecipes):
+    papaschotel = CompoundRecipe(for_people=5, recipes=[BasicRecipes.papakool, BasicRecipes.puree])
+    salade_met_eitjes_en_ovenschotel_met_pasta_en_tomatensaus =\
+        CompoundRecipe(for_people=5, recipes=[Recipe(for_people=5, ingredients=[
             Ingredient("ijsbergsla", Amount(0.3, stuk)),
             Ingredient("ei", Amount(6, stuk)),
             Ingredient("krulletjes", Amount(500, gram)),
-            Ingredient("tomatenconcentraat", Amount(2, blik)),
-        ] + basis_recipes["witte saus"]),
-    "balletjes tomatensaus met boontjes":
+        ]), BasicRecipes.tomatensaus])
+    balletjes_tomatensaus_met_boontjes =\
+        CompoundRecipe(5, [
+            Recipe(for_people=5, ingredients=[
+                Ingredient("patatten", Amount(5*3, stuk)),
+                Ingredient("gehakt", Amount(500, gram)),
+                Ingredient("boontjes", Amount(2, zakje)),
+            ]),
+            BasicRecipes.tomatensaus])
+    pasta_bolognese = CompoundRecipe(5, [
         Recipe(for_people=5, ingredients=[
-            Ingredient("patatten", Amount(5*3, stuk)),
-            Ingredient("gehakt", Amount(500, gram)),
-            Ingredient("boontjes", Amount(2, zakje)),
-            ] + basis_recipes["witte saus"] + [
-            Ingredient("tomatenconcentraat", Amount(2, blik)),
+            Ingredient("pasta", Amount(1.5, pak)),
+            Ingredient("wortel", Amount(4, stuk)),
+            Ingredient("gehakt", Amount(300, gram)),
+            Ingredient("paprika", Amount(2, stuk)),
+            Ingredient("emmental", Amount(300, gram)),
+            Ingredient("ui", Amount(1, stuk)),
+            Ingredient("look", Amount(1, teentje))
         ]),
-    "pasta bolognese": Recipe(for_people=5, ingredients=[
-        Ingredient("pasta", Amount(1.5, pak)),
-        Ingredient("wortel", Amount(4, stuk)),
-        Ingredient("gehakt", Amount(300, gram)),
-        Ingredient("paprika", Amount(2, stuk)),
-        Ingredient("tomatenconcentraat", Amount(2, blik)),
-        Ingredient("emmental", Amount(300, gram)),
-        Ingredient("ui", Amount(1, stuk)),
-        Ingredient("look", Amount(1, teentje))
-    ] + basis_recipes["witte saus"]),
-    "kip met currysaus, perziken en patatten": Recipe(for_people=5, ingredients=[
+        BasicRecipes.tomatensaus])
+    kip_met_currysaus_perziken_en_patatten = Recipe(for_people=5, ingredients=[
         Ingredient("kipfilet", Amount(500, gram)),
         Ingredient("perziken in blik", Amount(1, blik)),
         Ingredient("currysaus", Amount(2, zakje)),
         Ingredient("patatten", Amount(5*2, stuk)),
         Ingredient("melk", Amount(1, liter))
-    ]),
-    "cordon bleu": Recipe(for_people=5, ingredients=[
+    ])
+    cordon_bleu = Recipe(for_people=5, ingredients=[
         Ingredient("cordon bleu", Amount(5, stuk))
-    ]),
-    "wortelpuree": Recipe(for_people=5, ingredients=[
+    ])
+    wortelpuree = Recipe(for_people=5, ingredients=[
         Ingredient("patatten", Amount(5*3, stuk)),
         Ingredient("wortel", Amount(5*2, stuk)),
         Ingredient("ei", Amount(1, stuk)),
         Ingredient("melk", Amount(0.5, liter)),
         Ingredient("nootmuskaat", Amount(1, beetje))
-    ]),
-    "aardappels in witte saus": Recipe(for_people=5, ingredients=[
+    ])
+    aardappels_in_witte_saus = Recipe(for_people=5, ingredients=[
         Ingredient("patatten", Amount(5*2, stuk)),
         Ingredient("bloem", Amount(100, gram)),
         Ingredient("bakboter", Amount(3, beetje)),
         Ingredient("geraspte kaas", Amount(1, zakje)),
         Ingredient("melk", Amount(1.5, liter))
-    ]),
-    "erwtjes en worteltjes": Recipe(for_people=5, ingredients=[
+    ])
+    erwtjes_en_worteltjes = Recipe(for_people=5, ingredients=[
         Ingredient("diepvrieserwten", Amount(0.5, kg)),
         Ingredient("wortel", Amount(8, stuk))
-    ]),
-    "witte kool": Recipe(for_people=5, ingredients=[
+    ])
+    witte_kool = Recipe(for_people=5, ingredients=[
         Ingredient("witte kool", Amount(0.5, stuk)),
-    ]),
-    "kotelet": Recipe(for_people=5, ingredients=[
+    ])
+    kotelet = Recipe(for_people=5, ingredients=[
         Ingredient("kotelet", Amount(5, stuk)),
         Ingredient("bakboter", Amount(1, beetje))
-    ]),
-    "kaassaus": Recipe(for_people=5, ingredients=[
+    ])
+    kaassaus = Recipe(for_people=5, ingredients=[
         Ingredient("bloem", Amount(100, gram)),
         Ingredient("bakboter", Amount(3, beetje)),
         Ingredient("geraspte kaas", Amount(1, zakje)),
         Ingredient("melk", Amount(1, liter))
-    ]),
-    "quiche met zalm en broccoli": Recipe(for_people=5, ingredients=[
+    ])
+    quiche_met_zalm_en_broccoli = Recipe(for_people=5, ingredients=[
         Ingredient("kruimeldeeg", Amount(1, stuk)),
         Ingredient("ei", Amount(4, stuk)),
         Ingredient("melk", Amount(.25, liter)),
         Ingredient("diepvries broccoli", Amount(.5, zak)),
         Ingredient("geraspte kaas", Amount(1, zakje)),
         Ingredient("gerookte zalm", Amount(1, pak)),
-    ]),
-    "risotto": Recipe(for_people=5, ingredients=[
+    ])
+    risotto = Recipe(for_people=5, ingredients=[
         Ingredient("ui", Amount(1, stuk)),
         Ingredient("bakboter", Amount(1, beetje)),
         Ingredient("risotto", Amount(200, gram))
-    ]),
-    "macaroni met ham, kaas en broccoli": Recipe(for_people=5, ingredients=[
+    ])
+    macaroni_met_ham_kaas_en_broccoli = Recipe(for_people=5, ingredients=[
         Ingredient("krulletjes", Amount(300, gram)),
         Ingredient("hamblokjes", Amount(150*5, gram)),
         #kaassaus
@@ -159,43 +164,43 @@ recipes = {
         Ingredient("geraspte kaas", Amount(1, zakje)),
         Ingredient("melk", Amount(1, liter)),
         Ingredient("ketchup", Amount(0.3, fles)),
-    ]),
-    "biefstuk": Recipe(for_people=5, ingredients=[
+    ])
+    biefstuk = Recipe(for_people=5, ingredients=[
         Ingredient("biefstuk", Amount(4, stuk)),
         Ingredient("bakboter", Amount(1, beetje)),
-    ]),
-    "senseo": Recipe(for_people=2, ingredients=[Ingredient("senseo", Amount(2, senseo_pad))]),
-    "nespresso": Recipe(for_people=1, ingredients=[Ingredient("nespresso", Amount(1, koffie_capsule))])
-}
-
+    ])
+    senseo = Recipe(for_people=2, ingredients=[
+        Ingredient("senseo", Amount(2, senseo_pad))])
+    nespresso = Recipe(for_people=1, ingredients=[
+        Ingredient("nespresso", Amount(1, koffie_capsule))])
 
 menu = [
-    Serving(recipe_name="groentensoep", for_people=5),
+    Serving(Recipes.groentensoep, for_people=5),
 
-    Serving(recipe_name="cordon bleu", for_people=5),
-    Serving(recipe_name="wortelpuree", for_people=5),
+    Serving(Recipes.cordon_bleu, for_people=5),
+    Serving(Recipes.wortelpuree, for_people=5),
 
-    Serving(recipe_name="aardappels in witte saus", for_people=5),
-    Serving(recipe_name="erwtjes en worteltjes", for_people=5),
-    Serving("biefstuk", for_people=5),
+    Serving(Recipes.aardappels_in_witte_saus, for_people=5),
+    Serving(Recipes.erwtjes_en_worteltjes, for_people=5),
+    Serving(Recipes.biefstuk, for_people=5),
 
-    Serving(recipe_name="witte kool", for_people=5),
-    Serving("kaassaus", 5),
-    Serving(recipe_name="kotelet", for_people=5),
+    Serving(Recipes.witte_kool, for_people=5),
+    Serving(Recipes.kaassaus, 5),
+    Serving(Recipes.kotelet, for_people=5),
 
-    Serving(recipe_name="pasta bolognese", for_people=5),
+    Serving(Recipes.pasta_bolognese, for_people=5),
 
-    Serving("quiche met zalm en broccoli", for_people=5),
-    Serving("risotto", for_people=5),
+    Serving(Recipes.quiche_met_zalm_en_broccoli, for_people=5),
+    Serving(Recipes.risotto, for_people=5),
 
-    Serving("macaroni met ham, kaas en broccoli", for_people=5),
+    Serving(Recipes.macaroni_met_ham_kaas_en_broccoli, for_people=5),
 
 ] + [
-    Serving(recipe_name="koekjes", for_people=3),
-    Serving(recipe_name="fruit", for_people=5),
-    Serving(recipe_name="beleg", for_people=5),
-    Serving(recipe_name="senseo", for_people=2),
-    Serving(recipe_name="nespresso", for_people=2)
+    Serving(Recipes.koekjes, for_people=3),
+    Serving(Recipes.fruit, for_people=5),
+    Serving(Recipes.beleg, for_people=5),
+    Serving(Recipes.senseo, for_people=2),
+    Serving(Recipes.nespresso, for_people=2)
     ] * 7
 
 

@@ -4,7 +4,7 @@ from operator import add
 
 import pytest
 
-from entities import Recipe, Ingredient, Amount, Serving, Unit
+from entities import Recipe, Ingredient, Amount, Serving, Unit, CompoundRecipe
 import growser
 
 
@@ -14,29 +14,32 @@ class U:
     t = Unit("t")
 
 recipe = Recipe(for_people=1, ingredients=[Ingredient("x", Amount(1, U.r))])
-
+recipe2 = Recipe(for_people=1, ingredients=[
+    Ingredient("x", Amount(1, U.r)),
+    Ingredient("y", Amount(2, U.s))
+    ])
 
 def test_recipe_amount_for_more_people():
     scaled = growser.serve_for(2, recipe)
     assert scaled.ingredients[0].amount.number == 2
 
+def extract_amounts(ingredient_list, ingredient_names):
+    return map(lambda name: next(i for i in ingredient_list if i.name == name).amount, ingredient_names)
 
 def test_needed_ingredients_from_menu_are_accumulated():
-    recipes = {
-        "dish1": Recipe(1, [
-            Ingredient("x", Amount(1, U.r)),
-            Ingredient("y", Amount(1, U.s))]),
-        "dish2": Recipe(1, [
-            Ingredient("y", Amount(1, U.s)),
-            Ingredient("z", Amount(1, U.t))])
-    }
+    dish1 = Recipe(1, [
+        Ingredient("x", Amount(1, U.r)),
+        Ingredient("y", Amount(1, U.s))])
+    dish2 = Recipe(1, [
+        Ingredient("y", Amount(1, U.s)),
+        Ingredient("z", Amount(1, U.t))])
     servings = [
-        Serving("dish1", 2),
-        Serving("dish2", 3)
+        Serving(dish1, 2),
+        Serving(dish2, 3)
     ]
-    ingredients = growser.needed_ingredients(servings, recipes)
+    ingredients = growser.needed_ingredients(servings)
     assert len(ingredients) == 3
-    x, y, z = map(lambda n: next(i for i in ingredients if i.name == n).amount, "xyz")
+    x, y, z = extract_amounts(ingredients, "xyz")
     assert x == Amount(2, U.r)
     assert y == Amount(5, U.s)
     assert z == Amount(3, U.t)
@@ -50,7 +53,7 @@ def test_pantry_is_subtracted_from_need():
     assert len(growser.subtract_ingredients(need, need)) == 0
     assert growser.subtract_ingredients(need, []) == need
     result = growser.subtract_ingredients(need, [Ingredient("y", Amount(5, U.s))])
-    x, y = map(lambda name: next(i for i in result if i.name == name).amount, "xy")
+    x, y = extract_amounts(result, "xy")
     assert x == Amount(10, U.r)
     assert y == Amount(5, U.s)
 
@@ -78,15 +81,15 @@ def test_amounts_behave_as_monoid():
 
     assert reduce(add, (a, b, a, b), Amount.zero) == Amount(30, U.r)
 
+x = growser.ingredient("x", 1, U.r)
+y = growser.ingredient("y", 1, U.s)
+z = growser.ingredient("z", 1, U.t)
+
+a = growser.IngredientList([x, y])
+b = growser.IngredientList([x, z])
+c = growser.IngredientList([y, z, Ingredient("q", Amount(1, Unit("#")))])
 
 def test_ingredient_lists_behaves_as_a_monoid():
-    x = growser.ingredient("x", 1, U.r)
-    y = growser.ingredient("y", 1, U.s)
-    z = growser.ingredient("z", 1, U.t)
-
-    a = growser.IngredientList([x, y])
-    b = growser.IngredientList([x, z])
-    c = growser.IngredientList([y, z, Ingredient("q", Amount(1, Unit("#")))])
 
     assert a == a
     assert a + a.zero == a
@@ -98,3 +101,14 @@ def test_ingredient_lists_behaves_as_a_monoid():
         y, z
     ])
 
+def test_ingredient_lists_can_be_scaled():
+    s = 2.0 * a
+    x, y = extract_amounts(s, "xy")
+    assert x == Amount(2, U.r)
+
+def test_recipe_can_be_compound():
+    compound = CompoundRecipe(for_people=4, recipes=[recipe, recipe2])
+    ingredients = compound.ingredients
+    x, y = extract_amounts(ingredients, "xy")
+    assert x == Amount(8, U.r)
+    assert y == Amount(8, U.s)
