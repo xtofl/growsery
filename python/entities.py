@@ -97,7 +97,7 @@ class IngredientList:
 IngredientList.zero = IngredientList([])
 
 Recipe = namedtuple("Recipe", ["for_people", "ingredients"])
-Serving = namedtuple("Serving", ["recipe_name", "for_people"])
+Serving = namedtuple("Serving", ["recipe", "for_people"])
 
 class CompoundRecipe:
     def __init__(self, for_people, recipes):

@@ -27,19 +27,17 @@ def extract_amounts(ingredient_list, ingredient_names):
     return map(lambda name: next(i for i in ingredient_list if i.name == name).amount, ingredient_names)
 
 def test_needed_ingredients_from_menu_are_accumulated():
-    recipes = {
-        "dish1": Recipe(1, [
-            Ingredient("x", Amount(1, U.r)),
-            Ingredient("y", Amount(1, U.s))]),
-        "dish2": Recipe(1, [
-            Ingredient("y", Amount(1, U.s)),
-            Ingredient("z", Amount(1, U.t))])
-    }
+    dish1 = Recipe(1, [
+        Ingredient("x", Amount(1, U.r)),
+        Ingredient("y", Amount(1, U.s))])
+    dish2 = Recipe(1, [
+        Ingredient("y", Amount(1, U.s)),
+        Ingredient("z", Amount(1, U.t))])
     servings = [
-        Serving("dish1", 2),
-        Serving("dish2", 3)
+        Serving(dish1, 2),
+        Serving(dish2, 3)
     ]
-    ingredients = growser.needed_ingredients(servings, recipes)
+    ingredients = growser.needed_ingredients(servings)
     assert len(ingredients) == 3
     x, y, z = extract_amounts(ingredients, "xyz")
     assert x == Amount(2, U.r)

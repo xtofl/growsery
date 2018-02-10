@@ -6,7 +6,7 @@ a system to extract a shopping list from a week menu
 import sys
 
 from entities import *
-from data import recipes, menu, pantry, extras
+from data import Recipes, menu, pantry, extras
 
 
 def ingredient(name, amount, unit="stuk"):
@@ -54,26 +54,27 @@ def subtract_ingredients(list1, list2):
             for ingredient in list1) if i.amount.number > 0)
 
 
-def needed_ingredients(servings, recipes):
+def needed_ingredients(servings):
     def serve(s):
-        return serve_for(s.for_people, recipes[s.recipe_name])
+        assert isinstance(s, Serving), s
+        return serve_for(s.for_people, s.recipe)
     dishes = [serve(s) for s in servings]
     # todo: noe duplicate ingredients!
     all = [IngredientList(dish.ingredients) for dish in dishes]
     return sum(all, IngredientList.zero)
 
 
-def resulting_list(menu, recipes, pantry):
-    dishes = menu
-    ingredients_needed = needed_ingredients(menu, recipes)
+def resulting_list(menu, pantry):
+    ingredients_needed = needed_ingredients(menu)
     results = subtract_ingredients(ingredients_needed, pantry)
     return filter(lambda r: r.amount.number > 0, results)
 
 
 def serve_for(for_people, recipe):
+    assert isinstance(recipe, Recipe) or isinstance(recipe, CompoundRecipe), recipe
     scale = for_people / float(recipe.for_people)
     def scale_ingredient(i):
-        return Ingredient(i.name, scale * i.amount)
+        return scale * i
     return Recipe(
         for_people=for_people,
         ingredients=list(map(scale_ingredient, recipe.ingredients))
@@ -90,8 +91,8 @@ def print_ingredients(ingredients):
 def main():
     if "-v" in sys.argv:
         print("needed ingredients")
-        print_ingredients(needed_ingredients(menu, recipes))
-    shopping_list_menu = resulting_list(menu, recipes, pantry)
+        print_ingredients(needed_ingredients(menu))
+    shopping_list_menu = resulting_list(menu, pantry)
     shopping_list = join_ingredients(shopping_list_menu, extras)
     print("\nshopping list")
     print_ingredients(shopping_list)
