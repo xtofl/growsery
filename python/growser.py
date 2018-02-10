@@ -66,7 +66,7 @@ def needed_ingredients(servings):
 
 def resulting_list(menu, pantry):
     ingredients_needed = needed_ingredients(menu)
-    results = subtract_ingredients(ingredients_needed, pantry)
+    results = ingredients_needed - IngredientList(pantry)
     return filter(lambda r: r.amount.number > 0, results)
 
 

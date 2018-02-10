@@ -75,10 +75,16 @@ class IngredientList:
         def summed(key):
             ingredients = filter(lambda x: x, (d.get(key, None) for d in all_dicts))
             amounts = list(i.amount for i in ingredients)
-            return Ingredient(name=key, amount=sum(amounts, Amount.zero))
+            try:
+                return Ingredient(name=key, amount=sum(amounts, Amount.zero))
+            except ArithmeticError as e:
+                raise ArithmeticError("{}: adding up list [{}]".format(e, ingredients))
 
         return IngredientList(summed(key) for key in all_keys)
 
+    def __sub__(self, other):
+        return self + (-1 * other)
+    
     def __repr__(self):
         return "I[" + ", ".join(map(repr, self.ingredients)) + "]"
 
