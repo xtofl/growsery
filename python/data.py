@@ -3,10 +3,9 @@ from entities import *
 
 #units
 gram = Unit("g")
-kg = Unit("kg", {gram: lambda kg: kg/1000.})
+kg = Unit("kg", {gram: lambda kg: kg*1000.})
 
-beetje = Unit("beetje")
-fles = Unit("fles", {beetje: lambda x: x/1000.})
+fles = Unit("fles")
 
 stuk = Unit("stuk")
 
@@ -30,6 +29,15 @@ koffie_capsule = Unit("capsule")
 doos = Unit("doos")
 doosje = doos
 
+
+beetje = Unit("beetje", {
+    liter: lambda x: x/100,
+    fles: lambda x: x/100
+})
+
+def test_units():
+    assert Amount(100, beetje) - Amount(1, fles) == Amount.zero
+
 class BasicRecipes:
     puree = Recipe(for_people=5, ingredients=[
         Ingredient("patat", Amount(5*3, stuk)),
@@ -52,7 +60,7 @@ class BasicRecipes:
     ])
     tomatensaus = Recipe(for_people=5, ingredients=[
         Ingredient("bloem", Amount(50, gram)),
-        Ingredient("bakboter", Amount(1, beetje)),
+        Ingredient("bakboter", Amount(.1, fles)),
         Ingredient("melk", Amount(.8, liter)),
         Ingredient("tomatenconcentraat", Amount(2, blik))
     ])
@@ -74,9 +82,10 @@ class BasicRecipes:
     fruit = Recipe(for_people=5, ingredients=[Ingredient("fruit", Amount(10, stuk))])
 
     beleg = Recipe(for_people=1, ingredients=[
-        Ingredient("kaas", Amount(1, plakje)),
+        Ingredient("leerdammer", Amount(1, plakje)),
         Ingredient("choco", Amount(0.05, pot)),
-        Ingredient("papaboter", Amount(0.02, bakje))
+        Ingredient("papaboter", Amount(0.02, bakje)),
+        Ingredient("confituur", Amount(0.05, pot))
     ])
 
     groentensoep = Recipe(for_people=2, ingredients=[
@@ -91,6 +100,21 @@ class BasicRecipes:
         Ingredient("olijfolie", Amount(.2, liter)),
         Ingredient("ei", Amount(1, stuk)),
     ])
+    pannenkoeken = Recipe(for_people=5, ingredients=[
+        Ingredient("bloem", Amount(0.5, kg)),
+        Ingredient("melk", Amount(1, liter)),
+        Ingredient("ei", Amount(4, stuk)),
+        Ingredient("vannillesuiker", Amount(1, zakje)),
+
+        Ingredient("kinnekessuiker", Amount(20, gram)),
+        Ingredient("leerdammer", Amount(2, plakje)),
+        Ingredient("bloemsuiker", Amount(20, gram)),
+        Ingredient("confituur", Amount(0.1, pot))
+    ])
+    granola = Recipe(for_people=1, ingredients=[
+        Ingredient("granola", Amount(0.1, zak)),
+        Ingredient("melk", Amount(0.3, liter))
+    ])
 
 class Recipes(BasicRecipes):
     papaschotel = CompoundRecipe(for_people=5, recipes=[BasicRecipes.papakool, BasicRecipes.puree])
@@ -103,7 +127,7 @@ class Recipes(BasicRecipes):
     balletjes_tomatensaus_met_boontjes =\
         CompoundRecipe(5, [
             Recipe(for_people=5, ingredients=[
-                Ingredient("patatten", Amount(5*3, stuk)),
+                Ingredient("patat", Amount(5*3, stuk)),
                 Ingredient("gehakt", Amount(500, gram)),
                 Ingredient("boontjes", Amount(2, zakje)),
             ]),
@@ -123,21 +147,21 @@ class Recipes(BasicRecipes):
         Ingredient("kipfilet", Amount(500, gram)),
         Ingredient("perziken in blik", Amount(1, blik)),
         Ingredient("currysaus", Amount(2, zakje)),
-        Ingredient("patatten", Amount(5*2, stuk)),
+        Ingredient("patat", Amount(5*2, stuk)),
         Ingredient("melk", Amount(1, liter))
     ])
     cordon_bleu = Recipe(for_people=5, ingredients=[
         Ingredient("cordon bleu", Amount(5, stuk))
     ])
     wortelpuree = Recipe(for_people=5, ingredients=[
-        Ingredient("patatten", Amount(5*3, stuk)),
+        Ingredient("patat", Amount(5*3, stuk)),
         Ingredient("wortel", Amount(5*2, stuk)),
         Ingredient("ei", Amount(1, stuk)),
         Ingredient("melk", Amount(0.5, liter)),
         Ingredient("nootmuskaat", Amount(1, beetje))
     ])
     aardappels_in_witte_saus = Recipe(for_people=5, ingredients=[
-        Ingredient("patatten", Amount(5*2, stuk)),
+        Ingredient("patat", Amount(5*2, stuk)),
         Ingredient("bloem", Amount(100, gram)),
         Ingredient("bakboter", Amount(3, beetje)),
         Ingredient("geraspte kaas", Amount(1, zakje)),
@@ -189,22 +213,25 @@ class Recipes(BasicRecipes):
     ])
     pizza = CompoundRecipe(for_people=5, recipes=[
         BasicRecipes.pizzadeeg,
-        Recipe(for_people=1, ingredients=[
+        Recipe(for_people=5, ingredients=[
             Ingredient("tomatenconcentraat", Amount(2, blikje)),
             Ingredient("geraspte kaas", Amount(3, zakje)),
             Ingredient("hamblokjes", Amount(1, doosje)),
             Ingredient("olijfolie", Amount(0.25, liter)),
             Ingredient("spaghettikruiden", Amount(1, beetje)),
             Ingredient("paprika", Amount(1, stuk)),
-            Ingredient("olijfjes", Amount(0.5, doosje))
+            Ingredient("olijfjes", Amount(0.5, doosje)),
+            Ingredient("ananas", Amount(1, blikje))
         ])
     ])
     wraps = Recipe(for_people=5, ingredients=[
         Ingredient("wraps", Amount(10, stuk)),
         Ingredient("komkommer", Amount(1, stuk)),
+        Ingredient("look", Amount(1, teentje)),
+        Ingredient("peper", Amount(1, beetje)),
         Ingredient("mais", Amount(1, blik)),
         Ingredient("ui", Amount(1, stuk)),
-        Ingredient("kippenblokjes", Amount(400, gram)),
+        Ingredient("kipfilet", Amount(300, gram)),
         Ingredient("kippenkruiden", Amount(1, beetje)),
         Ingredient("yoghurt", Amount(0.3, pot)),
         Ingredient("wortel", Amount(4, stuk)),
@@ -215,13 +242,69 @@ class Recipes(BasicRecipes):
     nespresso = Recipe(for_people=1, ingredients=[
         Ingredient("nespresso", Amount(1, koffie_capsule))])
 
+pantry = [
+    Ingredient("bouillon", Amount(8, stuk)),
+    Ingredient("citroenthee", Amount(1, doosje)),
+    Ingredient("senseo", Amount(30, senseo_pad)),
+    Ingredient("nespresso", Amount(0, koffie_capsule)),
+
+    Ingredient("patat", Amount(20, stuk)),
+
+    Ingredient("currysaus", Amount(1, zakje)),
+
+    Ingredient("nootmuskaat", Amount(50, beetje)),
+
+    #frigo
+    Ingredient("witte kool", Amount(0, stuk)),
+    Ingredient("bakboter", Amount(1, fles)),
+    Ingredient("ei", Amount(9, stuk)),
+    Ingredient("ketchup", Amount(1, fles)),
+
+    Ingredient("risotto", Amount(1.5, kg)),
+    Ingredient("basmati", Amount(1.2, kg)),
+
+    Ingredient("bloem", Amount(3, kg)),
+    Ingredient("pasta", Amount(0, pak)),
+    Ingredient("krulletjes", Amount(1000, gram)),
+
+    Ingredient("perziken in blik", Amount(1, blik)),
+    Ingredient("tomatenconcentraat", Amount(0, blik)),
+    Ingredient("yoghurtjes", Amount(0, potje)),
+
+    Ingredient("choco", Amount(.5, pot)),
+
+    Ingredient("ijsbergsla", Amount(0, stuk)),
+
+    Ingredient("ui", Amount(20, stuk)),
+
+    Ingredient("gehakt", Amount(0, gram)),
+    Ingredient("kipfilet", Amount(0, gram)),
+    Ingredient("chipolata", Amount(0, stuk)),
+    Ingredient("kippenbout", Amount(3, stuk)),
+    Ingredient("kalkoenschnitzel", Amount(4, stuk)),
+    Ingredient("kotelet", Amount(4, stuk)),
+
+    Ingredient("kroketten", Amount(0, zak)),
+
+    Ingredient("diepvries broccoli", Amount(0, zak)),
+    Ingredient("diepvrieserwten", Amount(0, kg)),
+
+    Ingredient("fruit", Amount(2, stuk)),
+    Ingredient("koekjes", Amount(12, stuk)),
+    Ingredient("granola", Amount(0.1, zak)),
+
+    Ingredient("melk", Amount(1, liter))
+]
+
+
+
 menu = [
     Serving(Recipes.groentensoep, for_people=5),
 
     Serving(Recipes.pizza, for_people=5),
     Serving(Recipes.kip_met_currysaus_perziken_en_patatten, for_people=5),
     Serving(CompoundRecipe(5,
-        [Recipes.biefstuk, Recipes.patatten, Recipes.erwtjes_en_worteltjes]),
+        [Recipes.kotelet, Recipes.patatten, Recipes.erwtjes_en_worteltjes]),
         for_people=5),
     Serving(Recipes.pasta_bolognese, for_people=5),
     Serving(CompoundRecipe(5, [
@@ -231,8 +314,9 @@ menu = [
         Recipes.appelmoes
     ]), for_people=5),
     Serving(Recipes.wraps, for_people=5),
-
+    Serving(Recipes.pannenkoeken, for_people=5), #reserve
 ] + [
+    Serving(Recipes.granola, for_people=1),
     Serving(Recipes.koekjes, for_people=3),
     Serving(Recipes.fruit, for_people=5),
     Serving(Recipes.beleg, for_people=5),
@@ -241,56 +325,6 @@ menu = [
     ] * 7
 
 
-pantry = [
-    Ingredient("bouillon", Amount(8, stuk)),
-    Ingredient("citroenthee", Amount(0, doosje)),
-    Ingredient("senseo", Amount(10, senseo_pad)),
-    Ingredient("nespresso", Amount(40, koffie_capsule)),
-
-    Ingredient("patat", Amount(20, stuk)),
-
-    Ingredient("currysaus", Amount(1, zakje)),
-
-    Ingredient("nootmuskaat", Amount(100, beetje)),
-
-    #frigo
-    Ingredient("witte kool", Amount(.5, stuk)),
-    Ingredient("bakboter", Amount(.1, fles)),
-    Ingredient("ei", Amount(0, stuk)),
-    Ingredient("ketchup", Amount(0, fles)),
-
-    Ingredient("risotto", Amount(1.5, kg)),
-    Ingredient("basmati", Amount(1.2, kg)),
-
-    Ingredient("bloem", Amount(3, kg)),
-    Ingredient("pasta", Amount(3, pak)),
-    Ingredient("krulletjes", Amount(500, gram)),
-
-    Ingredient("perziken in blik", Amount(1, blik)),
-    Ingredient("tomatenconcentraat", Amount(3, blik)),
-    Ingredient("yoghurtjes", Amount(6, potje)),
-
-    Ingredient("choco", Amount(1, pot)),
-
-    Ingredient("ijsbergsla", Amount(1, stuk)),
-
-    Ingredient("ui", Amount(0, stuk)),
-
-    Ingredient("gehakt", Amount(300, gram)),
-    Ingredient("kipfilet", Amount(0, gram)),
-    Ingredient("chipolata", Amount(0, stuk)),
-    Ingredient("kippenbout", Amount(4, stuk)),
-    Ingredient("kalkoenschnitzel", Amount(4, stuk)),
-
-    Ingredient("kroketten", Amount(1, zak)),
-
-    Ingredient("diepvries broccoli", Amount(1, zak)),
-    Ingredient("diepvrieserwten", Amount(1, kg)),
-
-    Ingredient("fruit", Amount(2, stuk)),
-    Ingredient("koekjes", Amount(20, stuk)),
-]
-
 extras = [
-    Ingredient("afwasblokjes", Amount(1, doos)),
+    Ingredient("sportdrank", Amount(6, fles))
 ]

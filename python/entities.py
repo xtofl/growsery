@@ -42,6 +42,8 @@ class Amount:
         except KeyError:
             raise ArithmeticError("unit can't be added ({} + {})".format(self.unit, other.unit))
 
+    def __sub__(self, other):
+        return self + (-1 * other)
     def __rmul__(self, other):
         '''scalar multiplication'''
         assert isinstance(other, int) or isinstance(other, float)
