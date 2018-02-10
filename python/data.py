@@ -12,22 +12,23 @@ stuk = Unit("stuk")
 
 liter = Unit("liter")
 
-potje = Unit("potje")
 plakje = Unit("plakje")
 pot = Unit("pot")
+potje = pot
 bakje = Unit("bakje")
 blik = Unit("blik")
-blikje = Unit("blikje")
-zakje = Unit("zakje")
+blikje = blik
 teentje = Unit("teentje")
 
 zak = Unit("zak")
+zakje = zak
 pak = Unit("pak")
+pakje = pak
 
 senseo_pad = Unit("pad")
 koffie_capsule = Unit("capsule")
-doosje = Unit("doosje")
 doos = Unit("doos")
+doosje = doos
 
 class BasicRecipes:
     puree = Recipe(for_people=5, ingredients=[
@@ -35,6 +36,9 @@ class BasicRecipes:
         Ingredient("bakboter", Amount(1, beetje)),
         Ingredient("nootmuskaat", Amount(1, beetje)),
         Ingredient("ei", Amount(1, stuk)),
+    ])
+    patatten = Recipe(for_people=5, ingredients=[
+        Ingredient("patat", Amount(5*3, stuk))
     ])
     papakool = Recipe(for_people=5, ingredients=[
         Ingredient("witte kool", Amount(.5, stuk)),
@@ -51,6 +55,15 @@ class BasicRecipes:
         Ingredient("bakboter", Amount(1, beetje)),
         Ingredient("melk", Amount(.8, liter)),
         Ingredient("tomatenconcentraat", Amount(2, blik))
+    ])
+    worst = Recipe(for_people=5, ingredients=[
+        Ingredient("chipolata", Amount(10, stuk))
+    ])
+    rodekool = Recipe(for_people=5, ingredients=[
+        Ingredient("rode kool", Amount(1, pot))
+    ])
+    appelmoes = Recipe(for_people=5, ingredients=[
+        Ingredient("stoofappel", Amount(5, stuk))
     ])
 
     koekjes = Recipe(for_people=5, ingredients=[
@@ -73,6 +86,11 @@ class BasicRecipes:
             Ingredient("ui", Amount(1, stuk)),
             Ingredient("bouillon", Amount(1, stuk))
         ])
+    pizzadeeg = Recipe(for_people=5, ingredients=[
+        Ingredient("bloem", Amount(1, kg)),
+        Ingredient("olijfolie", Amount(.2, liter)),
+        Ingredient("ei", Amount(1, stuk)),
+    ])
 
 class Recipes(BasicRecipes):
     papaschotel = CompoundRecipe(for_people=5, recipes=[BasicRecipes.papakool, BasicRecipes.puree])
@@ -169,6 +187,29 @@ class Recipes(BasicRecipes):
         Ingredient("biefstuk", Amount(4, stuk)),
         Ingredient("bakboter", Amount(1, beetje)),
     ])
+    pizza = CompoundRecipe(for_people=5, recipes=[
+        BasicRecipes.pizzadeeg,
+        Recipe(for_people=1, ingredients=[
+            Ingredient("tomatenconcentraat", Amount(2, blikje)),
+            Ingredient("geraspte kaas", Amount(3, zakje)),
+            Ingredient("hamblokjes", Amount(1, doosje)),
+            Ingredient("olijfolie", Amount(0.25, liter)),
+            Ingredient("spaghettikruiden", Amount(1, beetje)),
+            Ingredient("paprika", Amount(1, stuk)),
+            Ingredient("olijfjes", Amount(0.5, doosje))
+        ])
+    ])
+    wraps = Recipe(for_people=5, ingredients=[
+        Ingredient("wraps", Amount(10, stuk)),
+        Ingredient("komkommer", Amount(1, stuk)),
+        Ingredient("mais", Amount(1, blik)),
+        Ingredient("ui", Amount(1, stuk)),
+        Ingredient("kippenblokjes", Amount(400, gram)),
+        Ingredient("kippenkruiden", Amount(1, beetje)),
+        Ingredient("yoghurt", Amount(0.3, pot)),
+        Ingredient("wortel", Amount(4, stuk)),
+        Ingredient("ijsbergsla", Amount(.5, stuk))
+    ])
     senseo = Recipe(for_people=2, ingredients=[
         Ingredient("senseo", Amount(2, senseo_pad))])
     nespresso = Recipe(for_people=1, ingredients=[
@@ -177,23 +218,19 @@ class Recipes(BasicRecipes):
 menu = [
     Serving(Recipes.groentensoep, for_people=5),
 
-    Serving(Recipes.cordon_bleu, for_people=5),
-    Serving(Recipes.wortelpuree, for_people=5),
-
-    Serving(Recipes.aardappels_in_witte_saus, for_people=5),
-    Serving(Recipes.erwtjes_en_worteltjes, for_people=5),
-    Serving(Recipes.biefstuk, for_people=5),
-
-    Serving(Recipes.witte_kool, for_people=5),
-    Serving(Recipes.kaassaus, 5),
-    Serving(Recipes.kotelet, for_people=5),
-
+    Serving(Recipes.pizza, for_people=5),
+    Serving(Recipes.kip_met_currysaus_perziken_en_patatten, for_people=5),
+    Serving(CompoundRecipe(5,
+        [Recipes.biefstuk, Recipes.patatten, Recipes.erwtjes_en_worteltjes]),
+        for_people=5),
     Serving(Recipes.pasta_bolognese, for_people=5),
-
-    Serving(Recipes.quiche_met_zalm_en_broccoli, for_people=5),
-    Serving(Recipes.risotto, for_people=5),
-
-    Serving(Recipes.macaroni_met_ham_kaas_en_broccoli, for_people=5),
+    Serving(CompoundRecipe(5, [
+        Recipes.rodekool,
+        Recipes.worst,
+        Recipes.patatten,
+        Recipes.appelmoes
+    ]), for_people=5),
+    Serving(Recipes.wraps, for_people=5),
 
 ] + [
     Serving(Recipes.koekjes, for_people=3),
