@@ -116,3 +116,15 @@ class CompoundRecipe:
     def ingredients(self):
         lists = (((self.for_people/x.for_people) * IngredientList(x.ingredients)) for x in self.recipes)
         return sum(lists, IngredientList.zero)
+
+def for_people(n):
+    """fluid interface to instantiate recipes
+
+    >>> for_people(5).serve(Recipes.pasta, Recipes.bolognese)
+    """
+    def compound(*recipes):
+        return Serving(CompoundRecipe(
+            for_people=n, recipes=recipes),
+            for_people=n)
+    compound.serve = compound
+    return compound
