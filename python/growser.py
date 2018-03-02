@@ -6,7 +6,7 @@ a system to extract a shopping list from a week menu
 import sys
 
 from entities import *
-from data import Recipes, menu, pantry, extras
+from data import Recipes, menu, pantry, from_pantry, extras
 
 
 def ingredient(name, amount, unit="stuk"):
@@ -72,7 +72,7 @@ def resulting_list(menu, pantry):
 
 def serve_for(for_people, recipe):
     assert isinstance(recipe, Recipe) or isinstance(recipe, CompoundRecipe), recipe
-    scale = for_people / float(recipe.for_people)
+    scale = float(for_people) / float(recipe.for_people)
     def scale_ingredient(i):
         return scale * i
     return Recipe(
@@ -80,18 +80,29 @@ def serve_for(for_people, recipe):
         ingredients=list(map(scale_ingredient, recipe.ingredients))
     )
 
-def print_ingredients(ingredients):
-    for ingredient in sorted(ingredients, key=lambda i: i.name):
-        print("{0:<20}: {1:>6} {2}".format(
-            ingredient.name,
-            ingredient.amount.number,
-            ingredient.amount.unit))
+def amount_str(amount):
+    return "{0:>6} {1}".format(
+            amount.number,
+            amount.unit)
 
+def print_ingredients(ingredients, pantry=None):
+    for ingredient in sorted(ingredients, key=lambda i: i.name):
+        in_pantry = from_pantry(pantry, ingredient) if pantry else None
+        if in_pantry:
+            print("{0:<20}: {1} (-{2} {3})".format(
+                ingredient.name,
+                amount_str(ingredient.amount),
+                in_pantry.amount.number,
+                in_pantry.amount.unit))
+        else:
+            print("{0:<20}: {1}".format(
+                ingredient.name,
+                amount_str(ingredient.amount)))
 
 def main():
     if "-v" in sys.argv:
         print("needed ingredients")
-        print_ingredients(needed_ingredients(menu))
+        print_ingredients(needed_ingredients(menu), pantry)
     shopping_list_menu = resulting_list(menu, pantry)
     shopping_list = join_ingredients(shopping_list_menu, extras)
     print("\nshopping list")

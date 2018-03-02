@@ -53,5 +53,12 @@ pantry = [
     Ingredient("koekjes", Amount(12, stuk)),
     Ingredient("granola", Amount(0.1, zak)),
 
-    Ingredient("melk", Amount(1, liter))
+    Ingredient("melk", Amount(1, liter)),
+    Ingredient("persappelsienen", Amount(0, stuk))
 ]
+
+def from_pantry(pantry, ingredient):
+    try:
+        return next(i for i in pantry if i.name == ingredient.name)
+    except StopIteration:
+        return None
