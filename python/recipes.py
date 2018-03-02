@@ -177,30 +177,36 @@ class Recipes(BasicRecipes):
     groentenmix = Recipe(for_people=5, ingredients=[
         Ingredient("paprika", Amount(1, stuk)),
         Ingredient("ui", Amount(1, stuk)),
-        Ingredient("diepvries broccoli", Amount(1, stuk))
+        Ingredient("diepvries broccoli", Amount(0.3, zak))
     ])
     basmati = Recipe(for_people=5, ingredients=[
-        Ingredient("basmati", Amount(.1, zak))
+        Ingredient("basmati", Amount(.1, kg))
     ])
+
     kippenboutjes = Recipe(for_people=5, ingredients=[
         Ingredient("kippenbout", Amount(7, stuk))
     ])
+
     pasta_kaassaus_hamblokjes = CompoundRecipe(
         for_people=5,
         recipes=[Recipe(for_people=5, ingredients=[
         Ingredient("pasta", Amount(300, gram)),
         Ingredient("hamblokjes", Amount(1, doosje))
     ]),  BasicRecipes.kaassaus])
+
     vis = Recipe(for_people=1, ingredients=[
         Ingredient("vis", Amount(1, stuk))
     ])
+
     scampi = Recipe(for_people=2, ingredients=[
         Ingredient("scampi", Amount(1, zak)),
         Ingredient("look", Amount(1, teentje)),
         Ingredient("room", Amount(.3, fles))
     ])
+
     kroketten = Recipe(for_people=1, ingredients=[
         Ingredient("kroketten", Amount(7, stuk))])
+
     pizza = CompoundRecipe(for_people=5, recipes=[
         BasicRecipes.pizzadeeg,
         Recipe(for_people=5, ingredients=[
@@ -232,89 +238,3 @@ class Recipes(BasicRecipes):
     nespresso = Recipe(for_people=1, ingredients=[
         Ingredient("nespresso", Amount(1, koffie_capsule))])
 
-pantry = [
-    Ingredient("bouillon", Amount(8, stuk)),
-    Ingredient("citroenthee", Amount(1, doosje)),
-    Ingredient("senseo", Amount(30, senseo_pad)),
-    Ingredient("nespresso", Amount(0, koffie_capsule)),
-
-    Ingredient("patat", Amount(20, stuk)),
-
-    Ingredient("currysaus", Amount(1, zakje)),
-
-    Ingredient("nootmuskaat", Amount(50, beetje)),
-
-    #frigo
-    Ingredient("witte kool", Amount(0, stuk)),
-    Ingredient("bakboter", Amount(1, fles)),
-    Ingredient("ei", Amount(9, stuk)),
-    Ingredient("ketchup", Amount(1, fles)),
-
-    Ingredient("risotto", Amount(1.5, kg)),
-    Ingredient("basmati", Amount(1.2, kg)),
-
-    Ingredient("bloem", Amount(3, kg)),
-    Ingredient("pasta", Amount(0, pak)),
-    Ingredient("krulletjes", Amount(1000, gram)),
-
-    Ingredient("perziken in blik", Amount(1, blik)),
-    Ingredient("tomatenconcentraat", Amount(0, blik)),
-    Ingredient("yoghurtjes", Amount(0, potje)),
-
-    Ingredient("choco", Amount(.5, pot)),
-
-    Ingredient("ijsbergsla", Amount(0, stuk)),
-
-    Ingredient("ui", Amount(20, stuk)),
-
-    Ingredient("gehakt", Amount(0, gram)),
-    Ingredient("kipfilet", Amount(0, gram)),
-    Ingredient("chipolata", Amount(0, stuk)),
-    Ingredient("kippenbout", Amount(3, stuk)),
-    Ingredient("kalkoenschnitzel", Amount(4, stuk)),
-    Ingredient("kotelet", Amount(4, stuk)),
-
-    Ingredient("kroketten", Amount(0, zak)),
-
-    Ingredient("diepvries broccoli", Amount(0, zak)),
-    Ingredient("diepvrieserwten", Amount(0, kg)),
-
-    Ingredient("fruit", Amount(2, stuk)),
-    Ingredient("koekjes", Amount(12, stuk)),
-    Ingredient("granola", Amount(0.1, zak)),
-
-    Ingredient("melk", Amount(1, liter))
-]
-
-
-
-menu = [
-    Serving(Recipes.groentensoep, for_people=5),
-
-    Serving(Recipes.pizza, for_people=5),
-    Serving(Recipes.kip_met_currysaus_perziken_en_patatten, for_people=5),
-    Serving(CompoundRecipe(5,
-        [Recipes.kotelet, Recipes.patatten, Recipes.erwtjes_en_worteltjes]),
-        for_people=5),
-    Serving(Recipes.pasta_bolognese, for_people=5),
-    Serving(CompoundRecipe(5, [
-        Recipes.rodekool,
-        Recipes.worst,
-        Recipes.patatten,
-        Recipes.appelmoes
-    ]), for_people=5),
-    Serving(Recipes.wraps, for_people=5),
-    Serving(Recipes.pannenkoeken, for_people=5), #reserve
-] + [
-    Serving(Recipes.granola, for_people=1),
-    Serving(Recipes.koekjes, for_people=3),
-    Serving(Recipes.fruit, for_people=5),
-    Serving(Recipes.beleg, for_people=5),
-    Serving(Recipes.senseo, for_people=2),
-    Serving(Recipes.nespresso, for_people=2)
-    ] * 7
-
-
-extras = [
-    Ingredient("sportdrank", Amount(6, fles))
-]
