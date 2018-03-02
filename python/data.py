@@ -1,7 +1,7 @@
 from entities import *
 from units import *
 from recipes import *
-from pantry import pantry
+from pantry import pantry, from_pantry
 
 
 menu = [
@@ -11,21 +11,14 @@ menu = [
     for_people(3).serve(Recipes.vis),
     for_people(5).serve(Recipes.risotto),
 
-    for_people(5).serve(
-        Recipes.rodekool,
-        Recipes.kroketten,
-        Recipes.appelmoes),
-
     for_people(4).serve(
         Recipes.kippenboutjes,
         Recipes.basmati,
         Recipes.groentenmix,
-        Recipes.appelmoes
-    ),
+        Recipes.appelmoes),
 
     for_people(5).serve(
-        Recipes.pasta_bolognese
-    ),
+        Recipes.pasta_bolognese),
 
     for_people(5).serve(
         Recipes.pasta_kaassaus_hamblokjes
@@ -34,7 +27,7 @@ menu = [
     for_people(5).serve(
         Recipes.rodekool,
         Recipes.worst,
-        Recipes.patatten,
+        Recipes.kroketten,
         Recipes.appelmoes
     ),
 
