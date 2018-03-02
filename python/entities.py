@@ -114,7 +114,7 @@ class CompoundRecipe:
 
     @property
     def ingredients(self):
-        lists = (((self.for_people/x.for_people) * IngredientList(x.ingredients)) for x in self.recipes)
+        lists = (((self.for_people/float(x.for_people)) * IngredientList(x.ingredients)) for x in self.recipes)
         return sum(lists, IngredientList.zero)
 
     def __repr__(self):
@@ -131,7 +131,7 @@ def for_people(n):
     """
     def compound(*recipes):
         return Serving(CompoundRecipe(
-            for_people=n, recipes=recipes),
+            for_people=n, recipes=list(recipes)),
             for_people=n)
     compound.serve = compound
     return compound
