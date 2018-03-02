@@ -78,6 +78,12 @@ class BasicRecipes:
         Ingredient("granola", Amount(0.1, zak)),
         Ingredient("melk", Amount(0.3, liter))
     ])
+    kaassaus = Recipe(for_people=5, ingredients=[
+        Ingredient("bloem", Amount(100, gram)),
+        Ingredient("bakboter", Amount(3, beetje)),
+        Ingredient("geraspte kaas", Amount(1, zakje)),
+        Ingredient("melk", Amount(1, liter))
+    ])
 
 class Recipes(BasicRecipes):
     papaschotel = CompoundRecipe(for_people=5, recipes=[BasicRecipes.papakool, BasicRecipes.puree])
@@ -97,7 +103,7 @@ class Recipes(BasicRecipes):
             BasicRecipes.tomatensaus])
     pasta_bolognese = CompoundRecipe(5, [
         Recipe(for_people=5, ingredients=[
-            Ingredient("pasta", Amount(1.5, pak)),
+            Ingredient("pasta", Amount(300, gram)),
             Ingredient("wortel", Amount(4, stuk)),
             Ingredient("gehakt", Amount(300, gram)),
             Ingredient("paprika", Amount(2, stuk)),
@@ -141,12 +147,6 @@ class Recipes(BasicRecipes):
         Ingredient("kotelet", Amount(5, stuk)),
         Ingredient("bakboter", Amount(1, beetje))
     ])
-    kaassaus = Recipe(for_people=5, ingredients=[
-        Ingredient("bloem", Amount(100, gram)),
-        Ingredient("bakboter", Amount(3, beetje)),
-        Ingredient("geraspte kaas", Amount(1, zakje)),
-        Ingredient("melk", Amount(1, liter))
-    ])
     quiche_met_zalm_en_broccoli = Recipe(for_people=5, ingredients=[
         Ingredient("kruimeldeeg", Amount(1, stuk)),
         Ingredient("ei", Amount(4, stuk)),
@@ -174,6 +174,33 @@ class Recipes(BasicRecipes):
         Ingredient("biefstuk", Amount(4, stuk)),
         Ingredient("bakboter", Amount(1, beetje)),
     ])
+    groentenmix = Recipe(for_people=5, ingredients=[
+        Ingredient("paprika", Amount(1, stuk)),
+        Ingredient("ui", Amount(1, stuk)),
+        Ingredient("diepvries broccoli", Amount(1, stuk))
+    ])
+    basmati = Recipe(for_people=5, ingredients=[
+        Ingredient("basmati", Amount(.1, zak))
+    ])
+    kippenboutjes = Recipe(for_people=5, ingredients=[
+        Ingredient("kippenbout", Amount(7, stuk))
+    ])
+    pasta_kaassaus_hamblokjes = CompoundRecipe(
+        for_people=5,
+        recipes=[Recipe(for_people=5, ingredients=[
+        Ingredient("pasta", Amount(300, gram)),
+        Ingredient("hamblokjes", Amount(1, doosje))
+    ]),  BasicRecipes.kaassaus])
+    vis = Recipe(for_people=1, ingredients=[
+        Ingredient("vis", Amount(1, stuk))
+    ])
+    scampi = Recipe(for_people=2, ingredients=[
+        Ingredient("scampi", Amount(1, zak)),
+        Ingredient("look", Amount(1, teentje)),
+        Ingredient("room", Amount(.3, fles))
+    ])
+    kroketten = Recipe(for_people=1, ingredients=[
+        Ingredient("kroketten", Amount(7, stuk))])
     pizza = CompoundRecipe(for_people=5, recipes=[
         BasicRecipes.pizzadeeg,
         Recipe(for_people=5, ingredients=[

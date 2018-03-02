@@ -3,23 +3,41 @@ from units import *
 from recipes import *
 from pantry import pantry
 
+
 menu = [
     Serving(Recipes.groentensoep, for_people=5),
 
-    Serving(Recipes.pizza, for_people=5),
-    Serving(Recipes.kip_met_currysaus_perziken_en_patatten, for_people=5),
-    Serving(CompoundRecipe(5,
-        [Recipes.kotelet, Recipes.patatten, Recipes.erwtjes_en_worteltjes]),
-        for_people=5),
-    Serving(Recipes.pasta_bolognese, for_people=5),
-    Serving(CompoundRecipe(5, [
+    for_people(2).serve(Recipes.scampi),
+    for_people(3).serve(Recipes.vis),
+    for_people(5).serve(Recipes.risotto),
+
+    for_people(5).serve(
+        Recipes.rodekool,
+        Recipes.kroketten,
+        Recipes.appelmoes),
+
+    for_people(4).serve(
+        Recipes.kippenboutjes,
+        Recipes.basmati,
+        Recipes.groentenmix,
+        Recipes.appelmoes
+    ),
+
+    for_people(5).serve(
+        Recipes.pasta_bolognese
+    ),
+
+    for_people(5).serve(
+        Recipes.pasta_kaassaus_hamblokjes
+    ),
+    
+    for_people(5).serve(
         Recipes.rodekool,
         Recipes.worst,
         Recipes.patatten,
         Recipes.appelmoes
-    ]), for_people=5),
-    Serving(Recipes.wraps, for_people=5),
-    Serving(Recipes.pannenkoeken, for_people=5), #reserve
+    ),
+
 ] + [
     Serving(Recipes.granola, for_people=1),
     Serving(Recipes.koekjes, for_people=3),
