@@ -117,6 +117,13 @@ class CompoundRecipe:
         lists = (((self.for_people/x.for_people) * IngredientList(x.ingredients)) for x in self.recipes)
         return sum(lists, IngredientList.zero)
 
+    def __repr__(self):
+        return "Compound {}".format(self.recipes)
+
+    def __eq__(self, other):
+        lhs, rhs = self, other
+        return lhs.for_people == other.for_people and lhs.recipes == rhs.recipes
+
 def for_people(n):
     """fluid interface to instantiate recipes
 
@@ -128,3 +135,12 @@ def for_people(n):
             for_people=n)
     compound.serve = compound
     return compound
+
+def test_for_people():
+    x = Ingredient("x", Amount(1, Unit(".")))
+    y = Ingredient("y", Amount(2, Unit("-")))
+    recipe = Recipe(5, [x, y])
+    serving = for_people(10).serve(recipe)
+    assert serving == Serving(
+        for_people=10,
+        recipe=CompoundRecipe(for_people=10, recipes=[recipe]))
