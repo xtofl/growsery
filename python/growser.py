@@ -7,38 +7,19 @@ import sys
 
 from entities import *
 from data import Recipes, menu, pantry, from_pantry, extras
-
-
-def ingredient(name, amount, unit="stuk"):
-    return Ingredient(name, Amount(amount, unit))
-
-
-def make_convertor(conversions):
-    def tryconvert(a, b):
-        c = (a.unit, b.unit)
-        if c in conversions:
-            return conversions[c](a)
-        else:
-            return None
-
-    return tryconvert
-
+from math import ceil
 
 def subtract_amount(lhs, rhs):
     return lhs + (-1 * rhs)
 
-
 def add_amount(lhs, rhs):
     return lhs + rhs
-
 
 def sum_amounts(amounts):
     return sum(amounts, Amount.zero)
 
-
 def join_ingredients(list1, list2):
     return IngredientList(list1) + IngredientList(list2)
-
 
 def subtract_ingredients(list1, list2):
     def subtract_amount_in_list2(amount, name):
@@ -81,8 +62,8 @@ def serve_for(for_people, recipe):
     )
 
 def amount_str(amount):
-    return "{0:>6} {1}".format(
-            amount.number,
+    return "{0:<6.0f} {1:<2}".format(
+            ceil(amount.number),
             amount.unit)
 
 def print_ingredients(ingredients, pantry=None):
