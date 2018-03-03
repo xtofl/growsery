@@ -33,8 +33,11 @@ class BasicRecipes:
     rodekool = Recipe(for_people=5, ingredients=[
         Ingredient("rode kool", Amount(1, pot))
     ])
-    appelmoes = Recipe(for_people=5, ingredients=[
+    zelfgemaakte_appelmoes = Recipe(for_people=5, ingredients=[
         Ingredient("stoofappel", Amount(5, stuk))
+    ])
+    appelmoes = Recipe(for_people=7, ingredients=[
+        Ingredient("appelmoes", Amount(1, pot))
     ])
 
     koekjes = Recipe(for_people=5, ingredients=[
@@ -160,16 +163,14 @@ class Recipes(BasicRecipes):
         Ingredient("bakboter", Amount(1, beetje)),
         Ingredient("risotto", Amount(200, gram))
     ])
-    macaroni_met_ham_kaas_en_broccoli = Recipe(for_people=5, ingredients=[
+    macaroni_met_ham_kaas_en_broccoli = CompoundRecipe(
+        for_people=5,
+        recipes=[Recipe(for_people=5, ingredients=[
         Ingredient("krulletjes", Amount(300, gram)),
-        Ingredient("hamblokjes", Amount(150*5, gram)),
-        #kaassaus
-        Ingredient("bloem", Amount(100, gram)),
-        Ingredient("bakboter", Amount(3, beetje)),
-        Ingredient("geraspte kaas", Amount(1, zakje)),
-        Ingredient("melk", Amount(1, liter)),
-        Ingredient("ketchup", Amount(0.3, fles)),
-    ])
+        Ingredient("hamblokjes", Amount(1, doosje)),
+        Ingredient("ketchup", Amount(0.3, fles))
+    ]),  BasicRecipes.kaassaus])
+
     biefstuk = Recipe(for_people=5, ingredients=[
         Ingredient("biefstuk", Amount(4, stuk)),
         Ingredient("bakboter", Amount(1, beetje)),
@@ -186,14 +187,6 @@ class Recipes(BasicRecipes):
     kippenboutjes = Recipe(for_people=5, ingredients=[
         Ingredient("kippenbout", Amount(7, stuk))
     ])
-
-    pasta_kaassaus_hamblokjes = CompoundRecipe(
-        for_people=5,
-        recipes=[Recipe(for_people=5, ingredients=[
-        Ingredient("pasta", Amount(300, gram)),
-        Ingredient("hamblokjes", Amount(1, doosje)),
-        Ingredient("ketchup", Amount(0.3, fles))
-    ]),  BasicRecipes.kaassaus])
 
     vis = Recipe(for_people=1, ingredients=[
         Ingredient("vis", Amount(1, stuk))
