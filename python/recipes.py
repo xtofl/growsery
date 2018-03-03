@@ -191,7 +191,8 @@ class Recipes(BasicRecipes):
         for_people=5,
         recipes=[Recipe(for_people=5, ingredients=[
         Ingredient("pasta", Amount(300, gram)),
-        Ingredient("hamblokjes", Amount(1, doosje))
+        Ingredient("hamblokjes", Amount(1, doosje)),
+        Ingredient("ketchup", Amount(0.3, fles))
     ]),  BasicRecipes.kaassaus])
 
     vis = Recipe(for_people=1, ingredients=[
@@ -205,7 +206,8 @@ class Recipes(BasicRecipes):
     ])
 
     kroketten = Recipe(for_people=1, ingredients=[
-        Ingredient("kroketten", Amount(7, stuk))])
+        Ingredient("kroketten", Amount(7, stuk)),
+        Ingredient("mayo", Amount(1./15, fles))])
 
     pizza = CompoundRecipe(for_people=5, recipes=[
         BasicRecipes.pizzadeeg,

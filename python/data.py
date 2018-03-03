@@ -10,25 +10,25 @@ menu = [
     for_people(2).serve(Recipes.scampi),
     for_people(3).serve(Recipes.vis),
     for_people(5).serve(Recipes.risotto),
-
-    for_people(4).serve(
-        Recipes.kippenboutjes,
-        Recipes.basmati,
-        Recipes.groentenmix,
-        Recipes.appelmoes),
-
-    for_people(5).serve(
-        Recipes.pasta_bolognese),
-
-    for_people(5).serve(
-        Recipes.pasta_kaassaus_hamblokjes
-    ),
     
     for_people(5).serve(
         Recipes.rodekool,
         Recipes.worst,
         Recipes.kroketten,
         Recipes.appelmoes
+    ),
+
+    for_people(5).serve(
+        Recipes.pasta_bolognese),
+
+    for_people(5).serve(
+        Recipes.kippenboutjes,
+        Recipes.basmati,
+        Recipes.groentenmix,
+        Recipes.appelmoes),
+
+    for_people(5).serve(
+        Recipes.pasta_kaassaus_hamblokjes
     ),
 
 ] + [
@@ -42,5 +42,5 @@ menu = [
 
 
 extras = [
-    Ingredient("sportdrank", Amount(6, fles))
+    Ingredient("sportdrank", Amount(6, fles)),
 ]
