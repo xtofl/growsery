@@ -20,6 +20,10 @@ pantry = [
     Ingredient("ei", Amount(15, stuk)),
     Ingredient("ketchup", Amount(0, fles)),
 
+    Ingredient("leerdammer", Amount(35, plakje)),
+    Ingredient("wortel", Amount(10, stuk)),
+    Ingredient("witloof", Amount(2, stuk)),
+
     Ingredient("risotto", Amount(1., kg)),
     Ingredient("basmati", Amount(1., kg)),
 
@@ -54,7 +58,7 @@ pantry = [
     Ingredient("banaan", Amount(4, stuk)),
     Ingredient("appel", Amount(16, stuk)),
     Ingredient("druiven", Amount(2, doos)),
-    
+
     Ingredient("koekjes", Amount(12, stuk)),
     Ingredient("granola", Amount(0.1, zak)),
 
