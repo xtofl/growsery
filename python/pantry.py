@@ -13,6 +13,8 @@ pantry = [
     Ingredient("currysaus", Amount(5, zakje)),
 
     Ingredient("nootmuskaat", Amount(30, beetje)),
+    Ingredient("kinnekessuiker", Amount(0.8, kg)),
+    Ingredient("bloemsuiker", Amount(400, gram)),
 
     #frigo
     Ingredient("witte kool", Amount(.75, stuk)),
@@ -39,15 +41,16 @@ pantry = [
 
     Ingredient("ijsbergsla", Amount(0, stuk)),
 
-    Ingredient("ui", Amount(20, stuk)),
+    Ingredient("ui", Amount(10, stuk)),
 
+    # diepvries
     Ingredient("gehakt", Amount(300, gram)),
     Ingredient("kipfilet", Amount(1000, gram)),
     Ingredient("chipolata", Amount(15, stuk)),
-    Ingredient("kippenbout", Amount(3, stuk)),
     Ingredient("kalkoenschnitzel", Amount(4, stuk)),
     Ingredient("kotelet", Amount(2, stuk)),
     Ingredient("biefstuk", Amount(2, stuk)),
+    Ingredient("kippenbout", Amount(4, stuk)),
 
     Ingredient("kroketten", Amount(0, zak)),
 

@@ -11,10 +11,12 @@ reserve = [
 menu = [
     Serving(Recipes.groentensoep, for_people=5),
 
+    #zaterdag
     for_people(2).serve(Recipes.scampi),
     for_people(3).serve(Recipes.vis),
     for_people(5).serve(Recipes.risotto),
     
+    #zondag
     for_people(5).serve(
         Recipes.rodekool,
         Recipes.worst,
@@ -22,18 +24,24 @@ menu = [
         Recipes.appelmoes
     ),
 
+    #dinsdag
     for_people(5).serve(
         Recipes.pasta_bolognese),
 
+    #woensdag
     for_people(5).serve(
         Recipes.kippenboutjes,
         Recipes.basmati,
         Recipes.groentenmix,
         Recipes.appelmoes),
 
+    #donderdag
     for_people(5).serve(
         Recipes.macaroni_met_ham_kaas_en_broccoli
     ),
+
+    #vrijdag
+    for_people(5).serve(Recipes.friet)
 
 ] + [
     Serving(Recipes.granola, for_people=1),

@@ -39,6 +39,9 @@ class BasicRecipes:
     appelmoes = Recipe(for_people=7, ingredients=[
         Ingredient("appelmoes", Amount(1, pot))
     ])
+    friet = Recipe(for_people=5, ingredients=[
+        Ingredient("mayo", Amount(0.4, fles)),
+    ])
 
     koekjes = Recipe(for_people=5, ingredients=[
         Ingredient("koekjes", Amount(10, stuk)),
