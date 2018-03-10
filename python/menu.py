@@ -4,9 +4,11 @@ from recipes import *
 from pantry import pantry, from_pantry
 
 reserve = [
-    for_people(5)(Recipes.pannenkoeken),
-    for_people(5)(Recipes.rodekool, Recipes.worst, Recipes.kroketten, Recipes.appelmoes),
-    for_people(5)(Recipes.pudding)
+    for_people(5)(
+        Recipes.pannenkoeken,
+        Recipes.rodekool, Recipes.worst, Recipes.kroketten, Recipes.appelmoes,
+        Recipes.pudding,
+        )
 ]
 
 menu = [

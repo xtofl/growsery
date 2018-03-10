@@ -66,14 +66,14 @@ pantry = [
     Ingredient("koekjes", Amount(12, stuk)),
     Ingredient("granola", Amount(0.1, zak)),
 
-    Ingredient("melk", Amount(0, liter)),
+    Ingredient("melk", Amount(8, liter)),
     Ingredient("persappelsienen", Amount(0, stuk)),
 
     Ingredient("tomaten passata", Amount(4, doos)),
     Ingredient("mais", Amount(5, blik)),
     Ingredient("zwanworstjes", Amount(3, blik)),
     Ingredient("appelmoes", Amount(1, pot)),
-    Ingredient("rodekool", Amount(3, pot)),
+    Ingredient("rode kool", Amount(3, pot)),
     Ingredient("wraps", Amount(10, stuk)),
 
     Ingredient("mayo", Amount(2, fles)),

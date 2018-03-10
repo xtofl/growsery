@@ -109,6 +109,7 @@ class Recipes(BasicRecipes):
                 Ingredient("tomaat", Amount(4, stuk)),
                 Ingredient("vinaigrette", Amount(1, zakje)),
                 Ingredient("appel", Amount(2, stuk)),
+                Ingredient("geitenkaasje", Amount(6, stuk)),
                 Ingredient("honing", Amount(1, beetje)),
             ])
         ])
