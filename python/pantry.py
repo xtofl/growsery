@@ -3,38 +3,39 @@ from units import *
 from recipes import *
 
 pantry = [
-    Ingredient("bouillon", Amount(8, stuk)),
+    Ingredient("bouillon", Amount(14*4, stuk)),
+    Ingredient("groentenbouillon", Amount(0, stuk)),
     Ingredient("citroenthee", Amount(0, doosje)),
-    Ingredient("senseo", Amount(40, senseo_pad)),
+    Ingredient("senseo", Amount(30, senseo_pad)),
     Ingredient("nespresso", Amount(9, koffie_capsule)),
 
-    Ingredient("patat", Amount(40, stuk)),
+    Ingredient("patat", Amount(30, stuk)),
 
-    Ingredient("currysaus", Amount(5, zakje)),
+    Ingredient("currysaus", Amount(4, zakje)),
 
     Ingredient("nootmuskaat", Amount(30, beetje)),
-    Ingredient("kinnekessuiker", Amount(0.8, kg)),
-    Ingredient("bloemsuiker", Amount(400, gram)),
+    Ingredient("kinnekessuiker", Amount(1.8, kg)),
+    Ingredient("bloemsuiker", Amount(200, gram)),
 
     #frigo
     Ingredient("witte kool", Amount(.75, stuk)),
-    Ingredient("bakboter", Amount(1, fles)),
-    Ingredient("ei", Amount(15, stuk)),
-    Ingredient("ketchup", Amount(0, fles)),
+    Ingredient("bakboter", Amount(2, fles)),
+    Ingredient("ei", Amount(11, stuk)),
+    Ingredient("ketchup", Amount(1, fles)),
 
-    Ingredient("leerdammer", Amount(35, plakje)),
-    Ingredient("wortel", Amount(10, stuk)),
-    Ingredient("witloof", Amount(2, stuk)),
+    Ingredient("leerdammer", Amount(20, plakje)),
+    Ingredient("wortel", Amount(15, stuk)),
+    Ingredient("witloof", Amount(0, stuk)),
 
-    Ingredient("risotto", Amount(1., kg)),
-    Ingredient("basmati", Amount(1., kg)),
+    Ingredient("risotto", Amount(.5, kg)),
+    Ingredient("basmati", Amount(.3, kg)),
 
-    Ingredient("bloem", Amount(.8, kg)),
+    Ingredient("bloem", Amount(2, kg)),
     Ingredient("pasta", Amount(1000,gram)),
     Ingredient("krulletjes", Amount(0, gram)),
 
     Ingredient("perziken in blik", Amount(0, blik)),
-    Ingredient("tomatenconcentraat", Amount(2, blik)),
+    Ingredient("tomatenconcentraat", Amount(5, blik)),
     Ingredient("yoghurtjes", Amount(0, potje)),
 
     Ingredient("choco", Amount(2, pot)),
@@ -44,23 +45,23 @@ pantry = [
     Ingredient("ui", Amount(10, stuk)),
 
     # diepvries
-    Ingredient("gehakt", Amount(300, gram)),
-    Ingredient("kipfilet", Amount(1000, gram)),
-    Ingredient("chipolata", Amount(15, stuk)),
+    Ingredient("gehakt", Amount(0, gram)),
+    Ingredient("kipfilet", Amount(800, gram)),
+    Ingredient("chipolata", Amount(5, stuk)),
     Ingredient("kalkoenschnitzel", Amount(4, stuk)),
     Ingredient("kotelet", Amount(2, stuk)),
     Ingredient("biefstuk", Amount(2, stuk)),
-    Ingredient("kippenbout", Amount(4, stuk)),
+    Ingredient("kippenbout", Amount(0, stuk)),
 
     Ingredient("kroketten", Amount(0, zak)),
 
-    Ingredient("diepvries broccoli", Amount(0, zak)),
+    Ingredient("diepvries broccoli", Amount(.6, zak)),
     Ingredient("diepvrieserwten", Amount(.5, kg)),
 
     Ingredient("fruit", Amount(2, stuk)),
-    Ingredient("banaan", Amount(4, stuk)),
-    Ingredient("appel", Amount(16, stuk)),
-    Ingredient("druiven", Amount(2, doos)),
+    Ingredient("banaan", Amount(0, stuk)),
+    Ingredient("appel", Amount(5, stuk)),
+    Ingredient("druiven", Amount(0, doos)),
 
     Ingredient("koekjes", Amount(12, stuk)),
     Ingredient("granola", Amount(0.1, zak)),
@@ -72,10 +73,9 @@ pantry = [
     Ingredient("mais", Amount(5, blik)),
     Ingredient("zwanworstjes", Amount(3, blik)),
     Ingredient("appelmoes", Amount(1, pot)),
-    Ingredient("rodekool", Amount(4, pot)),
-    Ingredient("wraps", Amount(2, pak)),
+    Ingredient("rodekool", Amount(3, pot)),
+    Ingredient("wraps", Amount(10, stuk)),
 
-    Ingredient("koekjes", Amount(12, stuk)),
     Ingredient("mayo", Amount(2, fles)),
 
 ]

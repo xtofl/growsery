@@ -50,11 +50,13 @@ class BasicRecipes:
 
     fruit = Recipe(for_people=5, ingredients=[Ingredient("fruit", Amount(10, stuk))])
 
-    beleg = Recipe(for_people=1, ingredients=[
+    beleg = Recipe(for_people=5, ingredients=[
         Ingredient("leerdammer", Amount(1, plakje)),
-        Ingredient("choco", Amount(0.05, pot)),
+        Ingredient("choco", Amount(0.25, pot)),
+        Ingredient("nutella", Amount(0.05, pot)),
         Ingredient("papaboter", Amount(0.02, bakje)),
-        Ingredient("confituur", Amount(0.05, pot))
+        Ingredient("confituur", Amount(0.05, pot)),
+        Ingredient("salami", Amount(1, pak))
     ])
 
     groentensoep = Recipe(for_people=2, ingredients=[
@@ -62,7 +64,7 @@ class BasicRecipes:
             Ingredient("wortel", Amount(4, stuk)),
             Ingredient("prei", Amount(2, stuk)),
             Ingredient("ui", Amount(1, stuk)),
-            Ingredient("bouillon", Amount(1, stuk))
+            Ingredient("groentenbouillon", Amount(1, stuk))
         ])
     pizzadeeg = Recipe(for_people=5, ingredients=[
         Ingredient("bloem", Amount(1, kg)),
@@ -99,6 +101,17 @@ class Recipes(BasicRecipes):
             Ingredient("ei", Amount(6, stuk)),
             Ingredient("krulletjes", Amount(500, gram)),
         ]), BasicRecipes.tomatensaus])
+    slaatje_gezond = \
+        CompoundRecipe(5, [
+            Recipe(for_people=5, ingredients=[
+                Ingredient("ijsbergsla", Amount(0.5, stuk)),
+                Ingredient("ei", Amount(6, stuk)),
+                Ingredient("tomaat", Amount(4, stuk)),
+                Ingredient("vinaigrette", Amount(1, zakje)),
+                Ingredient("appel", Amount(2, stuk)),
+                Ingredient("honing", Amount(1, beetje)),
+            ])
+        ])
     balletjes_tomatensaus_met_boontjes =\
         CompoundRecipe(5, [
             Recipe(for_people=5, ingredients=[
@@ -235,4 +248,15 @@ class Recipes(BasicRecipes):
         Ingredient("senseo", Amount(2, senseo_pad))])
     nespresso = Recipe(for_people=1, ingredients=[
         Ingredient("nespresso", Amount(1, koffie_capsule))])
+    tiramisu = Recipe(for_people=5, ingredients=[
+        Ingredient("boudours", Amount(2, pak)),
+        Ingredient("mascarpone", Amount(500, gram)),
+        Ingredient("cacao", Amount(1, beetje)),
+        Ingredient("ei", Amount(4, stuk))
+    ])
+    pudding = Recipe(for_people=5, ingredients=[
+        Ingredient("puddingpoeder", Amount(1, zakje)),
+        Ingredient("melk", Amount(1, liter)),
+        Ingredient("chocola", Amount(200, gram))
+    ])
 
