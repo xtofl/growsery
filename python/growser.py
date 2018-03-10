@@ -70,13 +70,13 @@ def print_ingredients(ingredients, pantry=None):
     for ingredient in sorted(ingredients, key=lambda i: i.name):
         in_pantry = from_pantry(pantry, ingredient) if pantry else None
         if in_pantry:
-            print("{0:<20}: {1} (-{2} {3})".format(
+            print("    o {0:<20}: {1} (-{2} {3})".format(
                 ingredient.name,
                 amount_str(ingredient.amount),
                 in_pantry.amount.number,
                 in_pantry.amount.unit))
         else:
-            print("{0:<20}: {1}".format(
+            print("    o {0:<20}: {1}".format(
                 ingredient.name,
                 amount_str(ingredient.amount)))
 
@@ -86,7 +86,7 @@ def main():
         print_ingredients(needed_ingredients(menu), pantry)
     shopping_list_menu = resulting_list(menu, pantry)
     shopping_list = join_ingredients(shopping_list_menu, extras)
-    print("\nshopping list")
+    print("\nshopping list\n" + "- "*20)
     print_ingredients(shopping_list)
 
 if __name__ == "__main__":
