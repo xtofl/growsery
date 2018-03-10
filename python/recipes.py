@@ -56,7 +56,7 @@ class BasicRecipes:
         Ingredient("nutella", Amount(0.05, pot)),
         Ingredient("papaboter", Amount(0.02, bakje)),
         Ingredient("confituur", Amount(0.05, pot)),
-        Ingredient("salami", Amount(1, pak))
+        Ingredient("salami", Amount(.1, pak))
     ])
 
     groentensoep = Recipe(for_people=2, ingredients=[
