@@ -15,18 +15,21 @@ menu = [
     Serving(Recipes.groentensoep, for_people=5),
 
     #zaterdag
+    for_people(3).serve(Recipes.vis),
+    for_people(2).serve(Recipes.scampi),
     for_people(5).serve(
-        Recipes.slaatje_gezond,
-        Recipes.tiramisu),
+        Recipes.erwtjes_en_worteltjes,
+        Recipes.patatten
+    ),
 
     #zondag
-    for_people(5).serve(
+    for_people(6).serve(
         Recipes.balletjes_tomatensaus_met_boontjes
     ),
 
     #maandag
     for_people(5).serve(
-        Recipes.wraps,
+        Recipes.papaschotel,
         Recipes.pudding
     ),
 
@@ -36,22 +39,20 @@ menu = [
 
     #woensdag
     for_people(5).serve(
-        Recipes.kip_met_currysaus_perziken_en_patatten
+        Recipes.kotelet,
+        Recipes.erwtjes_en_worteltjes,
+        Recipes.basmati
     ),
 
     #donderdag
     for_people(5).serve(
-        Recipes.worst,
-        Recipes.rodekool,
-        Recipes.appelmoes
+        Recipes.macaroni_met_ham_kaas_en_broccoli,
     ),
 
     #vrijdag
     for_people(5).serve(
-        Recipes.vis,
-        Recipes.erwtjes_en_worteltjes,
-        Recipes.patatten
-    )
+        Recipes.quiche_met_zalm_en_broccoli
+    ),
 
 ] + [
     Serving(Recipes.granola, for_people=1),

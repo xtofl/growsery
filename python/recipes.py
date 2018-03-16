@@ -14,7 +14,7 @@ class BasicRecipes:
     papakool = Recipe(for_people=5, ingredients=[
         Ingredient("witte kool", Amount(.5, stuk)),
         Ingredient("gehakt", Amount(500, gram)),
-        Ingredient("geraspte kaas", Amount(500, gram)),
+        Ingredient("geraspte kaas", Amount(2, zak)),
     ])
     witte_saus = Recipe(for_people=5, ingredients=[
         Ingredient("bloem", Amount(50, gram)),
@@ -91,6 +91,9 @@ class BasicRecipes:
         Ingredient("bakboter", Amount(3, beetje)),
         Ingredient("geraspte kaas", Amount(1, zakje)),
         Ingredient("melk", Amount(1, liter))
+    ])
+    basmati = Recipe(for_people=5, ingredients=[
+        Ingredient("basmati", Amount(.1, kg))
     ])
 
 class Recipes(BasicRecipes):
@@ -197,9 +200,6 @@ class Recipes(BasicRecipes):
         Ingredient("ui", Amount(1, stuk)),
         Ingredient("diepvries broccoli", Amount(0.3, zak))
     ])
-    basmati = Recipe(for_people=5, ingredients=[
-        Ingredient("basmati", Amount(.1, kg))
-    ])
 
     kippenboutjes = Recipe(for_people=5, ingredients=[
         Ingredient("kippenbout", Amount(7, stuk))
@@ -261,3 +261,11 @@ class Recipes(BasicRecipes):
         Ingredient("chocola", Amount(200, gram))
     ])
 
+def all_recipes():
+    return \
+        set(dir(Recipes))\
+        .difference(set(dir(BasicRecipes)))
+
+if __name__ == "__main__":
+    for r in sorted(all_recipes()):
+        print(r)
