@@ -95,6 +95,16 @@ class BasicRecipes:
     basmati = Recipe(for_people=5, ingredients=[
         Ingredient("basmati", Amount(.1, kg))
     ])
+    hamburger = Recipe(for_people=1, ingredients=[
+        Ingredient("hamburger", Amount(1, stuk)),
+        Ingredient("mayo", Amount(1, beetje)),
+        Ingredient("ui", Amount(0.4, stuk)),
+        Ingredient("bakboter", Amount(1, beetje))
+    ])
+    veggieburger = Recipe(for_people=1, ingredients=[
+        Ingredient("veggieburger", Amount(1, stuk)),
+        Ingredient("bakboter", Amount(1, beetje))
+    ])
 
 class Recipes(BasicRecipes):
     papaschotel = CompoundRecipe(for_people=5, recipes=[BasicRecipes.papakool, BasicRecipes.puree])
@@ -119,7 +129,6 @@ class Recipes(BasicRecipes):
     balletjes_tomatensaus_met_boontjes =\
         CompoundRecipe(5, [
             Recipe(for_people=5, ingredients=[
-                Ingredient("patat", Amount(5*3, stuk)),
                 Ingredient("gehakt", Amount(500, gram)),
                 Ingredient("boontjes", Amount(2, zakje)),
             ]),
@@ -216,7 +225,7 @@ class Recipes(BasicRecipes):
     ])
 
     kroketten = Recipe(for_people=1, ingredients=[
-        Ingredient("kroketten", Amount(7, stuk)),
+        Ingredient("kroketten", Amount(0.2, zak)),
         Ingredient("mayo", Amount(1./15, fles))])
 
     pizza = CompoundRecipe(for_people=5, recipes=[
@@ -249,7 +258,7 @@ class Recipes(BasicRecipes):
         Ingredient("senseo", Amount(2, senseo_pad))])
     nespresso = Recipe(for_people=1, ingredients=[
         Ingredient("nespresso", Amount(1, koffie_capsule))])
-    tiramisu = Recipe(for_people=5, ingredients=[
+    tiramisu = Recipe(for_people=8, ingredients=[
         Ingredient("boudours", Amount(2, pak)),
         Ingredient("mascarpone", Amount(500, gram)),
         Ingredient("cacao", Amount(1, beetje)),

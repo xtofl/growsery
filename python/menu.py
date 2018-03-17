@@ -15,8 +15,8 @@ menu = [
     Serving(Recipes.groentensoep, for_people=5),
 
     #zaterdag
-    for_people(3).serve(Recipes.vis),
-    for_people(2).serve(Recipes.scampi),
+    for_people(3).serve(Recipes.hamburger),
+    for_people(2).serve(Recipes.veggieburger),
     for_people(5).serve(
         Recipes.erwtjes_en_worteltjes,
         Recipes.patatten
@@ -24,7 +24,9 @@ menu = [
 
     #zondag
     for_people(6).serve(
-        Recipes.balletjes_tomatensaus_met_boontjes
+        Recipes.balletjes_tomatensaus_met_boontjes,
+        Recipes.patatten,
+        Recipes.tiramisu
     ),
 
     #maandag
@@ -38,8 +40,9 @@ menu = [
         Recipes.pasta_bolognese),
 
     #woensdag
+    for_people(2).serve(Recipes.kotelet),
+    for_people(3).serve(Recipes.biefstuk),
     for_people(5).serve(
-        Recipes.kotelet,
         Recipes.erwtjes_en_worteltjes,
         Recipes.basmati
     ),
@@ -63,8 +66,3 @@ menu = [
     Serving(Recipes.nespresso, for_people=2)
     ] * 7 \
 + reserve
-
-
-extras = [
-    Ingredient("sportdrank", Amount(6, fles)),
-]

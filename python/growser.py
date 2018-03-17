@@ -76,7 +76,7 @@ def print_ingredients(ingredients, pantry=None):
                 in_pantry.amount.number,
                 in_pantry.amount.unit))
         else:
-            print("    o {0:<20}: {1}".format(
+            print("    O {0:<20}: {1}".format(
                 ingredient.name,
                 amount_str(ingredient.amount)))
 
