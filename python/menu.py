@@ -15,15 +15,15 @@ menu = [
     Serving(Recipes.groentensoep, for_people=5),
 
     #zaterdag
-    for_people(3).serve(Recipes.hamburger),
-    for_people(2).serve(Recipes.veggieburger),
     for_people(5).serve(
+        Recipes.vis,
         Recipes.erwtjes_en_worteltjes,
         Recipes.patatten
     ),
 
     #zondag
-    for_people(6).serve(
+    for_people(2).serve(Recipes.veggieburger),
+    for_people(5).serve(
         Recipes.balletjes_tomatensaus_met_boontjes,
         Recipes.patatten,
         Recipes.tiramisu
@@ -31,7 +31,9 @@ menu = [
 
     #maandag
     for_people(5).serve(
-        Recipes.papaschotel,
+        Recipes.kippenboutjes,
+        Recipes.groentenmix,
+        Recipes.basmati,
         Recipes.pudding
     ),
 

@@ -7,5 +7,4 @@ extras = [
     Ingredient("chocotoffs", Amount(1, zak)),
     Ingredient("studentenhaver", Amount(1, doos)),
     Ingredient("gedroogde abrikozen", Amount(1, pak)),
-    
 ]

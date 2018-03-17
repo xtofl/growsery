@@ -25,11 +25,13 @@ pantry = [
     Ingredient("leerdammer", Amount(15, plakje)),
     Ingredient("wortel", Amount(15, stuk)),
     Ingredient("witloof", Amount(0, stuk)),
+    Ingredient("ijsbergsla", Amount(0, stuk)),
 
+    #kast
     Ingredient("risotto", Amount(.1, kg)),
     Ingredient("basmati", Amount(.1, kg)),
 
-    Ingredient("bloem", Amount(2, kg)),
+    Ingredient("bloem", Amount(.5, kg)),
     Ingredient("pasta", Amount(500,gram)),
     Ingredient("krulletjes", Amount(2000, gram)),
 
@@ -39,11 +41,14 @@ pantry = [
 
     Ingredient("choco", Amount(2, pot)),
 
-    Ingredient("ijsbergsla", Amount(0, stuk)),
-
     Ingredient("ui", Amount(4, stuk)),
 
     # diepvries
+    Ingredient("kroketten", Amount(0.8, zak)),
+
+    Ingredient("diepvries broccoli", Amount(.6, zak)),
+    Ingredient("diepvrieserwten", Amount(.1, kg)),
+
     Ingredient("gehakt", Amount(400, gram)),
     Ingredient("kipfilet", Amount(0, gram)),
     Ingredient("chipolata", Amount(4, stuk)),
@@ -52,21 +57,16 @@ pantry = [
     Ingredient("biefstuk", Amount(2, stuk)),
     Ingredient("kippenbout", Amount(0, stuk)),
 
-    Ingredient("kroketten", Amount(0.8, zak)),
-
-    Ingredient("diepvries broccoli", Amount(.6, zak)),
-    Ingredient("diepvrieserwten", Amount(.1, kg)),
-
     Ingredient("fruit", Amount(2, stuk)),
     Ingredient("banaan", Amount(0, stuk)),
     Ingredient("appel", Amount(5, stuk)),
     Ingredient("druiven", Amount(0, doos)),
+    Ingredient("persappelsienen", Amount(0, stuk)),
 
     Ingredient("koekjes", Amount(50, stuk)),
     Ingredient("granola", Amount(1.5, zak)),
 
     Ingredient("melk", Amount(5, liter)),
-    Ingredient("persappelsienen", Amount(0, stuk)),
 
     Ingredient("tomaten passata", Amount(2, doos)),
     Ingredient("mais", Amount(3, blik)),

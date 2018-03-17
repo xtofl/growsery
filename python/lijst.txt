@@ -3,9 +3,9 @@ needed ingredients
     o bakboter            : 1      <fles> (-1 <fles>)
     o basmati             : 1      <kg> (-0.1 <kg>)
     o biefstuk            : 3      <stuk> (-2 <stuk>)
-    o bloem               : 710    <g> (-2 <kg>)
+    o bloem               : 700    <g> (-0.5 <kg>)
     o bloemsuiker         : 20     <g> (-0 <g>)
-    O boontjes            : 3      <zak>
+    O boontjes            : 2      <zak>
     O boudours            : 2      <pak>
     O cacao               : 1      <beetje>
     o chipolata           : 10     <stuk> (-4 <stuk>)
@@ -14,18 +14,18 @@ needed ingredients
     O confituur           : 1      <pot>
     o diepvries broccoli  : 1      <zak> (-0.6 <zak>)
     o diepvrieserwten     : 1      <kg> (-0.1 <kg>)
-    o ei                  : 12     <stuk> (-8 <stuk>)
+    o ei                  : 11     <stuk> (-8 <stuk>)
     O emmental            : 300    <g>
     o fruit               : 70     <stuk> (-2 <stuk>)
-    o gehakt              : 1400   <g> (-400 <g>)
-    O geraspte kaas       : 4      <zak>
+    o gehakt              : 800    <g> (-400 <g>)
+    O geraspte kaas       : 2      <zak>
     O gerookte zalm       : 1      <pak>
     o granola             : 1      <zak> (-1.5 <zak>)
     o groentenbouillon    : 3      <stuk> (-36 <stuk>)
     O hamblokjes          : 1      <doos>
-    O hamburger           : 3      <stuk>
     o ketchup             : 1      <fles> (-1 <fles>)
     o kinnekessuiker      : 20     <g> (-1.8 <kg>)
+    o kippenbout          : 7      <stuk> (-0 <stuk>)
     o koekjes             : 42     <stuk> (-50 <stuk>)
     o kotelet             : 2      <stuk> (-2 <stuk>)
     o kroketten           : 1      <zak> (-0.8 <zak>)
@@ -33,73 +33,74 @@ needed ingredients
     o krulletjes          : 300    <g> (-2000 <g>)
     o leerdammer          : 9      <plakje> (-15 <plakje>)
     O look                : 1      <teentje>
-    O mascarpone          : 375    <g>
+    O mascarpone          : 313    <g>
     o mayo                : 1      <fles> (-0 <fles>)
-    o melk                : 9      <liter> (-5 <liter>)
+    o melk                : 8      <liter> (-5 <liter>)
     o nespresso           : 14     <capsule> (-9 <capsule>)
-    o nootmuskaat         : 1      <beetje> (-30 <beetje>)
     O nutella             : 1      <pot>
     O papaboter           : 1      <bakje>
-    O paprika             : 2      <stuk>
+    O paprika             : 3      <stuk>
     o pasta               : 300    <g> (-500 <g>)
-    o patat               : 48     <stuk> (-30 <stuk>)
+    o patat               : 30     <stuk> (-30 <stuk>)
     O prei                : 5      <stuk>
     O puddingpoeder       : 2      <zak>
     o rode kool           : 1      <pot> (-2 <pot>)
     O salami              : 1      <pak>
     O selder              : 2      <stuk>
     o senseo              : 14     <pad> (-30 <pad>)
-    o tomatenconcentraat  : 5      <blik> (-3 <blik>)
+    o tomatenconcentraat  : 4      <blik> (-3 <blik>)
     o ui                  : 5      <stuk> (-4 <stuk>)
     O vannillesuiker      : 1      <zak>
     O veggieburger        : 2      <stuk>
-    o witte kool          : 1      <stuk> (-0.0 <stuk>)
+    O vis                 : 5      <stuk>
     o wortel              : 30     <stuk> (-15 <stuk>)
     o yoghurtjes          : 13     <pot> (-0 <pot>)
 
 shopping list
 - - - - - - - - - - - - - - - - - - - - 
+    O basmati             : 1      <kg>
     O biefstuk            : 1      <stuk>
+    O bloem               : 200    <g>
     O bloemsuiker         : 20     <g>
-    O boontjes            : 3      <zak>
+    O boontjes            : 2      <zak>
     O boudours            : 2      <pak>
     O cacao               : 1      <beetje>
     O chipolata           : 6      <stuk>
     O chocola             : 400    <g>
     O chocotoffs          : 1      <zak>
     O confituur           : 1      <pot>
+    O diepvries broccoli  : 1      <zak>
     O diepvrieserwten     : 1      <kg>
-    O ei                  : 4      <stuk>
+    O ei                  : 3      <stuk>
     O emmental            : 300    <g>
     O fruit               : 68     <stuk>
     O gedroogde abrikozen : 1      <pak>
-    O gehakt              : 1000   <g>
-    O geraspte kaas       : 4      <zak>
+    O gehakt              : 400    <g>
+    O geraspte kaas       : 2      <zak>
     O gerookte zalm       : 1      <pak>
     O gom                 : 1      <stuk>
     O hamblokjes          : 1      <doos>
-    O hamburger           : 3      <stuk>
+    O kippenbout          : 7      <stuk>
     O kroketten           : 1      <zak>
     O kruimeldeeg         : 1      <stuk>
     O look                : 1      <teentje>
-    O mascarpone          : 375    <g>
+    O mascarpone          : 313    <g>
     O mayo                : 1      <fles>
-    O melk                : 4      <liter>
+    O melk                : 3      <liter>
     O nespresso           : 5      <capsule>
     O nutella             : 1      <pot>
     O papaboter           : 1      <bakje>
-    O paprika             : 2      <stuk>
-    O patat               : 18     <stuk>
+    O paprika             : 3      <stuk>
     O prei                : 5      <stuk>
     O puddingpoeder       : 2      <zak>
     O salami              : 1      <pak>
     O selder              : 2      <stuk>
     O studentenhaver      : 1      <doos>
-    O tomatenconcentraat  : 2      <blik>
+    O tomatenconcentraat  : 1      <blik>
     O ui                  : 1      <stuk>
     O vannillesuiker      : 1      <zak>
     O veggieburger        : 2      <stuk>
+    O vis                 : 5      <stuk>
     O wc-papier           : 1      <pak>
-    O witte kool          : 1      <stuk>
     O wortel              : 15     <stuk>
     O yoghurtjes          : 13     <pot>
