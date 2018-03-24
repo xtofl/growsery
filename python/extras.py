@@ -2,9 +2,9 @@ from entities import Ingredient, Amount
 from units import *
 
 extras = [
-    Ingredient("wc-papier", Amount(1, pak)),
-    Ingredient("gom", Amount(1, stuk)),
-    Ingredient("chocotoffs", Amount(1, zak)),
-    Ingredient("studentenhaver", Amount(1, doos)),
-    Ingredient("gedroogde abrikozen", Amount(1, pak)),
+    Ingredient("tandenborstel-opzetstuk", Amount(1, pak)),
+    Ingredient("tandenborstel voor blokjes", Amount(1, stuk)),
+    Ingredient("cursusbladen geruit", Amount(2, pak)),
+    Ingredient("gele marker", Amount(1, stuk)),
+    Ingredient("tippex", Amount(1, stuk)),
 ]

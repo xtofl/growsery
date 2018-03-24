@@ -17,36 +17,25 @@ menu = [
     #zaterdag
     for_people(5).serve(
         Recipes.vis,
-        Recipes.erwtjes_en_worteltjes,
-        Recipes.patatten
+        Recipes.groentenmix,
+        Recipes.basmati
     ),
 
     #zondag
-    for_people(2).serve(Recipes.veggieburger),
-    for_people(5).serve(
-        Recipes.balletjes_tomatensaus_met_boontjes,
-        Recipes.patatten,
-        Recipes.tiramisu
-    ),
+    for_people(5).serve(Recipes.worst, Recipes.wortelpuree),
 
     #maandag
     for_people(5).serve(
-        Recipes.kippenboutjes,
-        Recipes.groentenmix,
-        Recipes.basmati,
-        Recipes.pudding
-    ),
-
-    #dinsdag
-    for_people(5).serve(
         Recipes.pasta_bolognese),
 
+    #dinsdag
+    for_people(7).serve(
+        Recipes.papaschotel,
+    ),
+
     #woensdag
-    for_people(2).serve(Recipes.kotelet),
-    for_people(3).serve(Recipes.biefstuk),
     for_people(5).serve(
-        Recipes.erwtjes_en_worteltjes,
-        Recipes.basmati
+        Recipes.kip_met_currysaus_perziken_en_patatten,
     ),
 
     #donderdag
@@ -56,7 +45,8 @@ menu = [
 
     #vrijdag
     for_people(5).serve(
-        Recipes.quiche_met_zalm_en_broccoli
+        Recipes.slaatje_gezond,
+        Recipes.friet
     ),
 
 ] + [
