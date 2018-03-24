@@ -29,7 +29,7 @@ menu = [
         Recipes.pasta_bolognese),
 
     #dinsdag
-    for_people(7).serve(
+    for_people(6).serve(
         Recipes.papaschotel,
     ),
 
