@@ -205,6 +205,7 @@ class Recipes(BasicRecipes):
         Ingredient("bakboter", Amount(1, beetje)),
     ])
     groentenmix = Recipe(for_people=5, ingredients=[
+        Ingredient("wortel", Amount(4, stuk)),
         Ingredient("paprika", Amount(1, stuk)),
         Ingredient("ui", Amount(1, stuk)),
         Ingredient("diepvries broccoli", Amount(0.3, zak))

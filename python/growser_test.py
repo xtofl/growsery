@@ -81,9 +81,12 @@ def test_amounts_behave_as_monoid():
 
     assert reduce(add, (a, b, a, b), Amount.zero) == Amount(30, U.r)
 
-x = growser.ingredient("x", 1, U.r)
-y = growser.ingredient("y", 1, U.s)
-z = growser.ingredient("z", 1, U.t)
+def ingredient(name, amount, unit):
+    return growser.Ingredient(name, Amount(amount, unit))
+
+x = ingredient("x", 1, U.r)
+y = ingredient("y", 1, U.s)
+z = ingredient("z", 1, U.t)
 
 a = growser.IngredientList([x, y])
 b = growser.IngredientList([x, z])
