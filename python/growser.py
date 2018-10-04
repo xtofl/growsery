@@ -64,7 +64,7 @@ def serve_for(for_people, recipe):
 def amount_str(amount):
     return "{0:<6.0f} {1:<2}".format(
             ceil(amount.number),
-            amount.unit)
+            str(amount.unit))
 
 def print_ingredients(ingredients, pantry=None):
     for ingredient in sorted(ingredients, key=lambda i: i.name):
