@@ -1,0 +1,42 @@
+
+shopping list
+- - - - - - - - - - - - - - - - - - - - 
+    O batterijtjes        : 3      <stuk>
+    O chipolata           : 16     <stuk>
+    O chocola             : 200    <g>
+    O cursusbladen geruit : 2      <pak>
+    O ei                  : 12     <stuk>
+    O emmental            : 300    <g>
+    O frigolampje         : 2      <stuk>
+    O fruit               : 68     <stuk>
+    O gehakt              : 900    <g>
+    O geitenkaasje        : 6      <stuk>
+    O gele marker         : 1      <stuk>
+    O geraspte kaas       : 4      <zak>
+    O granola             : 1      <zak>
+    O honing              : 1      <beetje>
+    O ijsbergsla          : 1      <stuk>
+    O kipfilet            : 500    <g>
+    O koekjes             : 22     <stuk>
+    O look                : 1      <teentje>
+    O mayo                : 1      <fles>
+    O nespresso           : 8      <capsule>
+    O nutella             : 1      <pot>
+    O papaboter           : 1      <bakje>
+    O paprika             : 3      <stuk>
+    O patat               : 43     <stuk>
+    O perziken in blik    : 1      <blik>
+    O prei                : 5      <stuk>
+    O puddingpoeder       : 1      <zak>
+    O salami              : 1      <pak>
+    O selder              : 2      <stuk>
+    O tandenborstel voor blokjes: 1      <stuk>
+    O tandenborstel-opzetstuk: 1      <pak>
+    O tippex              : 1      <stuk>
+    O tomaat              : 4      <stuk>
+    O vannillesuiker      : 1      <zak>
+    O vinaigrette         : 1      <zak>
+    O vis                 : 5      <stuk>
+    O witte kool          : 1      <stuk>
+    O wortel              : 28     <stuk>
+    O yoghurtjes          : 13     <pot>
