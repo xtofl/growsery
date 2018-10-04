@@ -8,7 +8,7 @@ This tool is intended to help in my house hold: plan next week's menu, find out 
 
 It also intends to grow knowledge on the way: remember what a typical menu looks like, remember what ingredients are needed for a menu, so that it becomes easier and easier to obtain your next grocery list.
 
-[![Frontend Build Status](https://drone.io/github.com/xtofl/growsery/status.png)](https://drone.io/github.com/xtofl/growsery/latest)
+[![Build Status](https://travis-ci.org/xtofl/growsery.svg?branch=master)](https://travis-ci.org/xtofl/growsery)
 
 Roadmap
 -------
