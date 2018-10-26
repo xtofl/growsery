@@ -105,6 +105,15 @@ class BasicRecipes:
         Ingredient("veggieburger", Amount(1, stuk)),
         Ingredient("bakboter", Amount(1, beetje))
     ])
+BasicRecipes.bolognesesaus = CompoundRecipe(5, [
+        Recipe(for_people=5, ingredients=[
+            Ingredient("wortel", Amount(4, stuk)),
+            Ingredient("gehakt", Amount(300, gram)),
+            Ingredient("paprika", Amount(2, stuk)),
+            Ingredient("ui", Amount(1, stuk)),
+            Ingredient("look", Amount(1, teentje))
+        ]),
+        BasicRecipes.tomatensaus])
 
 class Recipes(BasicRecipes):
     papaschotel = CompoundRecipe(for_people=5, recipes=[BasicRecipes.papakool, BasicRecipes.puree])
@@ -123,7 +132,7 @@ class Recipes(BasicRecipes):
                 Ingredient("vinaigrette", Amount(1, zakje)),
                 Ingredient("appel", Amount(2, stuk)),
                 Ingredient("geitenkaasje", Amount(6, stuk)),
-                Ingredient("honing", Amount(1, beetje)),
+                Ingredient("honing", Amount(.1, pot)),
             ])
         ])
     balletjes_tomatensaus_met_boontjes =\
@@ -136,14 +145,9 @@ class Recipes(BasicRecipes):
     pasta_bolognese = CompoundRecipe(5, [
         Recipe(for_people=5, ingredients=[
             Ingredient("pasta", Amount(300, gram)),
-            Ingredient("wortel", Amount(4, stuk)),
-            Ingredient("gehakt", Amount(300, gram)),
-            Ingredient("paprika", Amount(2, stuk)),
             Ingredient("emmental", Amount(300, gram)),
-            Ingredient("ui", Amount(1, stuk)),
-            Ingredient("look", Amount(1, teentje))
         ]),
-        BasicRecipes.tomatensaus])
+        BasicRecipes.bolognesesaus])
     kip_met_currysaus_perziken_en_patatten = Recipe(for_people=5, ingredients=[
         Ingredient("kipfilet", Amount(500, gram)),
         Ingredient("perziken in blik", Amount(1, blik)),
@@ -242,6 +246,18 @@ class Recipes(BasicRecipes):
             Ingredient("ananas", Amount(1, blikje))
         ])
     ])
+
+    balletjes_met_seldersaus = Recipe(for_people=5, ingredients=[
+
+    ])
+
+    caesar_salad = Recipe(for_people=5, ingredients=[
+        Ingredient("sla", Amount(.5, stuk)),
+        Ingredient("zachte kip", Amount(5, stuk)),
+        Ingredient("ei", Amount(5, stuk)),
+        Ingredient("dressing", Amount(.3, liter)),
+    ])
+
     wraps = Recipe(for_people=5, ingredients=[
         Ingredient("wraps", Amount(10, stuk)),
         Ingredient("komkommer", Amount(1, stuk)),
@@ -269,6 +285,16 @@ class Recipes(BasicRecipes):
         Ingredient("puddingpoeder", Amount(1, zakje)),
         Ingredient("melk", Amount(1, liter)),
         Ingredient("chocola", Amount(200, gram))
+    ])
+
+    lasagna = CompoundRecipe(for_people=5, recipes=[
+            Recipe(for_people=5, ingredients=[
+                Ingredient("lasangnevel", Amount(1, doos))
+            ]),
+            BasicRecipes.bolognesesaus
+        ])
+
+    tompoes = Recipe(for_people=5, ingredients=[
     ])
 
 def all_recipes():

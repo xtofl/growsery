@@ -22,6 +22,7 @@ pantry = [
     Ingredient("witte kool", Amount(.0, stuk)),
     Ingredient("bakboter", Amount(2, fles)),
     Ingredient("ei", Amount(1, stuk)),
+    Ingredient("prei", Amount(4, stuk)),
 
     Ingredient("leerdammer", Amount(10, plakje)),
     Ingredient("wortel", Amount(0, stuk)),
@@ -32,10 +33,12 @@ pantry = [
     #kast
     Ingredient("risotto", Amount(1, kg)),
     Ingredient("basmati", Amount(.8, kg)),
+    Ingredient("honing", Amount(1, pot)),
 
     Ingredient("bloem", Amount(3, kg)),
     Ingredient("pasta", Amount(700,gram)),
     Ingredient("krulletjes", Amount(500, gram)),
+    Ingredient("vinaigrette", Amount(3, zakje)),
 
     Ingredient("fruit", Amount(2, stuk)),
     Ingredient("banaan", Amount(0, stuk)),
