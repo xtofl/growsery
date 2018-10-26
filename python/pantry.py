@@ -71,7 +71,8 @@ pantry = [
     Ingredient("koekjes", Amount(20, stuk)),
     Ingredient("granola", Amount(0.5, zak)),
 
-    Ingredient("melk", Amount(8, liter)),
+    Ingredient("melk", Amount(0, liter)),
+    Ingredient("melk lactosevrij", Amount(0, liter)),
 
     Ingredient("tomaten passata", Amount(2, doos)),
     Ingredient("mais", Amount(3, blik)),

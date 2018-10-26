@@ -25,17 +25,19 @@ menu = [
     for_people(5).serve(Recipes.worst, Recipes.wortelpuree),
 
     #maandag
+    for_people(10).serve(
+        Recipes.kip_met_currysaus_perziken_en_patatten,
+    ),
+
+    #dinsdag
     for_people(5).serve(
         Recipes.pasta_bolognese),
 
-    #dinsdag
-    for_people(6).serve(
-        Recipes.papaschotel,
-    ),
-
     #woensdag
     for_people(5).serve(
-        Recipes.kip_met_currysaus_perziken_en_patatten,
+        Recipes.biefstuk,
+        Recipes.patatten,
+        Recipes.erwtjes_en_worteltjes
     ),
 
     #donderdag
@@ -50,7 +52,6 @@ menu = [
     ),
 
 ] + [
-    Serving(Recipes.granola, for_people=1),
     Serving(Recipes.koekjes, for_people=3),
     Serving(Recipes.fruit, for_people=5),
     Serving(Recipes.beleg, for_people=5),
