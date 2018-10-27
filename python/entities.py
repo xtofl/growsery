@@ -5,15 +5,16 @@ classes defining shopping list objects
 from collections import namedtuple
 from functools import reduce
 
+identity = lambda x: x
 
 class Unit:
     def __init__(self, label, conversions=None):
         self.label = label
-        self.conversions = dict(conversions) if conversions else {}
-        self.conversions[self] = lambda x: x
+        self.conversions = {c.label: f for c, f in conversions.items()} if conversions else {}
+        self.conversions[label] = identity
 
     def to(self, other):
-        return self.conversions[other]
+        return self.conversions[other.label]
 
     def __repr__(self):
         return "<{}>".format(self.label)
