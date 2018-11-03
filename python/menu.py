@@ -16,16 +16,15 @@ menu = [
 
     #zaterdag
     for_people(5).serve(
-        Recipes.vis,
-        Recipes.groentenmix,
-        Recipes.basmati
+        Recipes.slaatje_gezond,
+        Recipes.friet
     ),
 
     #zondag
     for_people(5).serve(Recipes.worst, Recipes.wortelpuree),
 
     #maandag
-    for_people(10).serve(
+    for_people(7).serve(
         Recipes.kip_met_currysaus_perziken_en_patatten,
     ),
 
@@ -47,10 +46,10 @@ menu = [
 
     #vrijdag
     for_people(5).serve(
-        Recipes.slaatje_gezond,
-        Recipes.friet
+        Recipes.vis,
+        Recipes.groentenmix,
+        Recipes.basmati
     ),
-
 ] + [
     Serving(Recipes.koekjes, for_people=3),
     Serving(Recipes.fruit, for_people=5),
