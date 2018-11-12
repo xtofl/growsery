@@ -6,7 +6,7 @@ a system to extract a shopping list from a week menu
 import sys
 
 from entities import *
-from data import Recipes, menu, pantry, from_pantry, extras
+from data import Recipes, menu, all_dishes, pantry, from_pantry, extras
 from math import ceil
 
 def subtract_amount(lhs, rhs):
@@ -82,9 +82,13 @@ def print_ingredients(ingredients, pantry=None):
 
 def main():
     if "-v" in sys.argv:
+        print("menu")
+        for dish in menu:
+            print("dish: ")
+            print(dish)
         print("needed ingredients")
-        print_ingredients(needed_ingredients(menu), pantry)
-    shopping_list_menu = resulting_list(menu, pantry)
+        print_ingredients(needed_ingredients(all_dishes), pantry)
+    shopping_list_menu = resulting_list(all_dishes, pantry)
     shopping_list = join_ingredients(shopping_list_menu, extras)
     print("\nshopping list\n" + "- "*20)
     print_ingredients(shopping_list)

@@ -21,9 +21,9 @@ menu = [
     # ),
 
     #maandag
-    # for_people(1).serve(
-    #     Recipes.kip_met_currysaus_perziken_en_patatten,
-    # ),
+    for_people(1).serve(
+        Recipes.kip_met_currysaus_perziken_en_patatten,
+    ),
 
     #dinsdag
     for_people(5).serve(
