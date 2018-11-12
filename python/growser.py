@@ -67,6 +67,10 @@ def amount_str(amount):
             amount.unit)
 
 def print_ingredients(ingredients, pantry=None):
+    print("      {0:<20}  {1} (-{2})".format(
+            "ingredient.name",
+            "amount",
+            "in_pantry amount"))
     for ingredient in sorted(ingredients, key=lambda i: i.name):
         in_pantry = from_pantry(pantry, ingredient) if pantry else None
         if in_pantry:

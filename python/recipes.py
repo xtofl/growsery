@@ -45,7 +45,7 @@ class BasicRecipes:
 
     koekjes = Recipe(for_people=5, ingredients=[
         Ingredient("koekjes", Amount(10, stuk)),
-        Ingredient("yoghurtjes", Amount(3, potje))
+        Ingredient("yoghurt", Amount(0.3, pot))
         ])
 
     fruit = Recipe(for_people=5, ingredients=[Ingredient("fruit", Amount(10, stuk))])
@@ -144,7 +144,7 @@ class Recipes(BasicRecipes):
             BasicRecipes.tomatensaus])
     pasta_bolognese = CompoundRecipe(5, [
         Recipe(for_people=5, ingredients=[
-            Ingredient("pasta", Amount(300, gram)),
+            Ingredient("spaghetti", Amount(400, gram)),
             Ingredient("emmental", Amount(300, gram)),
         ]),
         BasicRecipes.bolognesesaus])
@@ -259,7 +259,7 @@ class Recipes(BasicRecipes):
     ])
 
     wraps = Recipe(for_people=5, ingredients=[
-        Ingredient("wraps", Amount(10, stuk)),
+        Ingredient("wraps", Amount(8, stuk)),
         Ingredient("komkommer", Amount(1, stuk)),
         Ingredient("look", Amount(1, teentje)),
         Ingredient("peper", Amount(1, beetje)),

@@ -21,9 +21,9 @@ menu = [
     # ),
 
     #maandag
-    for_people(1).serve(
-        Recipes.kip_met_currysaus_perziken_en_patatten,
-    ),
+    # for_people(1).serve(
+    #     Recipes.kip_met_currysaus_perziken_en_patatten,
+    # ),
 
     #dinsdag
     for_people(5).serve(
@@ -59,6 +59,7 @@ all_dishes = menu + [
     Serving(Recipes.nespresso, for_people=2),
     ] * 7 \
     + [
-        just("citroenthee", Amount(1, doos))
+        just("citroenthee", Amount(1, doos)),
+        just("zakdoekjes", Amount(2, doos))
     ] \
 + reserve
