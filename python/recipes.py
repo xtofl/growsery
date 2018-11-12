@@ -297,10 +297,21 @@ class Recipes(BasicRecipes):
     tompoes = Recipe(for_people=5, ingredients=[
     ])
 
+    pizza_oetker = Recipe(for_people=5, ingredients=[
+        Ingredient("pizza hawai", Amount(1, stuk)),
+        Ingredient("pizza margarita", Amount(2, stuk)),
+        Ingredient("pizza pollo", Amount(1, stuk))
+    ])
+
+just = lambda what, amount: Serving(Recipe(for_people=1, ingredients=[Ingredient(what, amount)]), for_people=1)
+
 def all_recipes():
     return \
         set(dir(Recipes))\
         .difference(set(dir(BasicRecipes)))
+
+def recipe_name(recipe):
+    return next(k for k in dir(Recipes) if getattr(Recipes, k) is recipe)
 
 if __name__ == "__main__":
     for r in sorted(all_recipes()):
