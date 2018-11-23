@@ -29,10 +29,18 @@ koffie_capsule = Unit("capsule")
 doos = Unit("doos")
 doosje = doos
 
+takje = Unit("takje")
 
 beetje = Unit("beetje", {
     liter: lambda x: x/100,
     fles: lambda x: x/100
+})
+
+koffielepel = Unit("kl", {
+    beetje: lambda x: x
+})
+eetlepel = Unit("el", {
+    koffielepel: lambda x: 5*x
 })
 
 def test_units():

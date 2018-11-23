@@ -15,20 +15,27 @@ menu = [
     Serving(Recipes.groentensoep, for_people=5),
 
     #zaterdag
-    # for_people(5).serve(
-    #     Recipes.slaatje_gezond,
-    #     Recipes.friet
-    # ),
+    for_people(5).serve(
+        Recipes.zalm,
+        Recipes.erwtjes_en_worteltjes,
+        Recipes.puree
+    ),
+
+    #zondag
+    for_people(5).serve(
+        Recipes.falafel,
+        Recipes.sla, Recipes.tomaat,
+        Recipes.pitabroodjes
+    ),
 
     #maandag
-    # for_people(1).serve(
-    #     Recipes.kip_met_currysaus_perziken_en_patatten,
-    # ),
+     for_people(7).serve(
+         Recipes.papaschotel,
+     ),
 
     #dinsdag
     for_people(5).serve(
-        Recipes.worst,
-        Recipes.wortelpuree
+        Recipes.pasta_bolognese
     ),
 
     #woensdag
@@ -38,28 +45,25 @@ menu = [
 
     #donderdag
     for_people(5).serve(
-        Recipes.pizza_oetker,
+        Recipes.pasta,
+        Recipes.pesto,
     ),
 
     #vrijdag
-    for_people(4).serve(
-        Recipes.pasta_bolognese),
-
     #zaterdag
-    for_people(4).serve(
-        Recipes.kippenboutjes
-    )
 ]
+
 
 all_dishes = menu + [
     Serving(Recipes.koekjes, for_people=3),
     Serving(Recipes.fruit, for_people=5),
     Serving(Recipes.beleg, for_people=5),
-    Serving(Recipes.senseo, for_people=2),
-    Serving(Recipes.nespresso, for_people=2),
     ] * 7 \
     + [
         just("citroenthee", Amount(1, doos)),
         just("zakdoekjes", Amount(2, doos))
     ] \
+    + [
+        just("senseo", Amount(4, stuk))
+    ] * 7 \
 + reserve

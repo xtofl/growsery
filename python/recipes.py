@@ -33,6 +33,12 @@ class BasicRecipes:
     rodekool = Recipe(for_people=5, ingredients=[
         Ingredient("rode kool", Amount(1, pot))
     ])
+    sla = Recipe(for_people=8, ingredients=[
+        Ingredient("sla", Amount(1, stuk))
+    ])
+    tomaat = Recipe(for_people=1, ingredients=[
+        Ingredient("tomaat", Amount(1.5, stuk))
+    ])
     zelfgemaakte_appelmoes = Recipe(for_people=5, ingredients=[
         Ingredient("stoofappel", Amount(5, stuk))
     ])
@@ -57,6 +63,16 @@ class BasicRecipes:
         Ingredient("papaboter", Amount(0.02, bakje)),
         Ingredient("confituur", Amount(0.05, pot)),
         Ingredient("salami", Amount(.1, pak))
+    ])
+
+    pitabroodjes = Recipe(for_people=4, ingredients=[
+        Ingredient("pitabroodje", Amount(8, stuk))
+    ])
+    pasta = Recipe(for_people=4, ingredients=[
+        Ingredient("pasta", Amount(500, gram))
+    ])
+    pesto = Recipe(for_people=2, ingredients=[
+        Ingredient("pesto", Amount(0.1, potje))
     ])
 
     groentensoep = Recipe(for_people=2, ingredients=[
@@ -223,6 +239,21 @@ class Recipes(BasicRecipes):
         Ingredient("vis", Amount(1, stuk))
     ])
 
+    zalm = Recipe(for_people=1, ingredients=[
+        Ingredient("zalm", Amount(1, stuk))
+    ])
+
+    falafel = Recipe(for_people=4, ingredients=[
+        Ingredient("kikkererwten", Amount(500, gram)),
+        Ingredient("ui", Amount(1, stuk)),
+        Ingredient("look", Amount(2, teentje)),
+        Ingredient("munt", Amount(1, takje)),
+        Ingredient("koriander", Amount(2, takje)),
+        Ingredient("komijn", Amount(1, beetje)),
+        Ingredient("cayennepeper", Amount(1, beetje)),
+        Ingredient("sesamolie", Amount(0.1, beetje)),
+    ])
+
     scampi = Recipe(for_people=2, ingredients=[
         Ingredient("scampi", Amount(1, zak)),
         Ingredient("look", Amount(1, teentje)),
@@ -247,10 +278,6 @@ class Recipes(BasicRecipes):
         ])
     ])
 
-    balletjes_met_seldersaus = Recipe(for_people=5, ingredients=[
-
-    ])
-
     caesar_salad = Recipe(for_people=5, ingredients=[
         Ingredient("sla", Amount(.5, stuk)),
         Ingredient("zachte kip", Amount(5, stuk)),
@@ -272,7 +299,7 @@ class Recipes(BasicRecipes):
         Ingredient("ijsbergsla", Amount(.5, stuk))
     ])
     senseo = Recipe(for_people=2, ingredients=[
-        Ingredient("senseo", Amount(2, senseo_pad))])
+        Ingredient("senseo", Amount(2, stuk))])
     nespresso = Recipe(for_people=1, ingredients=[
         Ingredient("nespresso", Amount(1, koffie_capsule))])
     tiramisu = Recipe(for_people=8, ingredients=[
@@ -293,9 +320,6 @@ class Recipes(BasicRecipes):
             ]),
             BasicRecipes.bolognesesaus
         ])
-
-    tompoes = Recipe(for_people=5, ingredients=[
-    ])
 
     pizza_oetker = Recipe(for_people=5, ingredients=[
         Ingredient("pizza hawai", Amount(1, stuk)),

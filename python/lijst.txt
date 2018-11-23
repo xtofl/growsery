@@ -2,101 +2,127 @@ menu
 dish: 
 Serving(recipe=Recipe(for_people=2, ingredients=[selder: 0.5 <stuk>, wortel: 4 <stuk>, prei: 2 <stuk>, ui: 1 <stuk>, groentenbouillon: 1 <stuk>]), for_people=5)
 dish: 
-Serving(recipe=Compound [Recipe(for_people=5, ingredients=[chipolata: 10 <stuk>]), Recipe(for_people=5, ingredients=[patat: 15 <stuk>, wortel: 10 <stuk>, ei: 1 <stuk>, melk: 0.5 <liter>, nootmuskaat: 1 <beetje>])], for_people=5)
+Serving(recipe=Compound [Recipe(for_people=1, ingredients=[zalm: 1 <stuk>]), Recipe(for_people=5, ingredients=[diepvrieserwten: 0.5 <kg>, wortel: 8 <stuk>]), Recipe(for_people=5, ingredients=[patat: 15 <stuk>, bakboter: 1 <beetje>, nootmuskaat: 1 <beetje>, ei: 1 <stuk>])], for_people=5)
+dish: 
+Serving(recipe=Compound [Recipe(for_people=4, ingredients=[kikkererwten: 500 <g>, ui: 1 <stuk>, look: 2 <teentje>, munt: 1 <takje>, koriander: 2 <takje>, komijn: 1 <beetje>, cayennepeper: 1 <beetje>, sesamolie: 0.1 <beetje>]), Recipe(for_people=8, ingredients=[sla: 1 <stuk>]), Recipe(for_people=1, ingredients=[tomaat: 1.5 <stuk>]), Recipe(for_people=4, ingredients=[pitabroodje: 8 <stuk>])], for_people=5)
+dish: 
+Serving(recipe=Compound [Compound [Recipe(for_people=5, ingredients=[witte kool: 0.5 <stuk>, gehakt: 500 <g>, geraspte kaas: 2 <zak>]), Recipe(for_people=5, ingredients=[patat: 15 <stuk>, bakboter: 1 <beetje>, nootmuskaat: 1 <beetje>, ei: 1 <stuk>])]], for_people=7)
+dish: 
+Serving(recipe=Compound [Compound [Recipe(for_people=5, ingredients=[spaghetti: 400 <g>, emmental: 300 <g>]), Compound [Recipe(for_people=5, ingredients=[wortel: 4 <stuk>, gehakt: 300 <g>, paprika: 2 <stuk>, ui: 1 <stuk>, look: 1 <teentje>]), Recipe(for_people=5, ingredients=[bloem: 50 <g>, bakboter: 0.1 <fles>, melk: 0.8 <liter>, tomatenconcentraat: 2 <blik>])]]], for_people=5)
 dish: 
 Serving(recipe=Compound [Recipe(for_people=5, ingredients=[wraps: 8 <stuk>, komkommer: 1 <stuk>, look: 1 <teentje>, peper: 1 <beetje>, mais: 1 <blik>, ui: 1 <stuk>, kipfilet: 300 <g>, kippenkruiden: 1 <beetje>, yoghurt: 0.3 <pot>, wortel: 4 <stuk>, ijsbergsla: 0.5 <stuk>])], for_people=5)
 dish: 
-Serving(recipe=Compound [Recipe(for_people=5, ingredients=[pizza hawai: 1 <stuk>, pizza margarita: 2 <stuk>, pizza pollo: 1 <stuk>])], for_people=5)
-dish: 
-Serving(recipe=Compound [Compound [Recipe(for_people=5, ingredients=[spaghetti: 400 <g>, emmental: 300 <g>]), Compound [Recipe(for_people=5, ingredients=[wortel: 4 <stuk>, gehakt: 300 <g>, paprika: 2 <stuk>, ui: 1 <stuk>, look: 1 <teentje>]), Recipe(for_people=5, ingredients=[bloem: 50 <g>, bakboter: 0.1 <fles>, melk: 0.8 <liter>, tomatenconcentraat: 2 <blik>])]]], for_people=4)
-dish: 
-Serving(recipe=Compound [Recipe(for_people=5, ingredients=[kippenbout: 7 <stuk>])], for_people=4)
+Serving(recipe=Compound [Recipe(for_people=4, ingredients=[pasta: 500 <g>]), Recipe(for_people=2, ingredients=[pesto: 0.1 <pot>])], for_people=5)
 needed ingredients
       ingredient.name       amount (-in_pantry amount)
     o appelmoes           : 1      <pot> (-0 <pot>)
-    o bakboter            : 1      <fles> (-2 <fles>)
-    o bloem               : 540    <g> (-3.2 <kg>)
-    o bloemsuiker         : 20     <g> (-250 <g>)
-    o chipolata           : 20     <stuk> (-0 <stuk>)
-    o choco               : 2      <pot> (-2 <pot>)
+    o bakboter            : 1      <fles> (-1 <fles>)
+    o bloem               : 550    <g> (-2.2 <kg>)
+    o bloemsuiker         : 20     <g> (-320 <g>)
+    o cayennepeper        : 2      <beetje> (-0 <beetje>)
+    o chipolata           : 10     <stuk> (-5 <stuk>)
+    o choco               : 2      <pot> (-1 <pot>)
     O chocola             : 200    <g>
     o citroenthee         : 1      <doos> (-0 <doos>)
     o confituur           : 1      <pot> (-2 <pot>)
-    o ei                  : 5      <stuk> (-8 <stuk>)
-    O emmental            : 240    <g>
+    o diepvrieserwten     : 1      <kg> (-0.2 <kg>)
+    o ei                  : 7      <stuk> (-1 <stuk>)
+    O emmental            : 300    <g>
     o fruit               : 70     <stuk> (-5 <stuk>)
-    o gehakt              : 240    <g> (-600 <g>)
+    o gehakt              : 1000   <g> (-500 <g>)
+    O geraspte kaas       : 3      <zak>
     o groentenbouillon    : 3      <stuk> (-8 <stuk>)
     o ijsbergsla          : 1      <stuk> (-0 <stuk>)
+    O kikkererwten        : 625    <g>
     o kinnekessuiker      : 20     <g> (-0.8 <kg>)
-    o kipfilet            : 300    <g> (-400 <g>)
-    o kippenbout          : 6      <stuk> (-0 <stuk>)
+    o kipfilet            : 300    <g> (-500 <g>)
     O kippenkruiden       : 1      <beetje>
     o koekjes             : 42     <stuk> (-15 <stuk>)
+    O komijn              : 2      <beetje>
     O komkommer           : 1      <stuk>
-    o kroketten           : 1      <zak> (-0 <zak>)
+    O koriander           : 3      <takje>
+    o kroketten           : 1      <zak> (-1.2 <zak>)
     o leerdammer          : 9      <plakje> (-4 <plakje>)
-    O look                : 2      <teentje>
+    O look                : 5      <teentje>
     o mais                : 1      <blik> (-2 <blik>)
-    o mayo                : 1      <fles> (-1 <fles>)
-    o melk                : 4      <liter> (-3 <liter>)
+    o mayo                : 1      <fles> (-0 <fles>)
+    o melk                : 3      <liter> (-7 <liter>)
+    O munt                : 2      <takje>
     o nespresso           : 14     <capsule> (-0 <capsule>)
-    o nootmuskaat         : 1      <beetje> (-20 <beetje>)
+    o nootmuskaat         : 3      <beetje> (-10 <beetje>)
     O nutella             : 1      <pot>
     O papaboter           : 1      <bakje>
     O paprika             : 2      <stuk>
-    o patat               : 15     <stuk> (-10 <stuk>)
+    o pasta               : 625    <g> (-0 <g>)
+    o patat               : 36     <stuk> (-20 <stuk>)
     O peper               : 1      <beetje>
-    O pizza hawai         : 1      <stuk>
-    O pizza margarita     : 2      <stuk>
-    O pizza pollo         : 1      <stuk>
-    o prei                : 5      <stuk> (-0 <stuk>)
+    O pesto               : 1      <pot>
+    O pitabroodje         : 10     <stuk>
+    o prei                : 5      <stuk> (-3 <stuk>)
     O puddingpoeder       : 1      <zak>
     o rode kool           : 1      <pot> (-2 <pot>)
     O salami              : 1      <pak>
     O selder              : 2      <stuk>
-    o senseo              : 14     <pad> (-0 <pad>)
-    o spaghetti           : 320    <g> (-1000 <g>)
-    o tomatenconcentraat  : 2      <blik> (-4 <blik>)
-    o ui                  : 5      <stuk> (-5 <stuk>)
+    o senseo              : 14     <pad> (-20 <pad>)
+    O sesamolie           : 1      <beetje>
+    O sla                 : 1      <stuk>
+    o spaghetti           : 400    <g> (-500 <g>)
+    O tomaat              : 8      <stuk>
+    o tomatenconcentraat  : 2      <blik> (-8 <blik>)
+    o ui                  : 6      <stuk> (-15 <stuk>)
     O vannillesuiker      : 1      <zak>
-    o wortel              : 28     <stuk> (-2 <stuk>)
+    o witte kool          : 1      <stuk> (-0.0 <stuk>)
+    o wortel              : 26     <stuk> (-12 <stuk>)
     o wraps               : 8      <stuk> (-0 <stuk>)
-    o yoghurt             : 2      <pot> (-2 <pot>)
+    o yoghurt             : 2      <pot> (-0.5 <pot>)
     o zakdoekjes          : 2      <doos> (-2 <doos>)
+    O zalm                : 5      <stuk>
 
 shopping list
 - - - - - - - - - - - - - - - - - - - - 
       ingredient.name       amount (-in_pantry amount)
     O appelmoes           : 1      <pot>
-    O chipolata           : 20     <stuk>
+    O cayennepeper        : 2      <beetje>
+    O chipolata           : 5      <stuk>
+    O choco               : 1      <pot>
     O chocola             : 200    <g>
     O citroenthee         : 1      <doos>
-    O emmental            : 240    <g>
+    O diepvrieserwten     : 1      <kg>
+    O ei                  : 6      <stuk>
+    O emmental            : 300    <g>
     O fruit               : 65     <stuk>
+    O gehakt              : 500    <g>
+    O geraspte kaas       : 3      <zak>
     O ijsbergsla          : 1      <stuk>
-    O kippenbout          : 6      <stuk>
+    O kikkererwten        : 625    <g>
     O kippenkruiden       : 1      <beetje>
     O koekjes             : 27     <stuk>
+    O komijn              : 2      <beetje>
     O komkommer           : 1      <stuk>
-    O kroketten           : 1      <zak>
+    O koriander           : 3      <takje>
     O leerdammer          : 5      <plakje>
-    O look                : 2      <teentje>
-    O melk                : 1      <liter>
+    O look                : 5      <teentje>
+    O mayo                : 1      <fles>
+    O munt                : 2      <takje>
     O nespresso           : 14     <capsule>
     O nutella             : 1      <pot>
     O papaboter           : 1      <bakje>
     O paprika             : 2      <stuk>
-    O patat               : 5      <stuk>
+    O pasta               : 625    <g>
+    O patat               : 16     <stuk>
     O peper               : 1      <beetje>
-    O pizza hawai         : 1      <stuk>
-    O pizza margarita     : 2      <stuk>
-    O pizza pollo         : 1      <stuk>
-    O prei                : 5      <stuk>
+    O pesto               : 1      <pot>
+    O pitabroodje         : 10     <stuk>
+    O prei                : 2      <stuk>
     O puddingpoeder       : 1      <zak>
     O salami              : 1      <pak>
     O selder              : 2      <stuk>
-    O senseo              : 14     <pad>
+    O sesamolie           : 1      <beetje>
+    O sla                 : 1      <stuk>
+    O tomaat              : 8      <stuk>
     O vannillesuiker      : 1      <zak>
-    O wortel              : 26     <stuk>
+    O witte kool          : 1      <stuk>
+    O wortel              : 14     <stuk>
     O wraps               : 8      <stuk>
+    O yoghurt             : 2      <pot>
+    O zalm                : 5      <stuk>
