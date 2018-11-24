@@ -3,6 +3,28 @@ cayennepeper
 komijn
 peper
 
+# gang
+pasta
+appelmoes
+chocola
+citroenthee
+
+kikkererwten
+koekjes
+
+
+look
+patat
+mayo
+munt
+peper
+pesto
+puddingpoeder
+senseo
+sesamolie
+vannillesuiker
+
+
 # frigo
 papaboter
 ei
@@ -26,27 +48,6 @@ prei
 paprika
 salami
 zalm
-
-# gang
-pasta
-appelmoes
-chocola
-citroenthee
-
-kikkererwten
-koekjes
-
-
-look
-patat
-mayo
-munt
-peper
-pesto
-puddingpoeder
-senseo
-sesamolie
-vannillesuiker
 
 # diepvries
 diepvrieserwten
