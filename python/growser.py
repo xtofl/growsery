@@ -9,6 +9,7 @@ from entities import *
 from data import Recipes, menu, all_dishes, pantry, from_pantry, extras
 from math import ceil
 import shop
+import argparse
 
 def subtract_amount(lhs, rhs):
     return lhs + (-1 * rhs)
@@ -65,7 +66,13 @@ def serve_for(for_people, recipe):
 def amount_str(amount):
     return "{0:<6.0f} {1:<2}".format(
             ceil(amount.number),
-            amount.unit)
+            str(amount.unit))
+
+def parse_options():
+    parser = argparse.ArgumentParser(description="growser - a growing grocery list")
+    parser.add_argument("-v", action="store_true", dest="verbose")
+    parser.add_argument("--shop", type=str)
+    return parser.parse_args()
 
 def print_ingredients(ingredients, pantry=None, shop=None):
     print("      {0:<20}  {1} (-{2})".format(
@@ -89,8 +96,8 @@ def print_ingredients(ingredients, pantry=None, shop=None):
                 ingredient.name,
                 amount_str(ingredient.amount)))
 
-def main():
-    if "-v" in sys.argv:
+def main(options):
+    if options.verbose:
         print("menu")
         for dish in menu:
             print("dish: ")
@@ -100,8 +107,12 @@ def main():
     shopping_list_menu = resulting_list(all_dishes, pantry)
     shopping_list = join_ingredients(shopping_list_menu, extras)
     print("\nshopping list\n" + "- "*20)
-    okay = shop.from_file(open("okay.txt", "r"))
-    print_ingredients(shopping_list, shop=okay)
+    if options.shop:
+        the_shop = shop.from_file(open(options.shop, "r"))
+    else:
+        the_shop = None
+    print_ingredients(shopping_list, shop=the_shop)
 
 if __name__ == "__main__":
-    main()
+    options = parse_options()
+    main(options)
