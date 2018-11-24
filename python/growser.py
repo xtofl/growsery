@@ -8,6 +8,7 @@ import sys
 from entities import *
 from data import Recipes, menu, all_dishes, pantry, from_pantry, extras
 from math import ceil
+import shop
 
 def subtract_amount(lhs, rhs):
     return lhs + (-1 * rhs)
@@ -66,12 +67,16 @@ def amount_str(amount):
             ceil(amount.number),
             amount.unit)
 
-def print_ingredients(ingredients, pantry=None):
+def print_ingredients(ingredients, pantry=None, shop=None):
     print("      {0:<20}  {1} (-{2})".format(
             "ingredient.name",
             "amount",
             "in_pantry amount"))
-    for ingredient in sorted(ingredients, key=lambda i: i.name):
+    if shop:
+        key = lambda i: shop.index(i.name)
+    else:
+        key = lambda i: i.name
+    for ingredient in sorted(ingredients, key=key):
         in_pantry = from_pantry(pantry, ingredient) if pantry else None
         if in_pantry:
             print("    o {0:<20}: {1} (-{2} {3})".format(
@@ -95,7 +100,8 @@ def main():
     shopping_list_menu = resulting_list(all_dishes, pantry)
     shopping_list = join_ingredients(shopping_list_menu, extras)
     print("\nshopping list\n" + "- "*20)
-    print_ingredients(shopping_list)
+    okay = shop.from_file(open("okay.txt", "r"))
+    print_ingredients(shopping_list, shop=okay)
 
 if __name__ == "__main__":
     main()

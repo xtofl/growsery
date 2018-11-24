@@ -17,6 +17,7 @@ pantry = [
     Ingredient("currysaus", Amount(12, zakje)),
     Ingredient("kinnekessuiker", Amount(.8, kg)),
     Ingredient("bloemsuiker", Amount(320, gram)),
+    Ingredient("puddingpoeder", Amount(3, zakje)),
 
     #kruiden
     Ingredient("kipkruiden", Amount(20, beetje)),
@@ -28,6 +29,7 @@ pantry = [
     Ingredient("bakboter", Amount(1, fles)),
     Ingredient("ei", Amount(1, stuk)),
     Ingredient("prei", Amount(3, stuk)),
+    Ingredient("selder", Amount(3, stuk)),
 
     Ingredient("leerdammer", Amount(4, plakje)),
     Ingredient("wortel", Amount(12, stuk)),
