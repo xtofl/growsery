@@ -61,7 +61,9 @@ all_dishes = menu + [
     ] * 7 \
     + [
         just("citroenthee", Amount(1, doos)),
-        just("zakdoekjes", Amount(2, doos))
+        just("zakdoekjes", Amount(2, doos)),
+        just("pompelmoes", Amount(1, stuk)),
+        just("tippex", Amount(2, stuk))
     ] \
     + [
         just("senseo", Amount(4, stuk))
