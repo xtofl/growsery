@@ -71,6 +71,7 @@ def amount_str(amount):
 def parse_options():
     parser = argparse.ArgumentParser(description="growser - a growing grocery list")
     parser.add_argument("-v", action="store_true", dest="verbose")
+    parser.add_argument("--show_pantry", action="store_true", dest="show_pantry")
     parser.add_argument("--shop", type=str)
     return parser.parse_args()
 
@@ -103,6 +104,7 @@ def main(options):
             print("dish: ")
             print(dish)
         print("needed ingredients")
+    if options.show_pantry:
         print_ingredients(needed_ingredients(all_dishes), pantry)
     shopping_list_menu = resulting_list(all_dishes, pantry)
     shopping_list = join_ingredients(shopping_list_menu, extras)
