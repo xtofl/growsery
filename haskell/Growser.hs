@@ -1,4 +1,4 @@
-module Growser (Menu(Menu), Dish, Ingredient, shoppingList) where
+module Growser (Menu(Menu), Dish(Dish), Ingredient, shoppingList) where
 
     type Name = String
     data Measure = Measure Name
@@ -27,9 +27,10 @@ module Growser (Menu(Menu), Dish, Ingredient, shoppingList) where
         Ingredient (Amount 1.0 pc) peer]
 
     data Dish = Dish Name [Ingredient]
+    dish_ingredients (Dish _ ingredients) = ingredients
     data Menu = Menu [Dish]
     shoppingList :: Menu -> [Ingredient]
-    shoppingList (Menu []) = []
+    shoppingList (Menu dishes) = concat (map dish_ingredients dishes)
 
     main = putStr (foldr (\g i -> g ++ "\n" ++ i) "" (map show groceries))
 
