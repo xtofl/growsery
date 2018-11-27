@@ -3,6 +3,11 @@ import Test.QuickCheck
 import Control.Exception (evaluate)
 import Growser
 
+pc = Measure "piece"
+piece n name = Ingredient (Amount n pc) name
+wortel = "wortel"
+paprika = "paprika"
+
 main = hspec $ do
     describe "growser" $ do
         it "returns an empty list for an empty menu" $ do
@@ -10,5 +15,5 @@ main = hspec $ do
         
         it "returns the list of ingredients of a single-dish" $ do
             (Growser.shoppingList (Growser.Menu [
-                    Dish "X" []
-                ])) `shouldBe` []
+                    Dish "X" [1 `piece` wortel, 2 `piece` paprika]
+                ])) `shouldBe` [1 `piece` wortel, 2 `piece` paprika]

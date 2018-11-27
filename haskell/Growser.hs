@@ -1,4 +1,10 @@
-module Growser (Menu(Menu), Dish(Dish), Ingredient, shoppingList) where
+module Growser (
+    Menu(Menu),
+    Dish(Dish),
+    Ingredient(Ingredient),
+    Amount(Amount),
+    Measure(Measure),
+    shoppingList) where
 
     type Name = String
     data Measure = Measure Name
