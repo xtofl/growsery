@@ -30,7 +30,7 @@ module Growser (Menu(Menu), Dish(Dish), Ingredient, shoppingList) where
     dish_ingredients (Dish _ ingredients) = ingredients
     data Menu = Menu [Dish]
     shoppingList :: Menu -> [Ingredient]
-    shoppingList (Menu dishes) = concat (map dish_ingredients dishes)
+    shoppingList (Menu dishes) = dishes >>= dish_ingredients
 
     main = putStr (foldr (\g i -> g ++ "\n" ++ i) "" (map show groceries))
 
