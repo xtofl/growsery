@@ -17,3 +17,9 @@ main = hspec $ do
             (Growser.shoppingList (Growser.Menu [
                     Dish "X" [1 `piece` wortel, 2 `piece` paprika]
                 ])) `shouldBe` [1 `piece` wortel, 2 `piece` paprika]
+
+        it "returns the combined list of ingredients of two dishes" $ do
+            (Growser.shoppingList (Growser.Menu [
+                    Dish "X" [1 `piece` wortel, 2 `piece` paprika],
+                    Dish "Y" [1 `piece` wortel, 2 `piece` paprika]
+                ])) `shouldBe` [2 `piece` wortel, 4 `piece` paprika]
