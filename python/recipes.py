@@ -219,6 +219,15 @@ class Recipes(BasicRecipes):
         Ingredient("hamblokjes", Amount(1, doosje)),
         Ingredient("ketchup", Amount(0.3, fles))
     ]),  BasicRecipes.kaassaus])
+    pasta_carbonara = CompoundRecipe(
+        for_people=5,
+        recipes=[Recipe(for_people=5, ingredients=[
+        Ingredient("krulletjes", Amount(300, gram)),
+        Ingredient("hamblokjes", Amount(1, doosje)),
+        Ingredient("tomaat", Amount(2, stuk)),
+        Ingredient("champion", Amount(1, bakje)),
+        Ingredient("parmezaan", Amount(100, gram)),
+    ]),  BasicRecipes.kaassaus])
 
     biefstuk = Recipe(for_people=5, ingredients=[
         Ingredient("biefstuk", Amount(4, stuk)),
@@ -244,7 +253,7 @@ class Recipes(BasicRecipes):
     ])
 
     falafel = Recipe(for_people=4, ingredients=[
-        Ingredient("kikkererwten", Amount(500, gram)),
+        Ingredient("droge kikkererwten", Amount(500, gram)),
         Ingredient("ui", Amount(1, stuk)),
         Ingredient("look", Amount(2, teentje)),
         Ingredient("munt", Amount(1, takje)),

@@ -3,13 +3,18 @@ cayennepeper
 komijn
 peper
 
-# gang
+# gang 1
 pasta
+krulletjes
+
+# gang 2
 appelmoes
 chocola
 citroenthee
-
+melk
+mais
 kikkererwten
+droge kikkererwten
 koekjes
 
 
@@ -20,13 +25,22 @@ munt
 peper
 pesto
 puddingpoeder
+paneermeel
 senseo
 sesamolie
 vannillesuiker
+honing
 
+# gang 3
+keukenrol
+dweildoekjes
+allesreiniger
+ontstopper
+rubber handschoentjes
 
 # frigo
 papaboter
+kruimeldeeg
 ei
 ijsbergsla
 selder
@@ -35,22 +49,31 @@ tomaat
 witte kool
 komkommer
 wortel
+prei
+paprika
+champion
 yoghurt
+lactosevrije yoghurt
 koriander
 emmental
+parmezaan
 leerdammer
 geraspte kaas
 fruit
-gehakt
-chipolata
 pompelmoes
-prei
-paprika
+stoofappel
+hamblokjes
+gehakt
+biefstuk
+chipolata
 salami
 zalm
+kipfilet
+gerookte zalm
 
 # diepvries
 diepvrieserwten
+diepvries broccoli
 kroketten
 
 

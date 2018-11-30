@@ -8,7 +8,15 @@ reserve = [
         Recipes.pannenkoeken,
         Recipes.rodekool, Recipes.worst, Recipes.kroketten, Recipes.appelmoes,
         Recipes.pudding,
-        )
+        ),
+    just("lactosevrije yoghurt", Amount(6, potje)),
+    just("melk", Amount(3, liter)),
+    just("paneermeel", Amount(1, doosje)),
+    just("allesreiniger", Amount(1, fles)),
+    just("keukenrol", Amount(6, stuk)),
+    just("dweildoekjes", Amount(2, zak)),
+    just("honing", Amount(1, pot)),
+    just("rubber handschoentjes", Amount(1, doos)),
 ]
 
 menu = [
@@ -16,9 +24,7 @@ menu = [
 
     #zaterdag
     for_people(5).serve(
-        Recipes.zalm,
-        Recipes.erwtjes_en_worteltjes,
-        Recipes.puree
+        Recipes.wraps,
     ),
 
     #zondag
@@ -29,9 +35,9 @@ menu = [
     ),
 
     #maandag
-     for_people(7).serve(
-         Recipes.papaschotel,
-     ),
+    for_people(5).serve(
+        Recipes.papaschotel,
+    ),
 
     #dinsdag
     for_people(5).serve(
@@ -40,16 +46,20 @@ menu = [
 
     #woensdag
     for_people(5).serve(
-        Recipes.wraps
+        Recipes.biefstuk,
+        Recipes.kroketten,
+        Recipes.zelfgemaakte_appelmoes
     ),
 
     #donderdag
     for_people(5).serve(
-        Recipes.pasta,
-        Recipes.pesto,
+        Recipes.quiche_met_zalm_en_broccoli
     ),
 
     #vrijdag
+    for_people(5).serve(
+        Recipes.pasta_carbonara
+    ),
     #zaterdag
 ]
 
@@ -60,12 +70,6 @@ all_dishes = menu + [
     Serving(Recipes.beleg, for_people=5),
     ] * 7 \
     + [
-        just("citroenthee", Amount(1, doos)),
-        just("zakdoekjes", Amount(2, doos)),
-        just("pompelmoes", Amount(1, stuk)),
-        just("tippex", Amount(2, stuk))
+        just("ontstopper", Amount(1, stuk))
     ] \
-    + [
-        just("senseo", Amount(4, stuk))
-    ] * 7 \
 + reserve
