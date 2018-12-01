@@ -9,17 +9,15 @@ krulletjes
 
 # gang 2
 appelmoes
-chocola
 citroenthee
-melk
 mais
 kikkererwten
 droge kikkererwten
 koekjes
 
-
 look
 patat
+
 mayo
 munt
 peper
@@ -32,7 +30,12 @@ vannillesuiker
 honing
 
 # gang 3
+chocola
+melk
+
 keukenrol
+
+# gang 4
 dweildoekjes
 allesreiniger
 ontstopper
