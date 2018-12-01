@@ -18,6 +18,9 @@ class Unit:
     def __repr__(self):
         return "<{}>".format(self.label)
 
+    def __str__(self):
+        return self.label
+
 
 class Amount:
     def __init__(self, number, unit):
