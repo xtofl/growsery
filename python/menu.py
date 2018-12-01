@@ -1,7 +1,6 @@
 from entities import *
 from units import *
 from recipes import *
-from pantry import pantry, from_pantry
 
 reserve = [
     for_people(5)(
