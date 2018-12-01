@@ -1,8 +1,61 @@
 from entities import *
 from units import *
 from recipes import *
+import pytest
 
-pantry = [
+pantry_string = """
+kippenkruiden: 100 beetje
+komijn: 100 beetje
+droge kikkererwten: 600 gram
+"""
+
+units = {
+    "beetje": beetje,
+    "gram": gram
+}
+
+def pantry_lines(pantry_string):
+    lines = map(str.strip, pantry_string.splitlines(keepends=False))
+    return list(line for line in lines if len(line))
+    assert all(len(s.split(":")) == 2 for s in lines)
+
+def test_pantry_lines():
+    assert ["a: 1 x", "b B: 3 y"] == list(pantry_lines("""
+    a: 1 x
+    b B: 3 y
+    """))
+
+def pantry_items(pantry_lines, units):
+    return [
+        Ingredient(name, Amount(float(n), units[u]))
+            for name, n, u in map(pantry_item_chunks, pantry_lines)
+        ]
+
+def pantry_item_chunks(pantry_line):
+    name, amount_str = pantry_line.split(":")
+    n, unit_str = amount_str.split()
+    return (name, n, unit_str)
+
+def test_pantry_item_chunks():
+    a, b, c = pantry_item_chunks("b B: 2 y")
+    assert ("b B", "2", "y") == (a, b, c)
+    a, b, c = pantry_item_chunks("a: 1 x")
+
+def test_pantry_items():
+    x = Unit("x")
+    y = Unit("y")
+    items = pantry_items(["a: 1 x", "b B: 2 y"], {"x": x, "y": y})
+    assert items[0] == Ingredient("a", Amount(1, x))
+    assert items[1] == Ingredient("b B", Amount(2, y))
+
+    items = pantry_items(pantry_lines("""
+kippenkruiden: 100 beetje
+komijn: 100 beetje
+droge kikkererwten: 600 gram
+"""), {"beetje": beetje, "gram": gram})
+    assert len(items) == 3
+
+pantry = pantry_items(pantry_lines(pantry_string), units) + [
     Ingredient("citroenthee", Amount(1, doosje)),
     Ingredient("senseo", Amount(20, stuk)),
     Ingredient("nespresso", Amount(0, koffie_capsule)),
