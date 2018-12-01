@@ -100,6 +100,19 @@ pantry = [
 
 def from_pantry(pantry, ingredient):
     try:
-        return next(i for i in pantry if i.name == ingredient.name)
+        zero = ingredient.zero()
+        return sum( (i for i in pantry if i.name == ingredient.name), zero)
     except StopIteration:
         return None
+
+def test_from_pantry_finds_ingredients():
+    one = Amount(1, stuk)
+    a = Ingredient("A", one)
+    b = Ingredient("B", one)
+    pantry = [a, b]
+    assert from_pantry(pantry, a) == a
+    assert from_pantry(pantry, b) == b
+    assert Ingredient("not there", Amount(0, stuk)) == from_pantry(pantry, Ingredient("not there", one))
+
+    pantry = [a, a]
+    assert from_pantry(pantry, a) == Ingredient("A", Amount(2, stuk))
