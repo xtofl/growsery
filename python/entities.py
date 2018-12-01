@@ -18,6 +18,9 @@ class Unit:
     def __repr__(self):
         return "<{}>".format(self.label)
 
+    def __str__(self):
+        return self.label
+
 
 class Amount:
     def __init__(self, number, unit):
@@ -58,7 +61,8 @@ Amount.__repr__ = lambda self: "{} {}".format(self.number, self.unit)
 Ingredient = namedtuple("Ingredient", ["name", "amount"])
 Ingredient.__repr__ = lambda self: self.name + ": " + repr(self.amount)
 Ingredient.__rmul__ = lambda self, f: Ingredient(self.name, f * self.amount)
-
+Ingredient.zero = lambda self: Ingredient(self.name, Amount(0, self.amount.unit))
+Ingredient.__add__ = lambda self, other: self.name == other.name and Ingredient(self.name, self.amount + other.amount)
 
 class IngredientList:
     def __init__(self, ingredients):

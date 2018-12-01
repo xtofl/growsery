@@ -6,9 +6,11 @@ a system to extract a shopping list from a week menu
 import sys
 
 from entities import *
-from data import Recipes, menu, all_dishes, pantry, from_pantry, extras
+from data import Recipes, menu, all_dishes, extras
 from math import ceil
 import shop
+from pantry import from_pantry
+from pantry import from_file as pantry_from_file
 import argparse
 
 def subtract_amount(lhs, rhs):
@@ -71,6 +73,7 @@ def amount_str(amount):
 def parse_options():
     parser = argparse.ArgumentParser(description="growser - a growing grocery list")
     parser.add_argument("-v", action="store_true", dest="verbose")
+    parser.add_argument("--pantry", type=str, dest="pantry_file")
     parser.add_argument("--show_pantry", action="store_true", dest="show_pantry")
     parser.add_argument("--shop", type=str)
     return parser.parse_args()
@@ -104,6 +107,8 @@ def main(options):
             print("dish: ")
             print(dish)
         print("needed ingredients")
+    pantry = pantry_from_file(options.pantry_file)
+    print(pantry)
     if options.show_pantry:
         print_ingredients(needed_ingredients(all_dishes), pantry)
     shopping_list_menu = resulting_list(all_dishes, pantry)

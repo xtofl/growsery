@@ -3,6 +3,7 @@ from entities import *
 
 #units
 gram = Unit("g")
+g = gram
 kg = Unit("kg", {gram: lambda kg: kg*1000.})
 
 fles = Unit("fles")
@@ -26,6 +27,7 @@ pakje = pak
 
 senseo_pad = Unit("pad")
 koffie_capsule = Unit("capsule")
+capsule = koffie_capsule
 doos = Unit("doos")
 doosje = doos
 
