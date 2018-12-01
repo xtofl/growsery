@@ -1,18 +1,8 @@
+#!/usr/bin/env python3
 from entities import *
 from units import *
 from recipes import *
 import pytest
-
-pantry_string = """
-kippenkruiden: 100 beetje
-komijn: 100 beetje
-droge kikkererwten: 600 gram
-"""
-
-units = {
-    "beetje": beetje,
-    "gram": gram
-}
 
 def pantry_lines(pantry_string):
     lines = map(str.strip, pantry_string.splitlines(keepends=False))
@@ -54,6 +44,28 @@ komijn: 100 beetje
 droge kikkererwten: 600 gram
 """), {"beetje": beetje, "gram": gram})
     assert len(items) == 3
+
+
+
+pantry_string = """
+kippenkruiden: 100 beetje
+komijn: 100 beetje
+droge kikkererwten: 600 gram
+
+mayo: 1 fles
+sesamolie: 10 beetje
+koriander: 0 beetje
+vanillesuiker: 6 zakje
+nesquik: 1 doos
+"""
+
+units = {
+    "beetje": beetje,
+    "gram": gram,
+    "fles": fles,
+    "zakje": zakje,
+    "doos": doos
+}
 
 pantry = pantry_items(pantry_lines(pantry_string), units) + [
     Ingredient("citroenthee", Amount(1, doosje)),
@@ -170,6 +182,11 @@ def test_from_pantry_finds_ingredients():
     pantry = [a, a]
     assert from_pantry(pantry, a) == Ingredient("A", Amount(2, stuk))
 
-if __name__ == "__main__":
+
+def collect(pantry):
     keys = set(map(Ingredient.zero, pantry))
-    print("\n".join(set(str(from_pantry(pantry, i)) for i in keys)))
+    return set(str(from_pantry(pantry, i)) for i in keys)
+
+
+if __name__ == "__main__":
+    print("\n".join(collect(pantry)))
