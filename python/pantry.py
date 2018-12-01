@@ -169,3 +169,7 @@ def test_from_pantry_finds_ingredients():
 
     pantry = [a, a]
     assert from_pantry(pantry, a) == Ingredient("A", Amount(2, stuk))
+
+if __name__ == "__main__":
+    keys = set(map(Ingredient.zero, pantry))
+    print("\n".join(set(str(from_pantry(pantry, i)) for i in keys)))
