@@ -87,6 +87,16 @@ def test_from_pantry_finds_ingredients():
     assert from_pantry(pantry, a) == Ingredient("A", Amount(2, stuk))
 
 
+def test_from_pantry_counts_all_lines_with_same_ingredient():
+    pantry = pantry_items(pantry_lines("""
+    # frigo
+    confituur: 1 pot
+    # berging:
+    confituur: 1 pot
+    """), units)
+    assert Amount(2, pot) == from_pantry(pantry, Ingredient("confituur", Amount(0, pot))).amount
+
+
 def collect(pantry):
     keys = set(map(Ingredient.zero, pantry))
     return (from_pantry(pantry, i) for i in keys)
