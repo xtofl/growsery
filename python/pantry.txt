@@ -1,3 +1,4 @@
+# frigo
 confituur: 1 pot
 kipkruiden: 20 beetje
 zwanworstjes: 0 blik

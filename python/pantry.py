@@ -6,7 +6,7 @@ import pytest
 
 def pantry_lines(pantry_string):
     lines = map(str.strip, pantry_string.splitlines(keepends=False))
-    return list(line for line in lines if len(line))
+    return list(line for line in lines if len(line) and not line.startswith("#"))
     assert all(len(s.split(":")) == 2 for s in lines)
 
 def test_pantry_lines():
@@ -14,6 +14,7 @@ def test_pantry_lines():
     a: 1 x
     b B: 3 y
     """))
+    assert [] == list(pantry_lines("#dont forward comments"))
 
 def pantry_items(pantry_lines, units):
     return [
