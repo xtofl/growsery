@@ -11,12 +11,13 @@ reserve = [
     just("lactosevrije yoghurt", Amount(6, potje)),
     just("melk", Amount(3, liter)),
     just("paneermeel", Amount(1, doosje)),
-    just("allesreiniger", Amount(1, fles)),
     just("keukenrol", Amount(6, stuk)),
     just("wc-papier", Amount(6, stuk)),
     just("dweildoekjes", Amount(2, zak)),
     just("honing", Amount(1, pot)),
     just("rubber handschoentjes", Amount(1, doos)),
+    just("basmati", Amount(200, g)),
+    just("zwarte chocola", Amount(500, g)),
 ]
 
 menu = [
@@ -29,7 +30,7 @@ menu = [
 
     #zondag
     #maandag
-    for_people(7).serve(
+    for_people(5).serve(
         Recipes.balletjes_tomatensaus_met_boontjes,
     ),
 

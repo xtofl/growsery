@@ -1,73 +1,94 @@
-# frigo
-confituur: 1 pot
-kipkruiden: 20 beetje
-zwanworstjes: 0 blik
+# kast 1
 citroenthee: 1 doos
-kippenbout: 0 stuk
+bouillon: 4 stuk
+groentenbouillon: 8 stuk
+
+# kruiden
+kipkruiden: 2 beetje
+komijn: 100.0 beetje
+cayennepeper: 50 beetje
+
+# kast 2
+choco: 0.2 pot
+honing: 1 pot
+bloem: 1 kg
 zakdoekjes: 2 doos
-kipfilet: 0 g
+zwarte chocola: 100 g
+vanillesuiker: 6.0 zak
+kinnekessuiker: 0.8 kg
+bloemsuiker: 120 g
+nesquik: 1.0 doos
+
+# fruit
 druiven: 0 doos
+mandarijnen: 10 stuk
+appel: 10 stuk
+kiwi: 5 stuk
+persappelsienen: 0 stuk
+
+# frigo
+lactosevrije yoghurt: 4 pot
+gehakt: 300 g
+kippenbout: 0 stuk
+kipfilet: 0 g
 biefstuk: 0 stuk
 vinaigrette: 3 zak
-bouillon: 48 stuk
-choco: 1 pot
-honing: 0 pot
 selder: 0 stuk
+paprika: 2 stuk
+bakboter: 3 fles
 hamblokjes: 0 doos
 yoghurtjes: 0 pot
 diepvrieserwten: 1.2 kg
-bloem: 2.2 kg
 leerdammer: 4 plakje
-chipolata: 10 stuk
-kroketten: 2 zak
+yoghurt: 0 pot
+
+# berging
+zwanworstjes: 0 blik
+confituur: .5 pot
+
+bloem: 2.2 kg
+
 krulletjes: 250 g
 perziken in blik: 1 blik
 kippenkruiden: 100.0 beetje
 mayo: 1.0 fles
 fruit: 0 stuk
 sesamolie: 10.0 beetje
-yoghurt: 0.5 pot
-nespresso: 0 capsule
 koekjes: 15 stuk
-persappelsienen: 10 stuk
 tomaten passata: 2 doos
 kotelet: 0 stuk
 appelmoes: 1 pot
 melk: 0 liter
-prei: 0 stuk
 koriander: 0 beetje
 wraps: 12 stuk
-appel: 0 stuk
-vanillesuiker: 6.0 zak
-kinnekessuiker: 0.8 kg
-komijn: 100.0 beetje
-bakboter: 1 fles
+prei: 0 stuk
+
 rode kool: 2 pot
 witte kool: 0 stuk
-groentenbouillon: 8 stuk
-gehakt: 500 g
 melk lactosevrij: 0 liter
 ijsbergsla: 0 stuk
-basmati: 0.8 kg
 ketchup: 1 fles
 risotto: 0.7 kg
 ui: 15 stuk
 droge kikkererwten: 1100.0 g
 patat: 40 stuk
-nesquik: 1.0 doos
 wortel: 6 stuk
 witloof: 0 stuk
-bloemsuiker: 120 g
 mais: 0 blik
-cayennepeper: 50 beetje
+keukenrol: 6 stuk
+
+# diepvries
+kroketten: 2 zak
+chipolata: 0 stuk
 diepvries broccoli: 1 zak
-tomatenconcentraat: 8 blik
-gerookte zalm: 0 pak
-senseo: 20 stuk
-pastakruiden: 2 pot
+tomatenconcentraat: 7 blik
+tomaten passata: 3 doos
+gerookte zalm: 1 pak
+senseo: 0 stuk
+pastakruiden: 1 pot
 nootmuskaat: 50 beetje
-ei: 4 stuk
-banaan: 4 stuk
+ei: 12 stuk
+banaan: 0 stuk
 kalkoenschnitzel: 0 stuk
 spaghetti: 500 g
 currysaus: 12 zak
