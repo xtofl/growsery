@@ -6,6 +6,7 @@ peper
 # gang 1
 pasta
 krulletjes
+basmati
 
 # gang 2
 appelmoes
@@ -31,6 +32,7 @@ honing
 
 # gang 3
 chocola
+zwarte chocola
 melk
 
 keukenrol
@@ -55,6 +57,7 @@ wortel
 prei
 paprika
 champion
+boontjes
 yoghurt
 lactosevrije yoghurt
 koriander
@@ -68,6 +71,7 @@ stoofappel
 hamblokjes
 gehakt
 biefstuk
+kippenbout
 chipolata
 salami
 zalm
@@ -79,6 +83,7 @@ diepvrieserwten
 diepvries broccoli
 kroketten
 
+wc-papier
 
 # kassa
 tippex
