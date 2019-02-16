@@ -24,38 +24,14 @@ menu = [
     Serving(Recipes.groentensoep, for_people=5),
 
     #zaterdag
-    for_people(5).serve(
-        Recipes.papaschotel,
+    for_people(4).serve(
+        Recipes.slaatje_gezond, Recipes.kroketten
     ),
 
     #zondag
-    #maandag
     for_people(5).serve(
-        Recipes.balletjes_tomatensaus_met_boontjes,
+        Recipes.zalm,
     ),
-
-    #dinsdag
-    for_people(5).serve(
-        Recipes.pasta_bolognese
-    ),
-
-    #woensdag
-    for_people(5).serve(
-        Recipes.kippenboutjes,
-        Recipes.kroketten,
-        Recipes.zelfgemaakte_appelmoes
-    ),
-
-    #donderdag
-    for_people(5).serve(
-        Recipes.wraps
-    ),
-
-    #vrijdag
-    for_people(5).serve(
-        Recipes.pasta_carbonara
-    ),
-    #zaterdag
 ]
 
 
