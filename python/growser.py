@@ -113,13 +113,19 @@ def main(options):
         print_ingredients(needed_ingredients(all_dishes), pantry)
     shopping_list_menu = resulting_list(all_dishes, pantry)
     shopping_list = join_ingredients(shopping_list_menu, extras)
-    print("\nshopping list\n" + "- "*20)
+    title = "shopping list for {} dishes".format(len(menu))
+    line = "- "*len(title)
+    print("\n{}\n{}".format(title, line))
     if options.shop:
         the_shop = shop.from_file(open(options.shop, "r"))
     else:
         the_shop = None
     print_ingredients(shopping_list, shop=the_shop)
-
+    summary = "{} items for {} dishes".format(
+        len(shopping_list),
+        len(menu))
+    print(summary)
+    
 if __name__ == "__main__":
     options = parse_options()
     main(options)
