@@ -84,7 +84,8 @@ class IngredientList:
             try:
                 return Ingredient(name=key, amount=sum(amounts, Amount.zero))
             except ArithmeticError as e:
-                raise ArithmeticError("{}: adding up list [{}]".format(e, ingredients))
+                raise ArithmeticError("{}: {}".format(key, e))
+
 
         return IngredientList(summed(key) for key in all_keys)
 
