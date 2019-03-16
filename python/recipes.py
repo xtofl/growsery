@@ -54,7 +54,7 @@ class BasicRecipes:
         Ingredient("yoghurt", Amount(0.3, pot))
         ])
 
-    fruit = Recipe(for_people=5, ingredients=[Ingredient("fruit", Amount(10, stuk))])
+    fruit = Recipe(for_people=5, ingredients=[Ingredient("fruit", Amount(5, stuk))])
 
     beleg = Recipe(for_people=5, ingredients=[
         Ingredient("leerdammer", Amount(1, plakje)),
