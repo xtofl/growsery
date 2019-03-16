@@ -1,13 +1,6 @@
 #!/usr/bin/env python3
-from entities import *
-from units import *
-from recipes import *
+from growser.pantry import *
 import pytest
-
-def pantry_lines(pantry_string):
-    lines = map(str.strip, pantry_string.splitlines(keepends=False))
-    return list(line for line in lines if len(line) and not line.startswith("#"))
-    assert all(len(s.split(":")) == 2 for s in lines)
 
 def test_pantry_lines():
     assert ["a: 1 x", "b B: 3 y"] == list(pantry_lines("""
@@ -16,21 +9,52 @@ def test_pantry_lines():
     """))
     assert [] == list(pantry_lines("#dont forward comments"))
 
-def pantry_items(pantry_lines, units):
-    return [
-        Ingredient(name, Amount(float(n), units[u]))
-            for name, n, u in map(pantry_item_chunks, pantry_lines)
-        ]
-
-def pantry_item_chunks(pantry_line):
-    name, amount_str = pantry_line.split(":")
-    n, unit_str = amount_str.split()
-    return (name, n, unit_str)
-
 def test_pantry_item_chunks():
     a, b, c = pantry_item_chunks("b B: 2 y")
     assert ("b B", "2", "y") == (a, b, c)
     a, b, c = pantry_item_chunks("a: 1 x")
+
+"""A database of units"""
+from .entities import Unit
+from .entities import Amount
+
+
+#units
+gram = Unit("g")
+g = gram
+kg = Unit("kg", {gram: lambda kg: kg*1000.})
+
+fles = Unit("fles")
+
+stuk = Unit("stuk")
+
+liter = Unit("liter")
+
+plakje = Unit("plakje")
+pot = Unit("pot")
+potje = pot
+bakje = Unit("bakje")
+blik = Unit("blik")
+blikje = blik
+teentje = Unit("teentje")
+
+zak = Unit("zak")
+zakje = zak
+pak = Unit("pak")
+pakje = pak
+
+senseo_pad = Unit("pad")
+koffie_capsule = Unit("capsule")
+capsule = koffie_capsule
+doos = Unit("doos")
+doosje = doos
+
+takje = Unit("takje")
+
+beetje = Unit("beetje", {
+    liter: lambda x: x/100,
+    fles: lambda x: x/100
+})
 
 def test_pantry_items():
     x = Unit("x")
@@ -45,7 +69,6 @@ komijn: 100 beetje
 droge kikkererwten: 600 gram
 """), {"beetje": beetje, "gram": gram})
     assert len(items) == 3
-
 
 units = {
     "beetje": beetje,
@@ -65,14 +88,6 @@ units = {
     "blik": blik,
     "stuk": stuk,
 }
-
-
-def from_pantry(pantry, ingredient):
-    try:
-        zero = ingredient.zero()
-        return sum( (i for i in pantry if i.name == ingredient.name), zero)
-    except StopIteration:
-        return None
 
 def test_from_pantry_finds_ingredients():
     one = Amount(1, stuk)
@@ -95,20 +110,3 @@ def test_from_pantry_counts_all_lines_with_same_ingredient():
     confituur: 1 pot
     """), units)
     assert Amount(2, pot) == from_pantry(pantry, Ingredient("confituur", Amount(0, pot))).amount
-
-
-def collect(pantry):
-    keys = set(map(Ingredient.zero, pantry))
-    return (from_pantry(pantry, i) for i in keys)
-
-
-def from_file(filename):
-    with open(filename, "r") as f:
-        pantry_string = f.read()
-        return collect(pantry_items(pantry_lines(pantry_string), units))
-
-if __name__ == "__main__":
-    import sys
-    with open(sys.argv[1], "r") as f:
-        ingredients = list(from_file(sys.argv[1]))
-        print("\n".join(str(i) for i in ingredients))

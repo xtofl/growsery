@@ -5,12 +5,11 @@ a system to extract a shopping list from a week menu
 
 import sys
 
-from entities import *
-from data import Recipes, menu, all_dishes, extras
+from .entities import *
 from math import ceil
-import shop
-from pantry import from_pantry
-from pantry import from_file as pantry_from_file
+import growser.shop
+from .pantry import from_pantry
+from .pantry import from_file as pantry_from_file
 import argparse
 
 def subtract_amount(lhs, rhs):
@@ -100,32 +99,26 @@ def print_ingredients(ingredients, pantry=None, shop=None):
                 ingredient.name,
                 amount_str(ingredient.amount)))
 
-def main(options):
+def print_shopping_list(options, data):
     if options.verbose:
         print("menu")
-        for dish in menu:
+        for dish in data.menu:
             print("dish: ")
             print(dish)
         print("needed ingredients")
-    pantry = pantry_from_file(options.pantry_file)
-    print(pantry)
     if options.show_pantry:
-        print_ingredients(needed_ingredients(all_dishes), pantry)
-    shopping_list_menu = resulting_list(all_dishes, pantry)
-    shopping_list = join_ingredients(shopping_list_menu, extras)
-    title = "shopping list for {} dishes".format(len(menu))
+        print_ingredients(needed_ingredients(data.all_dishes), data.pantry)
+    shopping_list_menu = resulting_list(data.all_dishes, data.pantry)
+    shopping_list = join_ingredients(shopping_list_menu, data.extras)
+    title = "shopping list for {} dishes".format(len(data.menu))
     line = "- "*(len(title)//2+1)
     print("\n{}\n{}".format(title, line))
     if options.shop:
-        the_shop = shop.from_file(open(options.shop, "r"))
+        the_shop = growser.shop.from_file(open(options.shop, "r"))
     else:
         the_shop = None
     print_ingredients(shopping_list, shop=the_shop)
     summary = "{} items for {} dishes".format(
         len(shopping_list),
-        len(menu))
+        len(data.menu))
     print(summary)
-    
-if __name__ == "__main__":
-    options = parse_options()
-    main(options)

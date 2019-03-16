@@ -1,0 +1,51 @@
+
+shopping list for 8 dishes
+- - - - - - - - - - - - - - 
+      ingredient.name       amount (-in_pantry amount)
+    O kippenkruiden       : 1      beetje
+    O pasta               : 300    g 
+    O appelmoes           : 1      pot
+    O koekjes             : 14     stuk
+    O look                : 2      teentje
+    O mayo                : 1      fles
+    O puddingpoeder       : 1      zak
+    O paneermeel          : 1      doos
+    O senseo              : 14     stuk
+    O vannillesuiker      : 1      zak
+    O honing              : 1      pot
+    O chocola             : 200    g 
+    O zwarte chocola      : 400    g 
+    O melk                : 7      liter
+    O dweildoekjes        : 2      zak
+    O rubber handschoentjes: 1      doos
+    O papaboter           : 1      bakje
+    O ei                  : 3      stuk
+    O selder              : 2      stuk
+    O sla                 : 1      stuk
+    O tomaat              : 4      stuk
+    O wortel              : 11     stuk
+    O prei                : 2      stuk
+    O paprika             : 1      stuk
+    O yoghurt             : 1      pot
+    O lactosevrije yoghurt: 6      pot
+    O emmental            : 300    g 
+    O leerdammer          : 9      plakje
+    O geraspte kaas       : 300    g 
+    O fruit               : 35     stuk
+    O gehakt              : 300    g 
+    O chipolata           : 10     stuk
+    O salami              : 1      pak
+    O zalm                : 5      stuk
+    O kipfilet            : 500    g 
+    O kroketten           : 1      zak
+    O wc-papier           : 6      stuk
+    O nutella             : 1      pot
+    O wraps               : 8      stuk
+    O ui                  : 1      stuk
+    O mozarella           : 3      stuk
+    O courgette           : 1      stuk
+    O vinaigrette         : 1      zak
+    O tomatensaus         : 500    g 
+    O geitenkaasje        : 6      stuk
+    O perziken in blik    : 1      blik
+46 items for 8 dishes

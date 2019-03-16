@@ -1,4 +1,4 @@
-from entities import *
+from growser.entities import *
 from units import *
 
 class BasicRecipes:

@@ -1,4 +1,6 @@
-from entities import *
+"""A database of units"""
+from growser.entities import Unit
+from growser.entities import Amount
 
 
 #units
@@ -44,6 +46,25 @@ koffielepel = Unit("kl", {
 eetlepel = Unit("el", {
     koffielepel: lambda x: 5*x
 })
+
+definitions = {
+    "beetje": beetje,
+    "plakje": plakje,
+    "capsule": capsule,
+    "liter": liter,
+    "pak": pak,
+    "kg": kg,
+    "gram": gram,
+    "g": g,
+    "fles": fles,
+    "zakje": zakje,
+    "zak": zak,
+    "doos": doos,
+    "koffie_capsule": koffie_capsule,
+    "pot": pot,
+    "blik": blik,
+    "stuk": stuk,
+}
 
 def test_units():
     assert Amount(100, beetje) - Amount(1, fles) == Amount.zero
