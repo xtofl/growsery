@@ -1,5 +1,5 @@
-from entities import Ingredient, Amount
-from units import *
+from growser.entities import Ingredient, Amount
+from growser.units import *
 
 extras = [
 ]

@@ -1,4 +1,4 @@
-from entities import *
+from .entities import *
 
 
 #units

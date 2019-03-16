@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-from entities import *
-from units import *
-from recipes import *
+from .entities import *
+from .units import *
 import pytest
 
 def pantry_lines(pantry_string):
