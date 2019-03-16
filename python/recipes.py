@@ -301,7 +301,10 @@ class Recipes(BasicRecipes):
         Ingredient("peper", Amount(1, beetje)),
         Ingredient("mais", Amount(1, blik)),
         Ingredient("ui", Amount(1, stuk)),
-        Ingredient("kipfilet", Amount(300, gram)),
+        Ingredient("ei", Amount(4, stuk)),
+        Ingredient("mayo", Amount(.2, fles)),
+        Ingredient("falafel", Amount(300, gram)),
+        Ingredient("veggie gyros", Amount(1, beetje)),
         Ingredient("kippenkruiden", Amount(1, beetje)),
         Ingredient("yoghurt", Amount(0.3, pot)),
         Ingredient("wortel", Amount(4, stuk)),
@@ -334,6 +337,15 @@ class Recipes(BasicRecipes):
         Ingredient("pizza hawai", Amount(1, stuk)),
         Ingredient("pizza margarita", Amount(2, stuk)),
         Ingredient("pizza pollo", Amount(1, stuk))
+    ])
+
+    pasta_veggie_in_de_oven = Recipe(for_people=5, ingredients=[
+        Ingredient("pasta", Amount(800, gram)),
+        Ingredient("courgette", Amount(1, stuk)),
+        Ingredient("wortel", Amount(5, stuk)),
+        Ingredient("tomatensaus", Amount(500, gram)),
+        Ingredient("mozarella", Amount(3, stuk)),
+        Ingredient("geraspte kaas", Amount(300, gram))
     ])
 
 just = lambda what, amount: Serving(Recipe(for_people=1, ingredients=[Ingredient(what, amount)]), for_people=1)

@@ -21,17 +21,39 @@ reserve = [
 ]
 
 menu = [
+
+    for_people(5).serve(
+        Recipes.zalm,
+        Recipes.sla,
+        Recipes.puree
+    ),
     Serving(Recipes.groentensoep, for_people=5),
 
-    #zaterdag
-    for_people(4).serve(
+    for_people(5).serve(
+        Recipes.kip_met_currysaus_perziken_en_patatten
+    ),
+
+    for_people(5).serve(
+        Recipes.pasta_veggie_in_de_oven
+    ),
+
+    for_people(5).serve(
+        Recipes.pasta_bolognese
+    ),
+
+    for_people(5).serve(
         Recipes.slaatje_gezond, Recipes.kroketten
+    ),
+
+    for_people(5).serve(
+        Recipes.wraps
     ),
 
     #zondag
     for_people(5).serve(
-        Recipes.zalm,
-    ),
+        Recipes.groentenmix,
+        Recipes.patatten,
+    )
 ]
 
 
