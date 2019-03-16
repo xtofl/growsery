@@ -107,8 +107,8 @@ def print_shopping_list(options, data):
             print(dish)
         print("needed ingredients")
     if options.show_pantry:
-        print_ingredients(needed_ingredients(data.menu), data.pantry)
-    shopping_list_menu = resulting_list(data.menu, data.pantry)
+        print_ingredients(needed_ingredients(data.all_dishes), data.pantry)
+    shopping_list_menu = resulting_list(data.all_dishes, data.pantry)
     shopping_list = join_ingredients(shopping_list_menu, data.extras)
     title = "shopping list for {} dishes".format(len(data.menu))
     line = "- "*(len(title)//2+1)
