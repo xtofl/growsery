@@ -60,8 +60,9 @@ daily = [
     Serving(Recipes.koekjes, for_people=3),
     Serving(Recipes.fruit, for_people=5),
     Serving(Recipes.beleg, for_people=5),
-    just("koffiepads", Amount(4, stuk)),
+    just("senseo", Amount(4, stuk)),
     just("citroenthee", Amount(0.1, doos)),
+    just("pindakaas", Amount(.1, pot))
     ]
 
 all_dishes = menu + daily * 7 \

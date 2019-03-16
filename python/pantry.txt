@@ -1,97 +1,105 @@
 # kast 1
 citroenthee: 1 doos
 bouillon: 4 stuk
-groentenbouillon: 8 stuk
+groentenbouillon: 50 stuk
 
 # kruiden
 kipkruiden: 2 beetje
 komijn: 100.0 beetje
-cayennepeper: 50 beetje
+cayennepeper: 40 beetje
+peper: 50 beetje
+
 
 # kast 2
-choco: 0.2 pot
-honing: 1 pot
+choco: 2 pot
+honing: .5 pot
 bloem: 1 kg
 zakdoekjes: 2 doos
 zwarte chocola: 100 g
 vanillesuiker: 6.0 zak
-kinnekessuiker: 0.8 kg
+kinnekessuiker: 0.1 kg
 bloemsuiker: 120 g
-nesquik: 1.0 doos
+nesquik: .5 doos
+pindakaas: 1 pot
+risotto: 400 g
+basmati: 400 g
+koekjes: 10 stuk
 
 # fruit
 druiven: 0 doos
-mandarijnen: 10 stuk
-appel: 10 stuk
-kiwi: 5 stuk
-persappelsienen: 0 stuk
+mandarijnen: 0 stuk
+appel: 2 stuk
+kiwi: 0 stuk
+persappelsienen: 10 stuk
 
 # frigo
-lactosevrije yoghurt: 4 pot
-gehakt: 300 g
-kippenbout: 0 stuk
-kipfilet: 0 g
-biefstuk: 0 stuk
-vinaigrette: 3 zak
 selder: 0 stuk
 paprika: 2 stuk
 bakboter: 3 fles
 hamblokjes: 0 doos
 yoghurtjes: 0 pot
+yoghurt: 1 pot
 diepvrieserwten: 1.2 kg
-leerdammer: 4 plakje
-yoghurt: 0 pot
+gerookte zalm: 1 pak
+gouda: 7 plakje
+ijsbergsla: 1 stuk
+leerdammer: 0 plakje
+komkommer: 1 stuk
+prei: 3 stuk
+ei: 12 stuk
+
 
 # berging
 zwanworstjes: 0 blik
-confituur: .5 pot
+confituur: 1 pot
 
-bloem: 2.2 kg
+bloem: 0 kg
 
-krulletjes: 250 g
-perziken in blik: 1 blik
-kippenkruiden: 100.0 beetje
-mayo: 1.0 fles
+krulletjes: 0 g
+spaghetti: 1500 g
+pasta: 500 g
+
+perziken in blik: 0 blik
+kippenkruiden: 0 beetje
+mayo: 0 fles
 fruit: 0 stuk
-sesamolie: 10.0 beetje
-koekjes: 15 stuk
+sesamolie: 0.0 beetje
+koekjes: 18 stuk
 tomaten passata: 2 doos
 kotelet: 0 stuk
-appelmoes: 1 pot
+appelmoes: 0 pot
 melk: 0 liter
 koriander: 0 beetje
-wraps: 12 stuk
+wraps: 0 stuk
 prei: 0 stuk
 
 rode kool: 2 pot
 witte kool: 0 stuk
-melk lactosevrij: 0 liter
+melk lactosevrij: 9 liter
 ijsbergsla: 0 stuk
 ketchup: 1 fles
-risotto: 0.7 kg
-ui: 15 stuk
-droge kikkererwten: 1100.0 g
+risotto: 0. kg
+ui: 5 stuk
 patat: 40 stuk
-wortel: 6 stuk
+wortel: 16 stuk
 witloof: 0 stuk
-mais: 0 blik
+mais: 4 blik
 keukenrol: 6 stuk
-
-# diepvries
-kroketten: 2 zak
-chipolata: 0 stuk
-diepvries broccoli: 1 zak
 tomatenconcentraat: 7 blik
-tomaten passata: 3 doos
-gerookte zalm: 1 pak
-senseo: 0 stuk
+tomaten passata: 2 doos
+senseo: 14 stuk
 pastakruiden: 1 pot
 nootmuskaat: 50 beetje
-ei: 12 stuk
-banaan: 0 stuk
-kalkoenschnitzel: 0 stuk
-spaghetti: 500 g
-currysaus: 12 zak
-pasta: 0 g
-granola: 1.5 zak
-puddingpoeder: 3 zak
+currysaus: 11 zak
+
+# diepvries
+kroketten: 1 zak
+chipolata: 0 stuk
+diepvries broccoli: 1 zak
+diepvries erwtjes: 1 zak
+veggie gyros: 0.6 kg
+falafel: 40 stuk
+
+cornetto: 0 stuk
+schepijs: 1 liter
+
