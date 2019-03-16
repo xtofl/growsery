@@ -13,7 +13,7 @@ if __name__ == "__main__":
     data = Data(
         menu=all_dishes,
         extras=extras,
-        pantry=tuple(),
+        pantry=from_file(options.pantry_file, unit_defs),
         units=unit_defs
     )
     print_shopping_list(options, data)

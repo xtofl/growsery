@@ -2,4 +2,4 @@
 
 here=$(cd $(dirname $0) && pwd)
 cd $here
-PYTHONPATH=. ../src/growsery/growser.py
+PYTHONPATH=../src python3 -m shopping_list --pantry pantry.txt --shop shop.txt
