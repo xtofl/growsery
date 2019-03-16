@@ -1,5 +1,5 @@
 from growser.entities import *
-from growser.units import *
+from units import *
 
 class BasicRecipes:
     puree = Recipe(for_people=5, ingredients=[

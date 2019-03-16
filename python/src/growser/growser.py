@@ -106,7 +106,7 @@ def print_shopping_list(options, data):
             print("dish: ")
             print(dish)
         print("needed ingredients")
-    pantry = pantry_from_file(options.pantry_file)
+    pantry = pantry_from_file(options.pantry_file, data.units)
     print(pantry)
     if options.show_pantry:
         print_ingredients(needed_ingredients(data.menu), data.pantry)

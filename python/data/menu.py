@@ -1,5 +1,5 @@
 from growser.entities import *
-from growser.units import *
+from units import *
 from recipes import *
 
 reserve = [
