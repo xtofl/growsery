@@ -114,7 +114,7 @@ def main(options):
     shopping_list_menu = resulting_list(all_dishes, pantry)
     shopping_list = join_ingredients(shopping_list_menu, extras)
     title = "shopping list for {} dishes".format(len(menu))
-    line = "- "*len(title)
+    line = "- "*(len(title)//2+1)
     print("\n{}\n{}".format(title, line))
     if options.shop:
         the_shop = shop.from_file(open(options.shop, "r"))
