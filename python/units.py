@@ -29,11 +29,17 @@ koffie_capsule = Unit("capsule")
 doos = Unit("doos")
 doosje = doos
 
+eetlepel = Unit("eetlepel", {
+    fles: lambda x: x/40,
+    pot: lambda x: x/40
+})
 
 beetje = Unit("beetje", {
     liter: lambda x: x/100,
-    fles: lambda x: x/100
+    fles: lambda x: x/100,
+    potje: lambda x: x/100,
 })
+
 
 def test_units():
     assert Amount(100, beetje) - Amount(1, fles) == Amount.zero

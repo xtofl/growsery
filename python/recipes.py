@@ -20,12 +20,19 @@ class BasicRecipes:
         Ingredient("bloem", Amount(50, gram)),
         Ingredient("bakboter", Amount(1, beetje)),
         Ingredient("melk", Amount(.8, liter)),
+        Ingredient("kaneel", Amount(1, beetje)),
     ])
     tomatensaus = Recipe(for_people=5, ingredients=[
         Ingredient("bloem", Amount(50, gram)),
         Ingredient("bakboter", Amount(.1, fles)),
         Ingredient("melk", Amount(.8, liter)),
         Ingredient("tomatenconcentraat", Amount(2, blik))
+    ])
+    preisaus = Recipe(for_people=5, ingredients=[
+        Ingredient("bloem", Amount(50, gram)),
+        Ingredient("bakboter", Amount(1, beetje)),
+        Ingredient("melk", Amount(.8, liter)),
+        Ingredient("prei", Amount(2, stuk)),
     ])
     worst = Recipe(for_people=5, ingredients=[
         Ingredient("chipolata", Amount(10, stuk))
@@ -45,21 +52,20 @@ class BasicRecipes:
 
     koekjes = Recipe(for_people=5, ingredients=[
         Ingredient("koekjes", Amount(10, stuk)),
-        Ingredient("yoghurtjes", Amount(3, potje))
         ])
 
-    fruit = Recipe(for_people=5, ingredients=[Ingredient("fruit", Amount(10, stuk))])
+    fruit = Recipe(for_people=5, ingredients=[Ingredient("fruit", Amount(5, stuk))])
 
     beleg = Recipe(for_people=5, ingredients=[
         Ingredient("leerdammer", Amount(1, plakje)),
-        Ingredient("choco", Amount(0.25, pot)),
+        Ingredient("kwatta", Amount(0.25, pot)),
         Ingredient("nutella", Amount(0.05, pot)),
         Ingredient("papaboter", Amount(0.02, bakje)),
         Ingredient("confituur", Amount(0.05, pot)),
         Ingredient("salami", Amount(.1, pak))
     ])
 
-    groentensoep = Recipe(for_people=2, ingredients=[
+    groentensoep = Recipe(for_people=5, ingredients=[
             Ingredient("selder", Amount(.5, stuk)),
             Ingredient("wortel", Amount(4, stuk)),
             Ingredient("prei", Amount(2, stuk)),
@@ -105,6 +111,13 @@ class BasicRecipes:
         Ingredient("veggieburger", Amount(1, stuk)),
         Ingredient("bakboter", Amount(1, beetje))
     ])
+    balletjes = \
+        Recipe(for_people=5, ingredients=[
+                Ingredient("gehakt", Amount(400, gram)),
+                Ingredient("ei", Amount(1, stuk)),
+                Ingredient("peper", Amount(1, beetje)),
+            ])
+
 
 class Recipes(BasicRecipes):
     papaschotel = CompoundRecipe(for_people=5, recipes=[BasicRecipes.papakool, BasicRecipes.puree])
@@ -114,6 +127,7 @@ class Recipes(BasicRecipes):
             Ingredient("ei", Amount(6, stuk)),
             Ingredient("krulletjes", Amount(500, gram)),
         ]), BasicRecipes.tomatensaus])
+
     slaatje_gezond = \
         CompoundRecipe(5, [
             Recipe(for_people=5, ingredients=[
@@ -126,13 +140,16 @@ class Recipes(BasicRecipes):
                 Ingredient("honing", Amount(1, beetje)),
             ])
         ])
+
+
     balletjes_tomatensaus_met_boontjes =\
         CompoundRecipe(5, [
             Recipe(for_people=5, ingredients=[
-                Ingredient("gehakt", Amount(500, gram)),
                 Ingredient("boontjes", Amount(2, zakje)),
             ]),
+            BasicRecipes.balletjes,
             BasicRecipes.tomatensaus])
+
     pasta_bolognese = CompoundRecipe(5, [
         Recipe(for_people=5, ingredients=[
             Ingredient("pasta", Amount(300, gram)),
@@ -144,6 +161,15 @@ class Recipes(BasicRecipes):
             Ingredient("look", Amount(1, teentje))
         ]),
         BasicRecipes.tomatensaus])
+    veggie_pasta = lambda pasta_soort: CompoundRecipe(5, [
+        Recipe(for_people=5, ingredients=[
+            Ingredient(pasta_soort, Amount(300, gram)),
+            Ingredient("paprika", Amount(2, stuk)),
+            Ingredient("diepvrieserwten", Amount(300, gram)),
+            Ingredient("wortel", Amount(4, stuk)),
+            Ingredient("geraspte kaas", Amount(1, zak)),
+        ]),
+        BasicRecipes.witte_saus])
     kip_met_currysaus_perziken_en_patatten = Recipe(for_people=5, ingredients=[
         Ingredient("kipfilet", Amount(500, gram)),
         Ingredient("perziken in blik", Amount(1, blik)),
@@ -270,6 +296,36 @@ class Recipes(BasicRecipes):
         Ingredient("melk", Amount(1, liter)),
         Ingredient("chocola", Amount(200, gram))
     ])
+
+    zalm_ovenschotel = Recipe(for_people=5, ingredients=(
+        Ingredient("zalm-mootjes", Amount(500, gram)),
+        Ingredient("look", Amount(1, teentje)),
+        Ingredient("bakboter", Amount(2, beetje)),
+        Ingredient("honing", Amount(2, eetlepel)),
+        Ingredient("diepvrieserwten", Amount(200, gram)),
+        Ingredient("wortel", Amount(5, stuk)),
+        Ingredient("ui", Amount(1, stuk)),
+        Ingredient("risotto", Amount(120, gram))
+    ))
+
+    volauvent = CompoundRecipe(for_people=5, recipes=(
+        BasicRecipes.witte_saus,
+        Recipe(for_people=5, ingredients=(
+                Ingredient("kippenblokjes", Amount(300, gram)),
+            )
+        ),
+        BasicRecipes.balletjes
+    ))
+
+    witloof_zalm = CompoundRecipe(for_people=5, recipes=(
+        BasicRecipes.witte_saus,
+        Recipe(for_people=5, ingredients=(
+                Ingredient("witloof", Amount(7, stuk)),
+                Ingredient("strooikaas", Amount(500, gram)),
+            )
+        ),
+    ))
+
 
 def all_recipes():
     return \
