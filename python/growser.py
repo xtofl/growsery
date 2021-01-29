@@ -1,25 +1,34 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 """
 a system to extract a shopping list from a week menu
 """
 
 import sys
-
-from entities import *
-from data import Recipes, menu, pantry, from_pantry, extras
 from math import ceil
+
+from entities import Amount, IngredientList, Ingredient, Serving, \
+    CompoundRecipe, Recipe
+from extras import extras
+from menu import menu
+from pantry import from_pantry, pantry
+from units import *
+
 
 def subtract_amount(lhs, rhs):
     return lhs + (-1 * rhs)
 
+
 def add_amount(lhs, rhs):
     return lhs + rhs
+
 
 def sum_amounts(amounts):
     return sum(amounts, Amount.zero)
 
+
 def join_ingredients(list1, list2):
     return IngredientList(list1) + IngredientList(list2)
+
 
 def subtract_ingredients(list1, list2):
     def subtract_amount_in_list2(amount, name):
@@ -29,10 +38,12 @@ def subtract_ingredients(list1, list2):
         except StopIteration:
             return amount
     return list(i for i in
-            (Ingredient(
-                ingredient.name,
-                subtract_amount_in_list2(ingredient.amount, ingredient.name))
-            for ingredient in list1) if i.amount.number > 0)
+            (
+                Ingredient(
+                    ingredient.name,
+                    subtract_amount_in_list2(ingredient.amount, ingredient.name)
+                )
+                for ingredient in list1) if i.amount.number > 0)
 
 
 def needed_ingredients(servings):
@@ -80,14 +91,27 @@ def print_ingredients(ingredients, pantry=None):
                 ingredient.name,
                 amount_str(ingredient.amount)))
 
+
+def simplify(shopping_list):
+    def shop_amount(item):
+        amount = {
+                beetje: lambda a: Amount(1, potje),
+                }.get(item.amount.unit, lambda x: x)(item.amount)
+
+        return Ingredient(item.name, amount)
+
+    return list(map(shop_amount, shopping_list))
+
+
 def main():
     if "-v" in sys.argv:
         print("needed ingredients")
         print_ingredients(needed_ingredients(menu), pantry)
     shopping_list_menu = resulting_list(menu, pantry)
-    shopping_list = join_ingredients(shopping_list_menu, extras)
+    shopping_list = simplify(join_ingredients(shopping_list_menu, extras))
     print("\nshopping list\n" + "- "*20)
     print_ingredients(shopping_list)
+
 
 if __name__ == "__main__":
     main()

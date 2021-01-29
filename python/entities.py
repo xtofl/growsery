@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 """
 classes defining shopping list objects
 """
@@ -44,13 +44,15 @@ class Amount:
 
     def __sub__(self, other):
         return self + (-1 * other)
+
     def __rmul__(self, other):
-        '''scalar multiplication'''
+        """scalar multiplication"""
         assert isinstance(other, int) or isinstance(other, float)
         return Amount(self.number*other, self.unit)
 
     def __hash__(self):
         return hash((self.number, self.unit))
+
 
 Amount.zero = Amount(0, Unit("any"))
 Amount.__repr__ = lambda self: "{} {}".format(self.number, self.unit)
@@ -86,7 +88,7 @@ class IngredientList:
 
     def __sub__(self, other):
         return self + (-1 * other)
-    
+
     def __repr__(self):
         return "I[" + ", ".join(map(repr, self.ingredients)) + "]"
 
@@ -102,10 +104,12 @@ class IngredientList:
     def __rmul__(self, f):
         return IngredientList(f * i for i in self.ingredients)
 
+
 IngredientList.zero = IngredientList([])
 
 Recipe = namedtuple("Recipe", ["for_people", "ingredients"])
 Serving = namedtuple("Serving", ["recipe", "for_people"])
+
 
 class CompoundRecipe:
     def __init__(self, for_people, recipes):
@@ -124,6 +128,7 @@ class CompoundRecipe:
         lhs, rhs = self, other
         return lhs.for_people == other.for_people and lhs.recipes == rhs.recipes
 
+
 def for_people(n):
     """fluid interface to instantiate recipes
 
@@ -135,6 +140,7 @@ def for_people(n):
             for_people=n)
     compound.serve = compound
     return compound
+
 
 def test_for_people():
     x = Ingredient("x", Amount(1, Unit(".")))
