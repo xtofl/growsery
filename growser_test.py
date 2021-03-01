@@ -94,7 +94,10 @@ c = growser.IngredientList([y, z, Ingredient("q", Amount(1, Unit("#")))])
 
 def test_ingredient_lists_behaves_as_a_monoid():
 
-    assert a == a
+    # Redundant comparison - a == a (comparison-with-itself)
+    # this line _intends_ to check operator== to check equality.
+    #
+    assert a == a  # pylint: disable=R0124
     assert a + a.zero == a
     assert a.zero + a == a
     assert (a + b) + c == a + (b + c)
