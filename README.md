@@ -9,6 +9,7 @@ This tool is intended to help in my house hold: plan next week's menu, find out 
 It also intends to grow knowledge on the way: remember what a typical menu looks like, remember what ingredients are needed for a menu, so that it becomes easier and easier to obtain your next grocery list.
 
 [![Build Status](https://travis-ci.org/xtofl/growsery.svg?branch=master)](https://travis-ci.org/xtofl/growsery)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fxtofl%2Fgrowsery.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fxtofl%2Fgrowsery?ref=badge_shield)
 
 Roadmap
 -------
@@ -30,3 +31,7 @@ The idea is to run as an in-browser app, using local storage.  Later, migration 
 v1.1 embellishment
 
 v2.0 cloud storage
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fxtofl%2Fgrowsery.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fxtofl%2Fgrowsery?ref=badge_large)
